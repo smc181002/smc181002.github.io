@@ -8,6 +8,9 @@
 
 // @ts-check
 export default /** @type {import('astro').AstroUserConfig} */ ({
+  devOptions: {
+    hostname: "0.0.0.0"
+  },
 	// Enable the Svelte renderer to support Svelte components.
 	renderers: ['@astrojs/renderer-svelte'],
 });

@@ -1,7 +1,7 @@
 ---
 import MainHead from '../components/MainHead.astro';
 import Footer from '../components/Footer.svelte';
-import Nav from '../components/Nav.svelte';
+import Nav from '../components/Nav.astro';
 import PortfolioPreview from '../components/PortfolioPreview.svelte';
 
 interface MarkdownFrontmatter {
@@ -24,7 +24,9 @@ const projects = Astro.fetchContent<MarkdownFrontmatter>('./project/**/*.md')
 		</style>
 	</head>
 	<body>
-		<Nav />
+    <div class="fixed w-screen text-zinc-500 z-10"> 
+      <Nav active="/projects"/> 
+    </div>
 		<div class="wrapper">
 			<h1 class="title mt4 mb4">All Projects</h1>
 			<div class="grid">
