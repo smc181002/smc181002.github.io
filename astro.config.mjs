@@ -11,6 +11,9 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
   devOptions: {
     hostname: "0.0.0.0"
   },
+  buildOptions: {
+    site: "https://smc181002.github.io/"
+  },
 	// Enable the Svelte renderer to support Svelte components.
 	renderers: ['@astrojs/renderer-svelte'],
 });
