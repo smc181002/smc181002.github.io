@@ -3,9 +3,10 @@ const {active} = Astro.props;
 const actionsList = [
   {name: 'Home', path: '/'},
   {name: 'Projects', path: '/projects'},
-  {name: 'Blogs', path: '/blogs'},
+  {name: 'Contact', path: '/contact'},
 ]
 
+let hover = " hover:underline hover:decoration-4 transition-all hover:decoration-indigo-500 hover:underline-offset-2 ";
 function activeHighlight(action) {
   return (active == action.path) ? "underline decoration-2 decoration-indigo-500 underline-offset-2" : "";
 }
@@ -13,14 +14,31 @@ function activeHighlight(action) {
 
 <nav class="py-6 z-40 w-full backdrop-blur flex-none bg-white/80 supports-backdrop-blur:bg-white/50 border border-gray-900/10">
 
-  <div class="flex mx-auto px-24 w-full items-center text-center">
-    <div class="flex-1"> <img src="/assets/logo.svg" alt="logo" class="w-48"> </div>
+  <div class="flex mx-auto px-16 w-full items-center text-center">
+    <div class="flex items-center flex-1"> 
+      <img 
+        src="/assets/logo.svg" 
+        alt="logo" 
+        width="48px"> 
+      <span class="ml-4 text-zinc-900 font-['Poppins'] md:inline hidden">Meher Chaitanya</span> 
+    </div>
     <div>
       <div class="text-gray-800 font-['Poppins'] flex items-center">
         {actionsList.map( (action) => (
-          <a class={activeHighlight(action) + " hover:underline hover:decoration-4 transition-all hover:decoration-indigo-500 hover:underline-offset-2 mx-2 px-2 text-lg"} href={action.path}>{action.name}</a>
+          <a 
+            class={activeHighlight(action) + hover + "mx-2 px-2 text-lg"} 
+            href={action.path}>
+            {action.name}
+          </a>
         ))}
-        <a class="mx-2 px-2 text-lg flex items-center" href="https://github.com/smc181002"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" width="24px" alt="GitHub"></a>
+        <a 
+          class="mx-2 px-2 text-lg flex items-center" 
+          href="https://github.com/smc181002">
+          <img 
+            src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" 
+            width="24px" 
+            alt="GitHub" />
+        </a>
       </div>
   </div>
 </nav>
