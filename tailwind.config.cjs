@@ -9,7 +9,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/typography'),
-    require('./plugins/tooltip'),
+    require('@ceol/tailwind-tooltip'),
   ],
   // more options here
 };

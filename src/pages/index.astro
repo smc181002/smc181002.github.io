@@ -1,42 +1,28 @@
 ---
 // Component Imports
 import MainHead from '../components/MainHead.astro';
-import Button from '../components/Button.svelte';
+/* import Button from '../components/Button.svelte'; */
 import Nav from '../components/Nav.astro';
-/* import Footer from '../components/Footer.svelte'; */
+import About from '../components/About.astro';
+import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro';
-import PortfolioPreview from '../components/PortfolioPreview.svelte';
+/* import PortfolioPreview from '../components/PortfolioPreview.svelte'; */
 
 // Data Fetching: List all Markdown posts in the repo.
 const projects = Astro.fetchContent('./project/**/*.md');
 const featuredProject = projects[0];
 ---
 
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <MainHead title="Meher Chaitanya - Home" description="Meher Chaitanya: Cloud Architect, Web developer..." />
 </head>
 <body class="bg-[url('/assets/background.svg')] bg-no-repeat bg-fixed bg-cover text-xl font-['Inter'] text-zinc-600 overflow-x-hidden">
-  <div class="fixed w-screen text-zinc-500 ">
+  <div class="z-[100] fixed w-screen text-zinc-500 ">
     <Nav active="/"/>
   </div>
-  <div class="flex flex-col items-center justify-center h-screen w-screen">
-    <div>
-      <h1 class="text-7xl my-8 max-w-6xl font-['Poppins']">We let computers do a lot of stuff. Why not use them for automating the<span class="smc-underline-indigo-500 decoration-12 ml-4">Infrastructure</span></h1>
-      <div class="flex my-2">
-      I am 
-        <div class="tt mx-1 smc-underline-indigo-500 decoration-2 hover:decoration-4">Meher Chaitanya.
-          <span class="tt-text tt-pos-top"><span class="bg-gray-100 text-indigo-500 smc-underline-indigo-500 decoration-1"><a href="#about">#AboutMe</a></span></span>
-        </div>
-        Cloud Architect and Web Developer
-      </div>
-    </div>
-  </div>
-  <div class="flex flex-col">
-    <h2 class="text-7xl mb-7">Projects</h2>
-    <PortfolioPreview project={featuredProject}/>
-  </div>
-
+  <Hero />
+  <About />
   <Footer />
 </body>
 </html>
