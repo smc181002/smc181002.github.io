@@ -1,11 +1,35 @@
 ---
-const { title = 'Jeanine White: Personal Site', description = 'The personal site of Jeanine White' } = Astro.props;
+import {SEO} from "astro-seo";
+const { title = 'Meher Chaitanya', description = 'The personal site of Meher Chaitanya' } = Astro.props;
 ---
 
 <meta charset="UTF-8" />
-<meta name="description" property="og:description" content={description} />
 <meta name="viewport" content="width=device-width" />
-<title>{title}</title>
+
+<SEO 
+  title={title}
+  description={description}
+  openGraph={{
+    basic: {
+      title: title,
+      type: "website",
+      image: "https://smc181002.github.io/assets/seo-image.jpg",
+    },
+    optional: {
+      description: description,
+    },
+    image: {
+      url: "https://smc181002.github.io/assets/seo-image.jpg",
+      type: "image/jpeg",
+      alt: "Meher Chaitanya"
+    }
+  }}
+  twitter={{
+    card: "summary_large_image",
+    site: "@MeherCh71238001",
+    creator: "@MeherCh71238001",
+  }}
+/>
 
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="stylesheet" type="text/css" href={Astro.resolve('../styles/global.scss')} />
