@@ -4,26 +4,27 @@ import MainHead from '../components/MainHead.astro';
 /* import Button from '../components/Button.svelte'; */
 import Nav from '../components/Nav.astro';
 import About from '../components/About.astro';
+import LatestBlog from '../components/LatestBlog.astro';
 import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro';
 /* import PortfolioPreview from '../components/PortfolioPreview.svelte'; */
 
 // Data Fetching: List all Markdown posts in the repo.
-const projects = Astro.fetchContent('./project/**/*.md');
-const featuredProject = projects[0];
+// const projects = Astro.fetchContent('./project/**/*.md');
+// const featuredProject = projects[0];
 ---
 
 <html lang="en" class="scroll-smooth">
 <head>
   <MainHead title="Meher Chaitanya - Home" description="Meher Chaitanya: Cloud Architect, Web developer..." />
 </head>
-<body class="bg-[url('/assets/background.svg')] bg-no-repeat bg-fixed bg-cover text-xl font-['Inter'] text-zinc-600 overflow-x-hidden">
-  <div class="z-[100] fixed w-screen text-zinc-500 ">
+<body class="bg-[url('/assets/background.svg')] selection:bg-blue-400 selection:text-blue-50 bg-no-repeat bg-fixed bg-cover text-xl font-['Inter'] text-zinc-600 overflow-x-hidden">
+  <div class="z-[100] fixed w-screen ">
     <Nav active="/"/>
   </div>
   <Hero />
   <About />
+  <LatestBlog />
   <Footer />
 </body>
 </html>
-

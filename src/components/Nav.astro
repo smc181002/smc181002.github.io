@@ -8,7 +8,7 @@ const actionsList = [
 
 let hover = " hover:underline hover:decoration-4 transition-all hover:decoration-indigo-500 hover:underline-offset-2 ";
 function activeHighlight(action) {
-  return (active == action.path) ? "underline decoration-2 decoration-indigo-500 underline-offset-2" : "";
+  return (active == action.path) ? "underline decoration-2 decoration-indigo-500 underline-offset-2 text-zinc-700 font-medium" : "";
 }
 ---
 
@@ -26,7 +26,7 @@ function activeHighlight(action) {
       <div class="text-gray-800 font-['Poppins'] flex items-center">
         {actionsList.map( (action) => (
           <a 
-            class={activeHighlight(action) + hover + "sm:mx-2 px-1 text-sm sm:text-lg"} 
+            class={activeHighlight(action) + hover + "sm:mx-2 px-2 text-sm sm:text-lg text-zinc-600"} 
             href={action.path}>
             {action.name}
           </a>
@@ -40,5 +40,6 @@ function activeHighlight(action) {
             alt="GitHub" />
         </a>
       </div>
+    </div>
   </div>
 </nav>
