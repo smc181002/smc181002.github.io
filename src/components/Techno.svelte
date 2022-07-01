@@ -10,7 +10,7 @@
     {name: 'Blogs', path: '/blogs'},
   ]
 
-  const techno = new Date('July 1, 2022')
+  const techno = new Date('June 30, 2022')
 
   const soLongNerds = () => {
     let today = new Date()
