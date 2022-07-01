@@ -1,0 +1,26 @@
+---
+import Hash from './common/Hash.astro';
+
+const projects = Astro.fetchContent('../pages/project/**/*.md');
+let featuredProject = [projects[0], projects[1]];
+---
+
+<section class="flex flex-col px-4 sm:px-16 bg-blue-500 py-10 border-t-[1px] border-t-zinc-200/40">
+
+  <h2 class="scroll-mt-24 group flex whitespace-pre-wrap text-3xl sm:text-4xl font-['Poppins'] mb-6" id="about">
+    <span class="text-[#ccf381] mr-2">Latest Blog</span>
+    <Hash href="#about" dark={true}/>
+  </h2>
+  
+  <div class="text-sm md:text-lg decoration-1 flex">
+    <ul class="pl-8">
+      {featuredProject.map((blog) => (
+        <li class="text-white list-disc">
+          <a href={blog.url} >
+            {blog.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
