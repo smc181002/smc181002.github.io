@@ -1,8 +1,12 @@
 ---
 import Hash from './common/Hash.astro';
 
-const projects = Astro.fetchContent('../pages/project/**/*.md');
-let featuredProject = [projects[0], projects[1]];
+interface MarkdownFrontmatter {
+	publishDate: number;
+}
+
+const projects = await Astro.glob('../pages/project/**/*.md')
+const featuredProject = [projects[0], projects[1]]
 ---
 
 <section class="flex flex-col px-4 sm:px-16 bg-blue-500 py-10 border-t-[1px] border-t-zinc-200/40">
@@ -17,7 +21,7 @@ let featuredProject = [projects[0], projects[1]];
       {featuredProject.map((blog) => (
         <li class="text-white list-disc">
           <a href={blog.url} >
-            {blog.title}
+            {blog.frontmatter.title}
           </a>
         </li>
       ))}
