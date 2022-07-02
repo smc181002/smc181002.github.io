@@ -3,14 +3,14 @@
 </script>
 
 <div class="card">
-    <div class="titleCard" style="background-image:url({project.img})">
-        <h1 class="title">{project.title}</h1>
+    <div class="titleCard" style="background-image:url({project.frontmatter.img})">
+        <h1 class="title">{project.frontmatter.title}</h1>
     </div>
     <div class="pa3">
-        <p class="desc mt0 mb2">{project.description}</p>
+        <p class="desc mt0 mb2">{project.frontmatter.description}</p>
         <div class="tags">
             Tagged:
-            {#each project.tags as t}
+            {#each project.frontmatter.tags as t}
                 <div class="tag" data-tag={t}>
                     {t}
                 </div>

@@ -8,15 +8,15 @@ interface MarkdownFrontmatter {
 	publishDate: number;
 }
 
-const projects = Astro.fetchContent<MarkdownFrontmatter>('./project/**/*.md')
-	.filter(({ publishDate }) => !!publishDate)
-	.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf());
+let projects = (await Astro.glob<MarkdownFrontmatter>('./project/**/*.md'))
+	.filter(({ frontmatter }) => !!frontmatter.publishDate)
+	.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
 ---
 
 <html lang="en">
 	<head>
 		<MainHead title="All Projects | Jeanine White" description="Learn about Jenine White's most recent projects" />
-		<style lang="scss">
+		<style>
 			.grid {
 				display: grid;
 				grid-gap: 3rem;
