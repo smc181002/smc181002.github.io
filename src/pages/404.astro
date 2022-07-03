@@ -1,30 +1,33 @@
 ---
 // Component Imports
-import MainHead from '../components/MainHead.astro';
-import Nav from '../components/Nav.astro';
+import MainHead from '../components/common/MainHead.astro';
+import Nav from '../components/common/Nav.astro';
 import Badge from '../components/common/Badge.astro';
-import Footer from '../components/Footer.astro';
+import Footer from '../components/common/Footer.astro';
 ---
 
 <html lang="en">
 <head>
   <MainHead title="Meher Chaitanya - Home" description="Meher Chaitanya: Cloud Architect, Web developer..." />
 </head>
-<body class="bg-[url('/assets/background.svg')] bg-no-repeat bg-fixed bg-cover text-xl font-['Inter'] text-zinc-600 overflow-x-hidden">
+<body class="bg-[url('/assets/background.svg')] bg-no-repeat bg-fixed bg-cover text-xl font-['Inter'] dark:bg-zinc-800 text-zinc-600 overflow-x-hidden">
   <div class="z-[100] fixed w-screen text-zinc-500 ">
     <Nav />
   </div>
-  <div class="flex flex-col items-center justify-center h-screen w-screen">
-  <div class="flex-1 flex flex-col justify-center items-center">
-    <h1 class="font-['Poppins'] px-4 sm:px-auto text-4xl text-center sm:text-5xl xl:text-7xl mb-8 font-semibold">
-      This Page Doesn't Exist
-    </h1>
-
-    <ul>
-      <li> <a href="/" class="text-lg smc-underline-indigo-500 decoration-2 xl:text-2xl">Go to Home<Badge link="/">/</Badge></a> </li>
-    </ul>
-    </div>
-  <Footer />
+  <div class="flex flex-col min-h-screen">
+      <div class="flex-1 pt-48 px-16">
+        <div class="flex-1 flex flex-col justify-center items-center">
+          <h1 class="font-['Poppins'] px-4 sm:px-auto text-4xl text-center sm:text-5xl xl:text-7xl mb-8 font-semibold dark:text-white/90">
+            This Page Doesn't Exist
+          </h1>
+          <ul>
+            <li> <a href="/" class="text-lg smc-underline-indigo-500 dark:decoration-indigo-300 decoration-2 xl:text-2xl dark:text-white/70">Go to Home<Badge link="/">/</Badge></a> </li>
+          </ul>
+        </div>
+      </div>
+      <div>
+          <Footer />
+      </div>
   </div>
 </body>
 </html>

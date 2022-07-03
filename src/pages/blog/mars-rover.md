@@ -1,11 +1,11 @@
 ---
-layout: ../../../layouts/project.astro
-title: Lunar Eclipse
+layout: ../../layouts/blog.astro
+title: Mars Rover
 client: Self
-publishDate: 2020-03-04 00:00:00
-img: https://images.unsplash.com/photo-1548391350-1a529f6ea42d?fit=crop&w=1400&h=700&q=75
+publishDate: 2020-03-02 00:00:00
+img: https://images.unsplash.com/photo-1547234935-80c7145ec969?fit=crop&w=1400&h=700&q=75
 description: |
-  We took some cool pictures of the moon and made a website about it.
+  We built an unofficial Mars Rover Landing site in celebration of NASA’s Perseverance Rover.
 tags:
   - design
   - dev
@@ -21,3 +21,13 @@ Fromage frais jarlsberg st. agur blue cheese. Cut the cheese cheese slices monte
 Caerphilly parmesan manchego. Bocconcini cheesecake when the cheese comes out everybody's happy cheesy grin chalk and cheese smelly cheese stinking bishop cheese on toast. Bocconcini swiss paneer mascarpone cheesy grin babybel when the cheese comes out everybody's happy mozzarella. Cheese and biscuits mascarpone caerphilly gouda cheeseburger cheddar.
 
 Cheese and biscuits cheesy grin roquefort. Ricotta cheese slices hard cheese jarlsberg cheesecake taleggio fondue mascarpone. Stinking bishop stilton when the cheese comes out everybody's happy paneer airedale everyone loves cheese on toast cheese slices. Ricotta cut the cheese cheese triangles babybel cream cheese ricotta.
+
+`jsc`
+
+```jsx
+let a = 2; 
+
+return (
+  <body></body>
+)
+```
