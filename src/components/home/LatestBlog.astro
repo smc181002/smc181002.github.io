@@ -1,15 +1,15 @@
 ---
-import Hash from './common/Hash.astro';
+import Hash from '../common/Hash.astro';
 
 interface MarkdownFrontmatter {
 	publishDate: number;
 }
 
-const projects = await Astro.glob('../pages/project/**/*.md')
-const featuredProject = [projects[0], projects[1]]
+const blogs = await Astro.glob('../../pages/blog/**/*.md')
+const featuredBlogs = [blogs[0], blogs[1]]
 ---
 
-<section class="flex flex-col px-4 sm:px-16 bg-blue-500 py-10 border-t-[1px] border-t-zinc-200/40">
+<section class="flex flex-col px-4 sm:px-16 bg-blue-500 py-10 border-t-[1px] border-t-zinc-200/40 dark:border-t-zinc-700/60">
 
   <h2 class="scroll-mt-24 group flex whitespace-pre-wrap text-3xl sm:text-4xl font-['Poppins'] mb-6" id="about">
     <span class="text-[#ccf381] mr-2">Latest Blog</span>
@@ -18,7 +18,7 @@ const featuredProject = [projects[0], projects[1]]
   
   <div class="text-sm md:text-lg decoration-1 flex">
     <ul class="pl-8">
-      {featuredProject.map((blog) => (
+      {featuredBlogs.map((blog) => (
         <li class="text-white list-disc">
           <a href={blog.url} >
             {blog.frontmatter.title}

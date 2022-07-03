@@ -11,5 +11,6 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('@ceol/tailwind-tooltip'),
   ],
+  darkMode: 'class'
   // more options here
 };

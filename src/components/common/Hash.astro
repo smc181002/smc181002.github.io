@@ -2,7 +2,7 @@
 let {href="#", dark=false} = Astro.props;
 
 function hashStyle(dark) {
-  return dark ? "bg-zinc-500/30 text-white/90 ring-zinc-100/40 hover:ring-zinc-50/40 hover:text-white" : "text-zinc-500 ring-zinc-400/40 hover:ring-zinc-700/40 hover:text-zinc-700"
+  return dark ? "bg-zinc-500/30 text-white/90 ring-zinc-100/40 hover:ring-zinc-50/40 hover:text-white" : "text-zinc-500 ring-zinc-400/40 hover:ring-zinc-700/40 hover:text-zinc-700 dark:text-zinc-300 dark:hover:ring-zinc-400/40"
 }
 ---
 <a href={href} class="hover:motion-reduce:hidden hover:animate-pulse cursor-pointer ml-2 flex items-center" aria-label="Anchor">

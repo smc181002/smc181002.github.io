@@ -1,0 +1,36 @@
+---
+import MainHead from '../components/common/MainHead.astro';
+import Footer from '../components/common/Footer.astro';
+import Nav from '../components/common/Nav.astro';
+
+const { content } = Astro.props;
+---
+
+<html lang={content.lang || 'en'}>
+	<head>
+		<MainHead title={content.title} description={content.description} />
+	</head>
+	<body class="dark:bg-zinc-900">
+        <div class="z-[100] fixed w-screen ">
+            <Nav active="/blogs"/>
+        </div>
+        <div class="flex flex-col min-h-screen">
+            <!-- <div class="pt-20 w-screen">
+				<img src={content.img} class="object-cover w-full h-80"/>
+			</div> -->
+			<!-- code styles: prose-code:bg-zinc-200 dark:prose-code:bg-zinc-900 prose-code:p-1 prose-code:rounded -->
+            <div class="w-2/3 mx-auto prose-lg prose-zinc prose-p:text-zinc-700 dark:prose-p:text-zinc-400 dark:prose-headings:text-white prose-code:font-mono pt-20 flex-1 px-16">
+				<img src={content.img} class="object-cover rounded-lg mt-8 h-96" max-width="1400px" max-height="500px"/>
+				<h1 class="py-4 font-medium font-['Poppins']">
+					{content.title}
+				</h1>
+				<div class="font-['Inter'] ">
+					<slot>
+				</div>
+            </div>
+            <div>
+                <Footer />
+            </div>
+        </div>
+	</body>
+</html>
