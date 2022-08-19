@@ -3,18 +3,20 @@ let { blog } = Astro.props;
 let descripLimit = 150;
 ---
 
-<div class="border-[1px] border-zinc-200 dark:border-zinc-700 transition-all hover:border-none hover:shadow-md dark:shadow-none hover:dark:bg-white/5 rounded-lg p-4 w-80 h-full">
-    <a class="flex-box flex-col" href={blog.url}>
-        <div>
-            <img class="object-contain w-80 mr-4 rounded-lg" src={blog.frontmatter.img} />
-        </div>
-        <div>
-        <h1 class="text-2xl mt-4 dark:text-white/75">
-            {blog.frontmatter.title}
-        </h1>
-        <p class="mt-2 text-zinc-500 dark:text-zinc-400">
-            {blog.frontmatter.description.length <= descripLimit ? blog.frontmatter.description: blog.frontmatter.description.slice(0, descripLimit)+"..." }
-        </p>
-        </div>
-    </a>
+<div>
+  <div class="flex md:flex-row flex-col group p-4 h-full w-full">
+    <div class="flex-10 rounded-lg mr-4">
+      <img class="object-cover w-full h-40 mr-4 rounded-lg" width="1024px" height="720px" src={blog.frontmatter.img} alt={blog.frontmatter.title}/>
+    </div>
+    <div class="flex-1">
+      <h1 class="text-4xl mt-4 text-matty-700 dark:text-white/75 group-hover:underline group-hover:text-blue-700 dark:group-hover:text-blue-300">
+        <a class="flex flex-col" href={blog.url}>
+          {blog.frontmatter.title}
+        </a>
+      </h1>
+      <p class="mt-2 text-matty-600 dark:text-matty-300">
+        {blog.frontmatter.description.length <= descripLimit ? blog.frontmatter.description: blog.frontmatter.description.slice(0, descripLimit)+"..." }
+      </p>
+    </div>
+  </div>
 </div>
