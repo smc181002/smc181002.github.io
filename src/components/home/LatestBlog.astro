@@ -12,15 +12,15 @@ const featuredBlogs = [blogs[0], blogs[1]]
 <section class="flex flex-col px-4 sm:px-16 bg-blue-500 py-10 border-t-[1px] border-t-zinc-200/40 dark:border-t-zinc-700/60">
 
   <h2 class="scroll-mt-24 group flex whitespace-pre-wrap text-3xl sm:text-4xl font-['Poppins'] mb-6" id="about">
-    <span class="text-[#ccf381] mr-2">Latest Blog</span>
-    <Hash href="#about" dark={true}/>
+    <span id="latest-blog" class="text-white mr-2">Latest Blog</span>
+    <Hash href="#latest-blog" dark={true}/>
   </h2>
   
   <div class="text-sm md:text-lg decoration-1 flex">
     <ul class="pl-8">
       {featuredBlogs.map((blog) => (
         <li class="text-white list-disc">
-          <a href={blog.url} >
+          <a href={blog.url} class="underline decoration-1 hover:decoration-2" >
             {blog.frontmatter.title}
           </a>
         </li>

@@ -10,23 +10,23 @@ const actionsList = [
 
 let hover = " hover:underline hover:decoration-4 transition-all hover:decoration-indigo-500 dark:decoration-indigo-300 hover:underline-offset-2 ";
 function activeHighlight(action) {
-  return (active == action.path) ? "underline decoration-2 decoration-indigo-500 dark:decoration-indigo-300  underline-offset-2 text-zinc-700 font-medium" : "";
+  return (active == action.path) ? "underline decoration-2 decoration-indigo-500 dark:decoration-indigo-300  underline-offset-2 text-matty-700 font-medium" : "";
 }
 ---
 <Techno active=""/>
-<nav class="py-6 z-[10000] w-full backdrop-blur flex-none bg-white/80 dark:bg-zinc-700/80 supports-backdrop-blur:bg-white/50 border-b-[1px] border-b-zinc-900/10">
+<nav class="py-6 z-[10000] w-full backdrop-blur flex-none bg-white/80 dark:bg-matty-800/80 supports-backdrop-blur:bg-white/50 border-b-[1px] border-b-matty-900/10">
   <div class="flex mx-auto px-4 sm:px-16 w-full items-center text-center">
     <div class="flex items-center flex-1"> 
       <img 
         src="/assets/logo.svg" 
         alt="logo" 
-        class="w-[24px] sm:w-[32px]"> 
-      <span class="ml-4 text-zinc-900 dark:text-white font-['Poppins'] md:inline hidden">Meher Chaitanya</span> 
+        class="w-[24px] sm:w-[32px] hidden sm:flex"> 
+      <span class="ml-4 text-matty-900 dark:text-white font-['Poppins'] md:inline hidden">Meher Chaitanya</span> 
     </div>
     <div class="theme-toggle flex">
       <div class="flex">
         <input type="radio" id="light" name="theme-toggle" value="light" class="peer hidden" aria-label="Use light theme">
-        <label for="light" title="Use light theme" class="cursor-pointer mr-2 text-zinc-400 peer-checked:text-zinc-800 flex items-center">
+        <label for="light" title="Use light theme" class="cursor-pointer mr-2 text-matty-500 peer-checked:text-matty-800 flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentcolor">
             <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd">
             </path>
@@ -36,7 +36,7 @@ function activeHighlight(action) {
 
       <div class="flex">
         <input type="radio" id="dark" name="theme-toggle" value="dark" class="peer hidden" aria-label="Use dark theme">
-        <label for="dark" title="Use dark theme" class="cursor-pointer text-zinc-400 peer-checked:text-zinc-800 dark:peer-checked:text-white flex items-center">
+        <label for="dark" title="Use dark theme" class="cursor-pointer text-matty-400 peer-checked:text-matty-800 dark:peer-checked:text-white flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z">
             </path>
@@ -45,16 +45,16 @@ function activeHighlight(action) {
       <div>
     </div>
     <div>
-      <div class="text-zinc-800 dark:text-white font-['Poppins'] flex items-center">
+      <div class="text-matty-800 dark:text-white font-['Poppins'] flex items-center">
         {actionsList.map( (action) => (
           <a 
-            class={activeHighlight(action) + hover + "sm:mx-2 px-2 text-sm sm:text-lg dark:text-white text-zinc-600"} 
+            class={activeHighlight(action) + hover + "sm:mx-2 px-2 text-sm sm:text-lg dark:text-white text-matty-600"} 
             href={action.path}>
             {action.name}
           </a>
         ))}
         <a 
-          class="sm:mx-2 px-2 text-lg flex items-center text-zinc-700 dark:text-white" 
+          class="sm:mx-2 px-2 text-lg flex items-center text-matty-700 dark:text-white" 
           href="https://github.com/smc181002">
           <svg height="24" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" fill="currentColor">
             <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
