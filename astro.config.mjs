@@ -9,10 +9,13 @@ import svelte from '@astrojs/svelte'; // @ts-check
 import { defineConfig } from "astro/config";
 
 // https://astro.build/config
-export default defineConfig(
-/** @type {import('astro').AstroUserConfig} */
+
+// https://astro.build/config
+export default defineConfig( /** @type {import('astro').AstroUserConfig} */
 {
-  server: {host: true},
+  server: {
+    host: true
+  },
   site: "https://smc181002.github.io/",
   // Enable the Svelte renderer to support Svelte components.
   integrations: [svelte()]

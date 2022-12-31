@@ -5,7 +5,17 @@ module.exports = {
     './src/**/*.{astro,js,jsx,svelte,ts,tsx,vue}',
   ],
   theme: {
+    fontFamily: {
+      'sans': ['Poppins', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+    },
     extend: {
+      screens: {
+        "lpt-lg": "1025px",
+        "lpt": "769px",
+        "tbl": "426px",
+        "mbl-lg": "376px",
+        "mbl-md": "321px",
+      },
       colors: {
         matty: {
           "50": "#fafafa",

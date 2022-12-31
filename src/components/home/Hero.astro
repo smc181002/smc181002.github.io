@@ -1,31 +1,17 @@
-<div class="flex items-center justify-center h-[80vh] w-screen text-matty-700 dark:text-white">
-  <div class="flex flex-col flex-[5] mx-5 sm:mx-auto lg:mx-16 my-6 max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl 2xl:max-w-5xl lg:mt-16">
-    <div class="font-['Poppins']">
-      <div class="font-mono text-blue-600 dark:text-blue-400 font-regular text-sm">
-        Hello, I am
-      </div>
-      <h1 class="tt font-medium smc-underline-indigo-500 dark:decoration-indigo-300 text-3xl sm:text-2xl lg:text-4xl xl:text-6xl 2xl:text-6xl decoration-2 hover:decoration-4">
-        Meher Chaitanya 
-        <span class="tt-text tt-pos-bottom">
-          <span class="backdrop-blur text-sm bg-matty-100/60 dark:bg-matty-600/80 text-indigo-500 dark:text-indigo-300 smc-underline-indigo-500 dark:decoration-indigo-300 decoration-1">
-            <a href="#about">#AboutMe</a>
-          </span>
-        </span>
-      </h1>
-      <h1 class="text-lg sm:text-xl lg:text-xl xl:text-2xl 2xl:text-4xl text-matty-600 dark:text-matty-200 font-medium">
-        A Creator of interesting products
-      </h1>
-      <div class="font-['Inter'] mt-4 text-sm sm:text-md lg:text-md xl:text-lg 2xl:text-lg text-matty-500 dark:text-matty-200/90">
-        I’m a software developer specialized in building and deploying exceptional digital experiences. Currently, I’m focused on building innovative products with 
-        <a href="https://ceoldevs.github.io" class="smc-underline-indigo-500 dark:decoration-indigo-300 hover:decoration-2" target="_blank">#CeolCommunity</a> 
-      </div>
-    </div>
-    <div class="mt-8 text-[0.9rem] font-['Poppins']">
-      <button class="bg-blue-600 dark:bg-blue-400 text-white dark:text-matty-800 px-4 py-2 rounded-lg mr-2 cursor-pointer"><a href="/projects">Check out my blogs</a></button>
-      <button class="px-4 py-2 rounded cursor-pointer text-blue-600 dark:text-blue-300"><a href="/contact">Contact me &#8594;</a></button>
-    </div>
+---
+import Github from "../icons/Github.astro"
+---
+<div class="px-2 tbl:px-8 lpt:px-12 lpt-lg:mt-10 lpt:mt-12 tbl:mt-0 font-sans tbl:flex tbl:flex-col lpt:grid lpt:grid-cols-9 gap-x-24 lpt:gap-x-14 items-start pt-28 justify-center h-[80vh] w-screen dark:text-white">
+  <div class="flex my-6 tbl:col-span-9 lpt:col-span-4 lpt-lg:col-span-4">
+    <h1 class="text-4xl tbl:text-5xl lpt-lg:text-7xl lpt:text-6xl font-medium text-matty-900 dark:text-matty-50">
+      My only aim is to <span class="text-blue-600">Create</span>
+    </h1>
   </div>
-  <div class="relative hidden flex-col flex-[4] mr-12 items-center justify-center sm:hidden lg:flex lg:mt-16">
-    <img src="/assets/smc_cropped.png" alt="smc">
+  <div class="tbl:col-span-9 lpt:col-span-5 lpt-lg:col-span-5 text-sm mbl-lg:text-base lpt-lg:text-lg pt-8 text-matty-800 dark:text-matty-100 font-thin relative flex-col items-start justify-center">
+    Hi 👋. I am A student pursuing Integrated Masters in Computer Science from University of Hyderabad. I enjoy creating solutions with software development and skilled in deploying those applications in industry standard environments with cloud computing and devops
+    <div class="mt-14 font-medium flex gap-x-6 gap-y-8 flex-col tbl:flex-row w-full justify-items-center items-center">
+      <a class="w-max bg-blue-600 dark:bg-blue-600 text-white dark:text-matty-50 px-6 py-4 lpt-lg:px-10 lpt-lg:py-6 cursor-pointer drop-shadow-[.6rem_.6rem_rgba(0,0,0,1)] dark:drop-shadow-[.6rem_.6rem_rgba(256,256,256,1)] dark:hover:drop-shadow-none hover:drop-shadow-none hover:rounded-2xl transition-all text-md" href="/projects">Projects &#8594;</a>
+      <a class="w-max group flex items-center gap-2 dark:text-matty-50 text-matty-900 px-6 py-4 lpt-lg:px-10 lpt-lg:py-6 cursor-pointer text-md hover:text-blue-600 hover:underline transition-all" href="https://github.com/smc181002" target="_blank"> <Github /> Github</a>
+    </div>
   </div>
 </div>
