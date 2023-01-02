@@ -1,0 +1,8 @@
+---
+const {draft} = Astro.props;
+---
+{draft &&
+  <div class="flex justify-center items-center z-[10000] w-full py-2 bg-amber-200 text-amber-700 text-center">
+      This blog is still in a draft state
+  </div>
+}
