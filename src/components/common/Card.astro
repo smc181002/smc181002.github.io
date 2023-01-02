@@ -1,0 +1,21 @@
+---
+import type CardProps from '../../interfaces/CardProps'
+const {title, description, image, author, coauthors, date, url}: CardProps = Astro.props;
+const finalAuthors = `${author.name} ${ coauthors && "+" + (coauthors.length ) + " Other" + (coauthors.length > 1 ? "s" : "") }`
+---
+
+<a class="text-matty-800 dark:text-matty-100 flex flex-col gap-y-6 lpt:gap-y-0 lpt:flex-row items-center lpt:gap-x-16 lpt-lg:gap-x-24 lpt:px-0 lpt-lg:px-24" 
+    href={url}
+>
+    <div class="flex-[6]">
+        <img src={image} alt={title} />
+    </div>
+    <div class="flex-[7] flex flex-col gap-y-4">
+    <h1 class="text-2xl tbl:text-3xl lpt:text-4xl font-medium text-matty-900 dark:text-matty-50"> {title} </h1>
+    <div class="text-sm tbl:text-md"> {description} </div>
+    <div class="flex gap-x-12 tbl:text-base">
+        <div class="font-medium text-matty-900 dark:text-matty-50"> {finalAuthors} </div>
+        <div class="text-matty-700 dark:text-matty-200 font-readable"> {date} </div>
+    </div>
+    </div>
+</a>

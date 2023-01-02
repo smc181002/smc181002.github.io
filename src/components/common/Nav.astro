@@ -7,14 +7,15 @@ const actionsList = [
   {name: 'Contact', path: '/contact'},
 ]
 
-let hover = " hover:underline hover:decoration-4 transition-all hover:decoration-indigo-500 dark:decoration-indigo-300 hover:underline-offset-2 ";
+// let hover = " hover:underline hover:decoration-4 transition-all hover:decoration-indigo-500 dark:decoration-indigo-300 hover:underline-offset-2 ";
+let hover = "  ";
 function activeHighlight(action) {
   return (active == action.path) ? "underline decoration-2 decoration-indigo-500 dark:decoration-indigo-300  underline-offset-2 text-matty-700 font-medium" : "";
 }
 ---
 
 <Techno />
-<nav class="flex px-2 py-6 tbl:px-12 tbl:py-6 z-[10000] w-full backdrop-blur flex-none bg-white/80 dark:bg-matty-900/80 supports-backdrop-blur:bg-white/50 border-b-[1px] border-b-matty-900/10 gap-x-4 tbl:gap-x-10">
+<nav class="flex px-2 py-6 tbl:px-6 tbl:py-6 z-[10000] w-full backdrop-blur flex-none bg-white/80 dark:bg-matty-900/80 supports-backdrop-blur:bg-white/50 border-b-[1px] border-b-matty-900/10 gap-x-4 tbl:gap-x-0">
   <div class="flex mx-auto w-full flex-1 items-center text-center text-matty-900">
     <a href="/" class="flex items-center"> 
       <img 
@@ -23,7 +24,8 @@ function activeHighlight(action) {
         class="w-[24px] mr-2 tbl:m-0"> 
       <span class="lpt:ml-4 dark:text-white font-['Poppins'] lpt:inline hidden text-md font-medium">Meher Chaitanya</span> 
     </a>
-    <a href="https://smc181002.medium.com/" target="_blank" class="tbl:ml-4 text-sm tbl:text-base lpt:ml-16 lpt-lg:ml-24 font-['Poppins'] font-medium flex items-center gap-2 dark:text-matty-50">
+    <a href="https://smc181002.medium.com/" target="_blank" 
+    class="tbl:ml-4 text-sm tbl:text-base lpt:ml-16 lpt-lg:ml-24 font-['Poppins'] font-medium flex items-center gap-2 dark:text-matty-50">
       Blogs 
       <span class="material-symbols-rounded animate-bounce"> arrow_circle_down </span> 
     </a>
@@ -49,7 +51,7 @@ function activeHighlight(action) {
     <div class="ml-2 tbl:ml-4 lpt:ml-6 text-matty-900 font-medium dark:text-white font-['Poppins'] flex gap-2 tbl:gap-4 lpt:gap-6 items-center text-sm">
       {actionsList.map( (action) => (
         <a 
-          class={/* activeHighlight(action) + hover + */ "text-sm tbl:text-base dark:text-white"} 
+          class={activeHighlight(action) + /* hover + */ "text-sm tbl:text-base dark:text-white"} 
           href={action.path}>
           {action.name}
         </a>

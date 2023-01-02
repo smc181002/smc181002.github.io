@@ -12,6 +12,14 @@
   .smc-underline-indigo-500 {
     @apply underline decoration-indigo-500 underline-offset-2;
   }
+
+  .prose-custom {
+    @apply lpt:prose-h1:text-6xl lpt-lg:prose-h1:text-7xl lpt:prose-p:text-lg
+      lpt-lg:prose-p:text-xl prose-table:w-full prose-table:border-collapse prose-table:table-auto 
+      prose-th:text-left prose-th:border prose-td:border prose-th:p-4 prose-td:p-4 
+      prose-a:underline-offset-2 hover:prose-a:decoration-2 prose-a:decoration-1 
+      lpt:prose-pre:text-lg prose-a:font-readable prose-img:rounded-3xl prose-img:border-[1px];
+}
 }
 
 .material-symbols-rounded {
