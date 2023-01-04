@@ -36,7 +36,7 @@ module.exports = {
       typography: ({theme}) => ({
         matty: {
           css: {
-            '--tw-prose-body': theme('colors.matty[800]'),
+            '--tw-prose-body': theme('colors.matty[700]'),
             '--tw-prose-headings': theme('colors.matty[900]'),
             '--tw-prose-lead': theme('colors.matty[700]'),
             '--tw-prose-links': theme('colors.matty[900]'),
@@ -52,7 +52,7 @@ module.exports = {
             '--tw-prose-pre-bg': theme('colors.matty[900]'),
             '--tw-prose-th-borders': theme('colors.matty[300]'),
             '--tw-prose-td-borders': theme('colors.matty[200]'),
-            '--tw-prose-invert-body': theme('colors.matty[200]'),
+            '--tw-prose-invert-body': theme('colors.matty[300]'),
             '--tw-prose-invert-p': theme('colors.matty[200]'),
             '--tw-prose-invert-ul': theme('colors.matty[200]'),
             '--tw-prose-invert-li': theme('colors.matty[200]'),
@@ -68,7 +68,7 @@ module.exports = {
             '--tw-prose-invert-captions': theme('colors.matty[400]'),
             '--tw-prose-invert-code': theme('colors.white'),
             '--tw-prose-invert-pre-code': theme('colors.matty[300]'),
-            '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)',
+            '--tw-prose-invert-pre-bg': theme('colors.matty[100]'),
             '--tw-prose-invert-th-borders': theme('colors.matty[600]'),
             '--tw-prose-invert-td-borders': theme('colors.matty[700]'),
           }

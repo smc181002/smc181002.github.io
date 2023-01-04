@@ -2,9 +2,7 @@
 import MainHead from '../components/common/MainHead.astro';
 import Nav from '../components/common/Nav.astro';
 import Hero from '../components/home/Hero.astro';
-import CloseBrace from '../components/icons/CloseBrace.astro'
-import OpenBrace from '../components/icons/OpenBrace.astro'
-import Footer from '../components/common/Footer.astro';
+import Gradient from '../components/icons/Gradient.astro';
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -15,11 +13,9 @@ import Footer from '../components/common/Footer.astro';
   <div class="z-[100] fixed w-screen ">
     <Nav />
   </div>
-  <div class="absolute bottom-40 left-24">
-    <OpenBrace />
-  </div>
-  <div class="absolute bottom-10 right-24">
-    <CloseBrace />
+  <div class="fixed flex -z-10 top-14 left-1/2 -translate-x-1/2 w-[60rem] ">
+    <div class="w-full h-full absolute bg-matty-50/10 dark:bg-matty-900/[0.65]"></div>
+    <Gradient />
   </div>
   <div class="flex flex-col w-screen min-h-screen">
     <div class="flex-1 mt-30">
