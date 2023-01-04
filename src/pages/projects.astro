@@ -5,7 +5,14 @@ import Card from '../components/common/Card.astro'
 import Nothing from '../components/icons/Nothing.astro'
 import type CardProps from '../interfaces/CardProps'
 
-let projects = (await Astro.glob('./project/**/*.{md,mdx}')).filter(project => !project.frontmatter.draft)
+let projects = (await Astro.glob('./project/**/*.{md,mdx}'))
+              .filter(project => !project.frontmatter.draft)
+              .sort((a,b) => {
+                let c = new Date(a.frontmatter.date);
+                let d = new Date(b.frontmatter.date);
+                return c<d ? 1 : -1;
+              });
+
 // console.log(projects[0].frontmatter)
 ---
 
@@ -18,9 +25,9 @@ let projects = (await Astro.glob('./project/**/*.{md,mdx}')).filter(project => !
     <Nav active="/projects"/>
   </div>
   <div class="px-2 tbl:px-6 lpt:px-12 pt-32 font-sans text-base text-matty-800 dark:text-matty-100">
-    <h1 class="text-5xl my-4 text-matty-900 dark:text-matty-50">Projects</h1>
+    <h1 class="text-5xl my-4 text-matty-900 dark:text-matty-50 font-medium">Projects</h1>
     <div>A window to view my work and effort</div>
-    <div class="flex flex-col items-center py-12 gap-y-12">
+    <div class="grid lpt:grid-cols-2 lpt-lg:grid-cols-3 py-12 gap-x-8 gap-y-12">
         {projects.length > 0 ? projects.map(({frontmatter, url}) => (
             <Card 
                 title={frontmatter.title} 

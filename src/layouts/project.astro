@@ -18,11 +18,14 @@ const stats = readingTime(rawContent())
   </head>
   <body class="bg-matty-50 dark:bg-matty-900 selection:bg-blue-500/90 dark:selection:bg-blue-400/90 dark:selection:text-matty-900 selection:text-blue-50 overflow-x-hidden">
     <div class="z-[100] fixed w-screen "> 
-      <Nav active="/blogs"/> 
+      <Nav active="/projects"/> 
     </div>
-    <div class="flex flex-col min-h-screen">
-      <img src={frontmatter.image} alt={frontmatter.title} class="object-cover pt-16 tbl:h-[32rem] lpt-lg:h-[38rem] min-w-full" />
-      <div class="mx-auto prose prose-matty dark:prose-invert prose-custom mbl-md:pt-8 tbl:pt-20 flex-1 mbl-md:px-4 tbl:px-8 lpt:px-16 max-w-none mbl:w-full lpt:w-5/6 lpt-lg:w-4/6 tracking-wide">
+    <div class="relative flex flex-col min-h-screen">
+      <img src={frontmatter.image} alt={frontmatter.title} class="object-cover pt-16 tbl:h-[60vh] min-w-full" />
+      <div class="flex -translate-y-6 py-10  w-full backdrop-blur-3xl flex-none bg-gradient-to-t from-matty-50 dark:from-matty-900">
+
+      </div>
+      <div class="mx-auto prose prose-matty dark:prose-invert prose-custom mbl-md:pt-2 tbl:pt-0 flex-1 mbl-md:px-4 tbl:px-8 lpt:px-16 max-w-none mbl:w-full lpt:w-5/6 lpt-lg:w-4/6 tracking-wide">
           <h1 class=""> {frontmatter.title} </h1>
           <hr />
           <h3>Read Time</h3>
@@ -47,11 +50,6 @@ const stats = readingTime(rawContent())
           </div>
       </div>
     </div>
-    <div class="z-[10] fixed bottom-0 w-screen flex flex-col h-screen"> 
-      <div class="flex-1 backdrop-blur bg-white/80 dark:bg-matty-900/80"> </div>
-      <div>
-        <Draft draft={frontmatter.draft} />
-      </div>
-    </div>
+    <Draft draft={frontmatter.predraft} />
   </body>
 </html>
