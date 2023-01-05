@@ -1,9 +1,8 @@
 ---
 import MainHead from '../components/common/MainHead.astro';
 import Nav from '../components/common/Nav.astro';
-import Card from '../components/common/Card.astro'
+import Card from '../components/projects/Card.astro'
 import Nothing from '../components/icons/Nothing.astro'
-import type CardProps from '../interfaces/CardProps'
 
 let projects = (await Astro.glob('./project/**/*.{md,mdx}'))
               .filter(project => !project.frontmatter.draft)
@@ -16,11 +15,11 @@ let projects = (await Astro.glob('./project/**/*.{md,mdx}'))
 // console.log(projects[0].frontmatter)
 ---
 
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth scroll-pt-24">
 <head>
   <MainHead title="Meher Chaitanya - Projects" description="View my (Meher Chaitanya's) projects" />
 </head>
-<body class="dark:bg-matty-900 selection:bg-blue-500 dark:selection:bg-blue-400 dark:selection:text-matty-900 selection:text-blue-50 text-xl text-matty-600 overflow-x-hidden">
+<body class="dark:bg-matty-900 selection:bg-blue-500 dark:selection:bg-blue-400 dark:selection:text-matty-900 selection:text-blue-50 text-xl text-matty-800 overflow-x-hidden">
   <div class="z-[100] fixed w-screen ">
     <Nav active="/projects"/>
   </div>
@@ -36,6 +35,7 @@ let projects = (await Astro.glob('./project/**/*.{md,mdx}'))
                 date={frontmatter.date} 
                 author={frontmatter.author} 
                 coauthors={frontmatter.coauthors}
+                tags={frontmatter.tags}
                 url={url}
             />
         )) : 

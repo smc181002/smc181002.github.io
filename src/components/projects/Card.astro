@@ -1,6 +1,6 @@
 ---
 import type CardProps from '../../interfaces/CardProps'
-const {title, description, image, author, coauthors, date, url} = Astro.props;
+const {title, description, image, author, coauthors, date, url, tags} = Astro.props;
 const finalAuthors = `${author.name} ${ coauthors && "+" + (coauthors.length ) + " Other" + (coauthors.length > 1 ? "s" : "") }`
 ---
 
@@ -12,5 +12,10 @@ const finalAuthors = `${author.name} ${ coauthors && "+" + (coauthors.length ) +
         <h1 class="text-2xl font-medium text-matty-900 dark:text-matty-50 py-2"> {title} </h1>
         <div class="font-medium text-matty-900 dark:text-matty-50"> {finalAuthors} </div>
         <div class="text-matty-700 dark:text-matty-200 font-readable"> {date} </div>
+          <div class="flex gap-4 flex-wrap">
+            {tags.map( tag => (
+              <div class="rounded-lg py-1 px-3 bg-blue-200/60 dark:bg-blue-900/40 text-blue-800 dark:text-blue-100/90">{tag}</div>
+            ))}
+          </div>
     </div>
 </a>

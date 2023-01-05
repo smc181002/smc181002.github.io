@@ -2,7 +2,6 @@
 // Component Imports
 import MainHead from '../components/common/MainHead.astro';
 import Nav from '../components/common/Nav.astro';
-import Badge from '../components/common/Badge.astro';
 import Footer from '../components/common/Footer.astro';
 ---
 
@@ -11,17 +10,17 @@ import Footer from '../components/common/Footer.astro';
   <MainHead title="Meher Chaitanya - Home" description="Meher Chaitanya: Cloud Architect, Web developer..." />
 </head>
 <body class="bg-[url('/assets/background.svg')] bg-no-repeat bg-fixed bg-cover text-xl  dark:bg-matty-900 text-matty-600 overflow-x-hidden">
-  <div class="z-[100] fixed w-screen text-matty-500 ">
+  <div class="z-[100] fixed w-screen text-matty-900 ">
     <Nav />
   </div>
   <div class="flex flex-col min-h-screen">
       <div class="flex-1 pt-48 px-16">
         <div class="flex-1 flex flex-col justify-center items-center">
-          <h1 class="font-['Poppins'] px-4 sm:px-auto text-4xl text-center sm:text-5xl xl:text-7xl mb-8 font-semibold dark:text-white/90">
+          <h1 class="font-sans px-4 sm:px-auto text-4xl text-center sm:text-5xl xl:text-7xl mb-8 font-medium text-matty-900 dark:text-matty-50">
             This Page Doesn't Exist
           </h1>
           <ul>
-            <li> <a href="/" class="text-lg smc-underline-indigo-500 dark:decoration-indigo-300 decoration-2 xl:text-2xl dark:text-white/70">Go to Home<Badge link="/">/</Badge></a> </li>
+            <li> <a href="/" class="front-readable text-lg smc-underline-blue-500 dark:decoration-blue-300 decoration-2 xl:text-2xl dark:text-white/70">Go to Home</a> </li>
           </ul>
         </div>
       </div>

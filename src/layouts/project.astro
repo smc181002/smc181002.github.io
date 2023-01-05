@@ -12,7 +12,7 @@ const stats = readingTime(rawContent())
 // console.log(stats)
 ---
 
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth scroll-pt-24">
   <head>
     <MainHead title={frontmatter.title} description={frontmatter.description} />
   </head>
@@ -22,32 +22,36 @@ const stats = readingTime(rawContent())
     </div>
     <div class="relative flex flex-col min-h-screen">
       <img src={frontmatter.image} alt={frontmatter.title} class="object-cover pt-16 tbl:h-[60vh] min-w-full" />
-      <div class="flex -translate-y-6 py-10  w-full backdrop-blur-3xl flex-none bg-gradient-to-t from-matty-50 dark:from-matty-900">
-
+      <div class="flex -translate-y-6 py-10 w-full backdrop-blur-3xl flex-none bg-gradient-to-t from-matty-50 dark:from-matty-900">
       </div>
       <div class="mx-auto prose prose-matty dark:prose-invert prose-custom mbl-md:pt-2 tbl:pt-0 flex-1 mbl-md:px-4 tbl:px-8 lpt:px-16 max-w-none mbl:w-full lpt:w-5/6 lpt-lg:w-4/6 tracking-wide">
-          <h1 class=""> {frontmatter.title} </h1>
-          <hr />
-          <h3>Read Time</h3>
-          <p>~ {stats.text}</p>
-          <h3>Author{frontmatter.coauthors && 's' }</h3>
-          <div class="tbl:text-base lpt:text-lg lpt-lg:text-xl font-medium grid grid-cols-1 tbl:grid-cols-2 lpt-lg:grid-cols-3 gap-4 justify-items-start">
+        <h1> {frontmatter.title} </h1>
+        <div class="flex gap-4 flex-wrap">
+          {frontmatter.tags.map( tag => (
+            <div class="rounded-lg py-1 px-3 bg-blue-200/60 dark:bg-blue-900/40 text-blue-800 dark:text-blue-100/90">{tag}</div>
+          ))}
+        </div>
+        <hr />
+        <h3>Read Time</h3>
+        <p>~ {stats.text}</p>
+        <h3>Author{frontmatter.coauthors && 's' }</h3>
+        <div class="tbl:text-base lpt:text-lg lpt-lg:text-xl font-medium grid grid-cols-1 tbl:grid-cols-2 lpt-lg:grid-cols-3 gap-4 justify-items-start">
+          <div class="flex items-center gap-1">
+            <img class="not-prose border-0 m-0 rounded-full w-4 h-4 tbl:w-6 tbl:h-6 lpt:w-10 lpt:h-10" src={frontmatter.author.profile} alt="profile"/>
+            <a href={frontmatter.author.link} class="dark:text-matty-50" target="_blank"> {frontmatter.author.name} </a>
+          </div>
+          {frontmatter.coauthors && frontmatter.coauthors.map(({name, link, profile}) => (
             <div class="flex items-center gap-1">
-              <img class="not-prose border-0 m-0 rounded-full w-4 h-4 tbl:w-6 tbl:h-6 lpt:w-10 lpt:h-10" src={frontmatter.author.profile} alt="profile"/>
-              <a href={frontmatter.author.link} class="dark:text-matty-50"> {frontmatter.author.name} </a>
+              <img class="not-prose border-0 m-0 rounded-full w-4 h-4 tbl:w-6 tbl:h-6 lpt:w-10 lpt:h-10" src={profile} alt="profile"/>
+              <a href={link} class="dark:text-matty-50" target="_blank">{name}</a>
             </div>
-            {frontmatter.coauthors && frontmatter.coauthors.map(({name, link, profile}) => (
-              <div class="flex items-center gap-1">
-                <img class="not-prose border-0 m-0 rounded-full w-4 h-4 tbl:w-6 tbl:h-6 lpt:w-10 lpt:h-10" src={profile} alt="profile"/>
-                <a href={link} class="dark:text-matty-50">{name}</a>
-              </div>
-            ))}
+          ))}
 
-          </div>
-          <hr />
-          <div>
-            <slot />
-          </div>
+        </div>
+        <hr />
+        <div>
+          <slot />
+        </div>
       </div>
     </div>
     <Draft draft={frontmatter.predraft} />

@@ -1,14 +1,35 @@
 ---
 import Hash from '../common/Hash.astro';
+import {parse} from 'rss-to-json';
 
 interface MarkdownFrontmatter {
 	publishDate: number;
 }
 
-const blogs = await Astro.glob('../../pages/blog/**/*.md')
-const featuredBlogs = [blogs[0], blogs[1]]
+let rss = await parse('https://smc181002.medium.com/feed');
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const printDate = (date) => {
+  let d = new Date(date)
+  return `${months[d.getMonth()]}, ${d.getDate()} ${d.getFullYear()}`
+}
+
 ---
 
+<section class="mx-auto prose dark:prose-invert font-sans dark:text-white-50">
+  <h2 id="blogs">Blogs</h2>
+  <div class="flex flex-wrap flex-col">
+  {rss.items.map((item) => (
+    <h3> <a href={item.link} target="_blank">{item.title}</a></h3>
+    <div class="font-readable py-2">{printDate(item.published)}</div>
+    <div class="flex gap-4 flex-wrap">
+      {item.category.map( tag => (
+        <div class="rounded-lg py-1 px-3 bg-blue-200/60 dark:bg-blue-900/40 text-blue-800 dark:text-blue-100/90">{tag}</div>
+      ))}
+    </div>
+  ))}
+  </div>
+</section>
+<!-- 
 <section class="flex flex-col px-4 sm:px-16 bg-blue-500 py-10 border-t-[1px] border-t-zinc-200/40 dark:border-t-zinc-700/60">
 
   <h2 class="scroll-mt-24 group flex whitespace-pre-wrap text-3xl sm:text-4xl font-['Poppins'] mb-6" id="about">
@@ -27,4 +48,4 @@ const featuredBlogs = [blogs[0], blogs[1]]
       ))}
     </ul>
   </div>
-</section>
+</section> -->
