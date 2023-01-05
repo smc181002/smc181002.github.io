@@ -1,0 +1,32 @@
+---
+import AWS from './tech/AWS.astro';
+import Ansible from './tech/Ansible.astro';
+import AstroJS from './tech/Astro.astro';
+import Docker from './tech/Docker.astro';
+import Kube from './tech/Kube.astro';
+import Next from './tech/Next.astro';
+import React from './tech/React.astro';
+import Svelte from './tech/Svelte.astro';
+import TS from './tech/TS.astro';
+import Terraform from './tech/Terraform.astro';
+import Mongodb from './tech/Mongodb.astro';
+
+const {name, logo} = Astro.props;
+---
+
+<div class="flex gap-2 items-center">
+    <div class="bg-matty-50 p-4 rounded-full shadow-lg dark:shadow-[inset_1px_1px_2px_rgba(114,114,114,0.45)] dark:bg-matty-800">
+        {logo == "aws" && <AWS />}
+        {logo == "ansible" && <Ansible />}
+        {logo == "astro" && <AstroJS />}
+        {logo == "docker" && <Docker />}
+        {logo == "kube" && <Kube />}
+        {logo == "next" && <Next />}
+        {logo == "react" && <React />}
+        {logo == "svelte" && <Svelte />}
+        {logo == "ts" && <TS />}
+        {logo == "terraform" && <Terraform />}
+        {logo == "mongodb" && <Mongodb />}
+    </div>
+    <div>{name}</div>
+</div>

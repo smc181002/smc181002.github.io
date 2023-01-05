@@ -12,7 +12,7 @@
 		// Add type definitions for our Vite runtime.
 		"types": [
 			"vite/client",
-      "astro/env" // this is important for astro project
+			"astro/env" // this is important for astro project
 		],
 		"typeRoots": [
 			"./node_modules/@types",

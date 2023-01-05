@@ -2,30 +2,39 @@
 import MainHead from '../components/common/MainHead.astro';
 import Nav from '../components/common/Nav.astro';
 import Hero from '../components/home/Hero.astro';
-import Gradient from '../components/icons/Gradient.astro';
+import LatestBlog from '../components/home/LatestBlog.astro';
 ---
 
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth scroll-pt-24">
 <head>
   <MainHead title="Meher Chaitanya - Home" description="Meher Chaitanya: Cloud Architect, Web developer..." />
 </head>
-<body class="dark:bg-matty-900 selection:bg-blue-500 dark:selection:bg-blue-400 dark:selection:text-matty-900 selection:text-blue-50 bg-no-repeat bg-fixed bg-cover text-xl font-['Inter'] text-matty-600 overflow-x-hidden">
+<body class="dark:bg-matty-900 selection:bg-blue-500 dark:selection:bg-blue-400 dark:selection:text-matty-900 selection:text-blue-50 bg-no-repeat bg-fixed bg-cover text-xl font-sans text-matty-800 overflow-x-hidden">
   <div class="z-[100] fixed w-screen ">
     <Nav />
   </div>
-  <div class="fixed flex -z-10 top-14 left-1/2 -translate-x-1/2 w-[60rem] ">
+  <div class="absolute -z-10 top-14 left-1/2 -translate-x-1/2 lpt:w-[80vw] lpt-lg:w-[60vw] hidden lpt:flex">
     <div class="w-full h-full absolute bg-matty-50/10 dark:bg-matty-900/[0.65]"></div>
-    <Gradient />
+    <img src="/assets/gradient.svg" alt="gradient">
   </div>
   <div class="flex flex-col w-screen min-h-screen">
     <div class="flex-1 mt-30">
       <Hero />
-      <!-- <About />
-      <LatestBlog /> -->
     </div>
-    <!-- <div>
-      <Footer />
-    </div> -->
+    <div class="pb-10 flex flex-col gap-y-8 items-center pt-20 px-2 tbl:px-6">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect class="fill-matty-800 dark:fill-matty-100" x="40" y="40" width="40" height="40" fill="#2E3539"/>
+        <rect class="fill-matty-700 dark:fill-matty-500" y="40" width="40" height="40" fill="#444F56"/>
+        <rect class="fill-matty-600 dark:fill-matty-400" width="40" height="40" fill="#5E696F"/>
+        <rect class="fill-matty-500 dark:fill-matty-300" x="40" width="40" height="40" fill="#70797F"/>
+      </svg>
+
+      <div class="font-sans mbl-md:text-sm tbl:text-md lpt:text-lg dark:text-matty-50">
+        <i class="font-italics">If you can't explain it to a six year old, you don't <br /> understand it yourself</i> - <b>Albert Einstein</b> 
+      </div>
+
+      <LatestBlog />
+    </div>
   </div>
 </body>
 </html>

@@ -9,13 +9,13 @@
 }
 
 @layer components {
-  .smc-underline-indigo-500 {
-    @apply underline decoration-indigo-500 underline-offset-2;
+  .smc-underline-blue-500 {
+    @apply underline decoration-blue-500 underline-offset-2;
   }
 
 .prose-custom {
   @apply lpt:prose-h1:text-6xl lpt-lg:prose-h1:text-7xl 
-  lpt:prose-p:text-lg prose-table:w-full 
+  lpt:prose-p:text-lg lpt:prose-a:text-lg prose-table:w-full 
   prose-table:border-collapse prose-table:table-auto prose-th:text-left 
   prose-th:border prose-td:border prose-th:p-4 prose-td:p-4 
   prose-a:underline-offset-2 hover:prose-a:decoration-2 
