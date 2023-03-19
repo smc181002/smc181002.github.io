@@ -17,6 +17,8 @@ export default defineConfig( /** @type {import('astro').AstroUserConfig} */
     host: true
   },
   site: "https://smc181002.github.io/",
+  // site: "https://scis.uohyd.ac.in/~19mcme12/",
+  // base: "~19mcme12",
   // Enable the Svelte renderer to support Svelte components.
   integrations: [svelte()],
   markdown: {

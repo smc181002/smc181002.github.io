@@ -2,9 +2,9 @@
 import Techno from './Techno.svelte';
 const {active} = Astro.props;
 const actionsList = [
-  {name: 'Projects', path: '/projects'},
-  {name: 'Resume', path: '/resume'},
-  {name: 'Contact', path: '/contact'},
+  {name: 'Projects', path: 'projects'},
+  {name: 'Resume', path: 'resume'},
+  {name: 'Contact', path: 'contact'},
 ]
 
 // let hover = " hover:underline hover:decoration-4 transition-all hover:decoration-indigo-500 dark:decoration-indigo-300 hover:underline-offset-2 ";
@@ -17,9 +17,9 @@ function activeHighlight(action) {
 <Techno />
 <nav class="flex px-2 py-6 tbl:px-6 tbl:py-6 z-[10000] w-full backdrop-blur flex-none bg-matty-50/80 dark:bg-matty-900/80 supports-backdrop-blur:bg-white/50 border-b-[1px] dark:border-b-matty-400/20 border-b-matty-900/10 gap-x-4 tbl:gap-x-0">
   <div class="flex mx-auto w-full flex-1 items-center text-center text-matty-900">
-    <a href="/" class="flex items-center"> 
+    <a href={`${import.meta.env.BASE_URL}`} class="flex items-center"> 
       <img 
-        src="/assets/logo.svg" 
+        src={import.meta.env.BASE_URL + "assets/logo.svg" }
         alt="logo" 
         class="w-[24px] mr-2 tbl:m-0"> 
       <span class="lpt:ml-4 dark:text-white font-['Poppins'] lpt:inline hidden text-md font-medium">Meher Chaitanya</span> 
@@ -55,7 +55,7 @@ function activeHighlight(action) {
       {actionsList.map( (action) => (
         <a 
           class={activeHighlight(action) + /* hover + */ "text-sm tbl:text-base dark:text-white"} 
-          href={action.path}>
+          href={import.meta.env.BASE_URL + action.path}>
           {action.name}
         </a>
       ))}

@@ -20,7 +20,7 @@ import Footer from '../components/common/Footer.astro';
             This Page Doesn't Exist
           </h1>
           <ul>
-            <li> <a href="/" class="front-readable text-lg smc-underline-blue-500 dark:decoration-blue-300 decoration-2 xl:text-2xl dark:text-white/70">Go to Home</a> </li>
+            <li> <a href={import.meta.env.BASE_URL} class="front-readable text-lg smc-underline-blue-500 dark:decoration-blue-300 decoration-2 xl:text-2xl dark:text-white/70">Go to Home</a> </li>
           </ul>
         </div>
       </div>
@@ -30,4 +30,3 @@ import Footer from '../components/common/Footer.astro';
   </div>
 </body>
 </html>
-

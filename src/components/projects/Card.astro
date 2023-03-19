@@ -1,7 +1,7 @@
 ---
 import type CardProps from '../../interfaces/CardProps'
 const {title, description, image, author, coauthors, date, url, tags} = Astro.props;
-const finalAuthors = `${author.name} ${ coauthors && "+" + (coauthors.length ) + " Other" + (coauthors.length > 1 ? "s" : "") }`
+const finalAuthors = `${author.name} ${ coauthors ? "+" + (coauthors.length ) + " Other" + (coauthors.length > 1 ? "s" : "") : "" }`
 ---
 
 <a class="col-span-1 flex flex-col gap-y-6 text-matty-800 dark:text-matty-100" 
