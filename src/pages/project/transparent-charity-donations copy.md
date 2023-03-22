@@ -2,7 +2,7 @@
 layout: ../../layouts/project.astro
 title: Revolutionize Donations with Smart contracts
 client: Self
-date: Dec 16, 2022
+pubDate: Dec 16, 2022
 image: https://images.unsplash.com/photo-1527788263495-3518a5c1c42d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=908&q=80
 description: |
   Charitable donations are an important way for individuals and organizations to give back to their communities and make a positive impact in the world. However, it can be difficult for donors to know where their money is going and whether it is being used effectively. This is where trusted transparent charity donations come in.
@@ -66,19 +66,19 @@ functionalities of the application as:
 - The benefeciary list
 - Owner options that include creating the benefeciary and Paying the benefeciary
 
-![donations-page](/assets/project/transparent-charity-donations/donations-page.png)
+![donations-page](../../assets/project/transparent-charity-donations/donations-page.png)
 
 The first page as seen in the above image allows for the donors to look at the donations made to the organization. This application is designed to show the amount in Gwei for demo purposes. The donors are provided with a form to the right that prompts input details like the user name (optional) and the payment that need to be done in Gwei. Any amount below 1 Gwei is restricted in the contract logic. The Donor account address is automatically fetched from the tranasction and the record is added to the contract's database.
 
-![charity-payments-page](/assets/project/transparent-charity-donations/charity-payments-page.png)
+![charity-payments-page](../../assets/project/transparent-charity-donations/charity-payments-page.png)
 
 The second page consists of Payments that the organization has done to the charity's benefeciaries. The payments functionality through UI is provided in the owner options page but this page only provides the list of payment transactions to the Benefeciaries.
 
-![benefeciaries-list](/assets/project/transparent-charity-donations/benefeciaries-list.png)
+![benefeciaries-list](../../assets/project/transparent-charity-donations/benefeciaries-list.png)
 
 Continuing with the next page is the list of benefeciaries that are in the database of the contract that the organization will be paying the funds collected through donations.
 
-![owner-options-page](/assets/project/transparent-charity-donations/owner-options-page.png)
+![owner-options-page](../../assets/project/transparent-charity-donations/owner-options-page.png)
 
 The final page is the owner options page that consists of the features only a owner of the contract can access through. The owner list is stored in the contract through the account address and verified as a part of these functionalities.
 

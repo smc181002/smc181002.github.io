@@ -99,6 +99,14 @@
     svelte "^3.44.3"
     svelte-preprocess "^4.9.8"
 
+"@astrojs/rss@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/rss/-/rss-2.3.1.tgz#6562f47214b0fd8e635f703141fd4afc3fed7302"
+  integrity sha512-s9yHKfWDUQvhm5GGfbeb1fEzVL19yVv3uz6TF7nT/4/uW2w4jWgGtqQMkzeEhckvwRVT3xavHP8b+S9TKHMgAg==
+  dependencies:
+    fast-xml-parser "^4.0.8"
+    kleur "^4.1.5"
+
 "@astrojs/svelte@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@astrojs/svelte/-/svelte-1.0.2.tgz#c96d38a4a03737e2af395cd6e1c8f0320bc80420"
@@ -767,10 +775,10 @@ ast-types@0.14.2:
   dependencies:
     tslib "^2.0.1"
 
-astro-seo@0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/astro-seo/-/astro-seo-0.5.0.tgz#4e2a86f09fb248480e4213e6d8d828de76f4c8c3"
-  integrity sha512-2J1QBtoDIKb1bTCc+vpT0c73oXSFh/WZ+cwSGsQ5SCdNLDpMp/qefeeQkCcsqEVICLsyYVgt5VwxSmopHaq55A==
+astro-seo@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/astro-seo/-/astro-seo-0.7.1.tgz#b1921ba94bc80319f091d3dbf93d9450f3fa5ffe"
+  integrity sha512-8Yo1nQrl2iB5zj+VUAHrvGIck8bZ4WAmXQgJOeF9FuAZGQD5qK6DtSZaRbpBXsFfZYHA6tE8pjs3btHhLbC1zQ==
 
 astro@^1.0.0-beta.63:
   version "1.8.0"
@@ -1488,6 +1496,13 @@ fast-glob@^3.2.11, fast-glob@^3.2.12:
     glob-parent "^5.1.2"
     merge2 "^1.3.0"
     micromatch "^4.0.4"
+
+fast-xml-parser@^4.0.8:
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/fast-xml-parser/-/fast-xml-parser-4.1.3.tgz#0254ad0d4d27f07e6b48254b068c0c137488dd97"
+  integrity sha512-LsNDahCiCcJPe8NO7HijcnukHB24tKbfDDA5IILx9dmW3Frb52lhbeX6MPNUSvyGNfav2VTYpJ/OqkRoVLrh2Q==
+  dependencies:
+    strnum "^1.0.5"
 
 fast-xml-parser@^4.0.9:
   version "4.0.12"
