@@ -7,8 +7,8 @@ import Nothing from '../components/icons/Nothing.astro'
 let projects = (await Astro.glob('./project/**/*.{md,mdx}'))
               .filter(project => !project.frontmatter.draft)
               .sort((a,b) => {
-                let c = new Date(a.frontmatter.date);
-                let d = new Date(b.frontmatter.date);
+                let c = new Date(a.frontmatter.pubDate);
+                let d = new Date(b.frontmatter.pubDate);
                 return c<d ? 1 : -1;
               });
 
@@ -32,7 +32,7 @@ let projects = (await Astro.glob('./project/**/*.{md,mdx}'))
                 title={frontmatter.title} 
                 description={frontmatter.description} 
                 image={frontmatter.image} 
-                date={frontmatter.date} 
+                pubDate={frontmatter.pubDate} 
                 author={frontmatter.author} 
                 coauthors={frontmatter.coauthors}
                 tags={frontmatter.tags}

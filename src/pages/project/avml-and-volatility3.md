@@ -2,7 +2,7 @@
 layout: ../../layouts/project.astro
 title: Memory Forensics with AVML and Volatility3 Framework
 client: Self
-date: Mar 20, 2023
+pubDate: Mar 20, 2023
 image: https://images.unsplash.com/photo-1630568002650-3ee79302fda5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80
 description: |
   
@@ -29,67 +29,41 @@ analysis on that system using Volatility3 framework.
 
 ## AVML (Microsoft)
 
-LiME is installed as a kernel module. This means we need to
-cross compile the source code and load it in the suspect 
-system.
+AVML is a memory acquisition tool developed under microsoft
+and is a portable tool build in rust. This allows the 
+software to be executed as a static binary and doesnt 
+require any knowledge of the target OS distribution or the 
+kernel without which tools like `LiME` wont work.
 
-But compiling in the suspect system will lead to destruction
-of the memory in the system itself. To tackle this problem,
-we need to know the suspect's architecture and compile it 
-in a similar environment and export the file to the 
-suspect's machine.
+AVML internally uses the LiME output format (if compression
+is not used) for imaging and provides extended features 
+allowing the image to be pushed to object storages.
 
-### Installation of LiME
+Compression feature in AVML will be useful in terms of 
+portability as exporting bigger RAM size machines will use
+a lot more memory.
+
+### Installation of AVML
 
 The Software required in the Forensics system are:
 
-- `git`
-- `make`
+- `wget`
 
-> The commands can be verified by using `command -v git` 
-and `command -v make` which should give the file path if 
-they exist and empty if they dont exist. Use required 
-package managers to download these software
+The current latest avml can be found in the github
+page in the release section. This project uses
+[`v0.11.0`](https://github.com/microsoft/avml/releases/tag/v0.11.0).
 
-The current experiment is done inside KVM hypervisor with 
-two similar instances of `Ubuntu 22.04` where one is the 
-`forensics system` and other is `suspect system`.
-
+The software can be downloaded by running the command:
 ```bash
-# clone the repository
-git clone https://github.com/microsoft/avml.git
+wget https://github.com/microsoft/avml/releases/download/v0.11.0/avml
 ```
 
-```bash
-# running make will automatically find the arch of the system.
-cd LiME && \
-make 
-```
-
-![clone-repo-and-build-kernel-object](../../assets/project/lime-and-volatility/building-kernel-object.png)
-
-Once the `.ko` file is built, we need to move this to the 
-directory where the pendrive is mounted so that the object
-file can be executed in the suspect's system.
-
-```bash
-sudo mkdir /media/usbhp && \
-sudo mount /dev/sda1 /media/usbhp && \ # mount USB
-sudo cp ./lime-5.15.0-67-generic.ko /media/usbhp # copy to USB
-```
-
-### Creating memory image with LiME
+### Creating memory image with AVML
 
 To create the memory image, we just need to run the command
 ```bash
-sudo insmod ./lime-5.15.0-67-generic.ko "path=../linux-image.mem format=raw"
+sudo ./avml ./linux-image.mem
 ```
-
-After running the `insmod` command that loads the kernel 
-module, the .mem file will be created in the location 
-desired. Now copy back the generated memory file back into
-the USB to export and use it inside the forensic system for
-analysis of the memory.
 
 ## Voalitlity 3
 

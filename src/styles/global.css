@@ -33,7 +33,7 @@
         prose-th:border prose-td:border prose-th:p-4 prose-td:p-4 
         prose-a:underline-offset-2 hover:prose-a:decoration-2 
         prose-a:decoration-1 prose-a:decoration-blue-500 lpt:prose-pre:text-lg
-        prose-img:rounded-3xl prose-img:border-[1px] prose-headings:font-sans font-roboto-flex;
+        prose-img:rounded-3xl prose-img:border-[1px] prose-headings:font-sans font-roboto-flex text-clip overflow-x-hidden;
     }
 }
 

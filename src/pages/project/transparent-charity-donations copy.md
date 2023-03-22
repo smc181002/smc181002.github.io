@@ -2,7 +2,7 @@
 layout: ../../layouts/project.astro
 title: Revolutionize Donations with Smart contracts
 client: Self
-date: Dec 16, 2022
+pubDate: Dec 16, 2022
 image: https://images.unsplash.com/photo-1527788263495-3518a5c1c42d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=908&q=80
 description: |
   Charitable donations are an important way for individuals and organizations to give back to their communities and make a positive impact in the world. However, it can be difficult for donors to know where their money is going and whether it is being used effectively. This is where trusted transparent charity donations come in.

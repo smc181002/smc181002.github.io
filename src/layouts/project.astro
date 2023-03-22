@@ -17,14 +17,14 @@ const stats = readingTime(rawContent())
     <MainHead title={frontmatter.title} description={frontmatter.description} />
   </head>
   <body class="bg-matty-50 dark:bg-matty-900 selection:bg-blue-500/90 dark:selection:bg-blue-400/90 dark:selection:text-matty-900 selection:text-blue-50 overflow-x-hidden">
-    <div class="z-[100] fixed w-screen "> 
+    <div class="z-[100] fixed w-screen print:hidden"> 
       <Nav active="/projects"/> 
     </div>
     <div class="relative flex flex-col min-h-screen">
       <img src={frontmatter.image} alt={frontmatter.title} class="object-cover pt-16 tbl:h-[60vh] min-w-full" />
       <div class="flex -translate-y-6 py-10 w-full backdrop-blur-3xl flex-none bg-gradient-to-t from-matty-50 dark:from-matty-900">
       </div>
-      <div class="mx-auto prose prose-matty dark:prose-invert prose-custom mbl-md:pt-2 tbl:pt-0 flex-1 mbl-md:px-4 tbl:px-8 lpt:px-16 max-w-none mbl:w-full lpt:w-5/6 lpt-lg:w-4/6 tracking-wide">
+      <div class="mx-auto prose prose-matty dark:prose-invert prose-custom mbl-md:pt-2 tbl:pt-0 flex-1 px-2 mbl-md:px-2 tbl:px-8 lpt:px-16 max-w-none mbl-md:w-full tbl:w-full lpt:w-5/6 lpt-lg:w-4/6 tracking-wide prose-a:truncate">
         <h1> {frontmatter.title} </h1>
         <div class="flex gap-4 flex-wrap">
           {frontmatter.tags.map( tag => (
@@ -32,8 +32,8 @@ const stats = readingTime(rawContent())
           ))}
         </div>
         <hr />
-        <h3>Read Time</h3>
-        <p>~ {stats.text}</p>
+        <h3 class="print:hidden">Read Time</h3>
+        <p class="print:hidden">~ {stats.text}</p>
         <h3>Author{frontmatter.coauthors && 's' }</h3>
         <div class="tbl:text-base lpt:text-lg lpt-lg:text-xl font-medium grid grid-cols-1 tbl:grid-cols-2 lpt-lg:grid-cols-3 gap-4 justify-items-start">
           <div class="flex items-center gap-1">
@@ -49,7 +49,7 @@ const stats = readingTime(rawContent())
 
         </div>
         <hr />
-        <div class="dark:text-matty-200">
+        <div class="flex flex-col dark:text-matty-200">
           <slot />
         </div>
       </div>
