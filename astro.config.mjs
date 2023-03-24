@@ -31,7 +31,7 @@ export default defineConfig( /** @type {import('astro').AstroUserConfig} */
       // https://github.com/shikijs/shiki/blob/main/docs/languages.md
       langs: [],
       // Enable word wrap to prevent horizontal scrolling
-      wrap: false,
+      wrap: true,
     },
   },
 });

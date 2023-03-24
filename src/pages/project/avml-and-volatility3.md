@@ -55,14 +55,25 @@ page in the release section. This project uses
 
 The software can be downloaded by running the command:
 ```bash
-wget https://github.com/microsoft/avml/releases/download/v0.11.0/avml
+wget https://github.com/microsoft/avml/releases/download/v0.11.0/avml &&
+chmod +x avml
 ```
 
 ### Creating memory image with AVML
 
 To create the memory image, we just need to run the command
 ```bash
-sudo ./avml ./linux-image.mem
+sudo ./avml --compressed ./linux-image.compressed.mem
+```
+
+The compressed memory image should now be extracted and 
+this can be done with the help of `avml-convert` command 
+also provided by avml in the github release page. This can
+be installed by using the below command.
+
+```bash
+wget https://github.com/microsoft/avml/releases/download/v0.11.0/avml-convert &&
+chmod +x avml-convert
 ```
 
 ## Voalitlity 3
@@ -109,7 +120,7 @@ The search term can be extracted from the volatility
 framework by running the below command.
 
 ```bash
-python3 volatility3/vol.py -f ./avmlimage.mem banners
+python3 volatility3/vol.py -f ./linux-image.mem banners
 
 # output: 
 # 0xacbf6f7	Linux version 5.15.0-67-generic (buildd@lcy02-amd64-116) (gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, GNU ld (GNU Binutils for Ubuntu) 2.38) #74-Ubuntu SMP Wed Feb 22 14:14:39 UTC 2023 (Ubuntu 5.15.0-67.74-generic 5.15.85)
@@ -128,6 +139,7 @@ creates a dump json file.
 ```bash
 git clone https://github.com/volatilityfoundation/dwarf2json.git && \
 cd dwarf2json/
+go build
 ```
 
 To get this software, we can comiple from the source and to
@@ -208,7 +220,33 @@ Help command can be used to find out all the options that
 can be used.
 
 ```bash
-python3 volatility3/vol.py -f ./avmlimage.mem --help
+python3 volatility3/vol.py -f ./linux-image.mem --help
+```
+
+## Using Volshell
+
+This code basically does the same thing as pslist outputted 
+as in the plugin. But we have access to all the attributes 
+of the `task_list` class.
+
+```python
+from volatility3.plugins.linux import pslist
+from volatility3.framework.objects import utility
+from volatility3.framework.renderers import format_hints
+
+print("OFFSET (V)      PID     TID     PPID    COMM")
+for proc in pslist.PsList.list_tasks(self.context, self.config['kernel']):
+    print(
+            hex(format_hints.Hex(proc0.vol.offset)) , "\t" , 
+            proc.pid, "\t" , 
+            proc.parent.tgid,  "\t" , 
+            proc.tgid, "\t" , 
+            utility.array_to_string(proc.comm), "\t")
+```
+
+```python
+>>> dir(proc0)
+# Output: ['VolTemplateProxy', '__abstractmethods__', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattr__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__mce_reserved', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__state', '__str__', '__subclasshook__', '__weakref__', '_abc_impl', '_add_process_layer', '_check_members', '_concrete_members', '_context', '_vol', 'acct_rss_mem1', 'acct_timexpd', 'acct_vm_mem1', 'active_memcg', 'active_mm', 'add_process_layer', 'alloc_lock', 'atomic_flags', 'audit_context', 'backing_dev_info', 'bio_list', 'blocked', 'bpf_ctx', 'bpf_storage', 'btrace_seq', 'cached_requested_key', 'capture_control', 'cast', 'cg_list', 'cgroups', 'children', 'clear_child_tid', 'closid', 'comm', 'compat_robust_list', 'core_cookie', 'core_node', 'core_occupation', 'cpu', 'cpus_mask', 'cpus_ptr', 'cpuset_mem_spread_rotor', 'cpuset_slab_spread_rotor', 'cred', 'curr_ret_depth', 'curr_ret_stack', 'default_timer_slack_ns', 'delays', 'dirty_paused_when', 'dl', 'exit_code', 'exit_signal', 'exit_state', 'files', 'flags', 'frozen', 'fs', 'ftrace_timestamp', 'futex_exit_mutex', 'futex_state', 'get_process_memory_sections', 'get_symbol_table_name', 'get_threads', 'group_leader', 'gtime', 'has_member', 'has_valid_member', 'has_valid_members', 'il_prev', 'in_eventfd', 'in_execve', 'in_iowait', 'in_memstall', 'in_ubsan', 'in_user_fault', 'io_context', 'io_uring', 'ioac', 'is_kernel_thread', 'is_thread_group_leader', 'is_user_thread', 'jobctl', 'journal_info', 'kmap_ctrl', 'kretprobe_instances', 'l1d_flush_kill', 'last_siginfo', 'last_sum_exec_runtime', 'last_switch_count', 'last_switch_time', 'last_task_numa_placement', 'last_wakee', 'loginuid', 'maj_flt', 'mce_addr', 'mce_count', 'mce_kflags', 'mce_kill_me', 'mce_ripv', 'mce_vaddr', 'mce_whole_page', 'member', 'memcg_in_oom', 'memcg_nr_pages_over_high', 'memcg_oom_gfp_mask', 'memcg_oom_order', 'mempolicy', 'mems_allowed', 'mems_allowed_seq', 'migration_disabled', 'migration_flags', 'migration_pending', 'min_flt', 'mm', 'nameidata', 'nivcsw', 'no_cgroup_migration', 'node_stamp', 'normal_prio', 'nr_cpus_allowed', 'nr_dirtied', 'nr_dirtied_pause', 'nsproxy', 'numa_faults', 'numa_faults_locality', 'numa_group', 'numa_migrate_retry', 'numa_pages_migrated', 'numa_preferred_nid', 'numa_scan_period', 'numa_scan_period_max', 'numa_scan_seq', 'numa_work', 'nvcsw', 'on_cpu', 'on_rq', 'oom_reaper_list', 'oom_reaper_timer', 'pagefault_disabled', 'parent', 'parent_exec_id', 'patch_state', 'pdeath_signal', 'pending', 'perf_event_ctxp', 'perf_event_list', 'perf_event_mutex', 'personality', 'pf_io_worker', 'pi_blocked_on', 'pi_lock', 'pi_state_cache', 'pi_state_list', 'pi_top_task', 'pi_waiters', 'pid', 'pid_links', 'plug', 'policy', 'posix_cputimers', 'posix_cputimers_work', 'preempt_notifiers', 'pref_node_fork', 'prev_cputime', 'prio', 'psi_flags', 'ptrace', 'ptrace_entry', 'ptrace_message', 'ptraced', 'ptracer_cred', 'pushable_dl_tasks', 'pushable_tasks', 'rcu', 'rcu_users', 'real_blocked', 'real_cred', 'real_parent', 'recent_used_cpu', 'reclaim_state', 'restart_block', 'restore_sigmask', 'ret_stack', 'rmid', 'robust_list', 'rseq', 'rseq_event_mask', 'rseq_sig', 'rss_stat', 'rt', 'rt_priority', 'sas_ss_flags', 'sas_ss_size', 'sas_ss_sp', 'saved_sigmask', 'sched_class', 'sched_contributes_to_load', 'sched_info', 'sched_migrated', 'sched_psi_wake_requeue', 'sched_remote_wakeup', 'sched_reset_on_fork', 'sched_task_group', 'se', 'seccomp', 'security', 'self_exec_id', 'sequential_io', 'sequential_io_avg', 'sessionid', 'set_child_tid', 'sibling', 'sighand', 'signal', 'splice_pipe', 'stack', 'stack_canary', 'stack_refcount', 'stack_vm_area', 'start_boottime', 'start_time', 'static_prio', 'stime', 'syscall_dispatch', 'sysvsem', 'sysvshm', 'task_frag', 'task_works', 'tasks', 'tgid', 'thread', 'thread_group', 'thread_info', 'thread_node', 'thread_pid', 'throttle_queue', 'timer_slack_ns', 'tlb_ubc', 'total_numa_faults', 'trace', 'trace_overrun', 'trace_recursion', 'tracing_graph_pause', 'trc_holdout_list', 'trc_ipi_to_cpu', 'trc_reader_checked', 'trc_reader_nesting', 'trc_reader_special', 'uclamp', 'uclamp_req', 'usage', 'use_memdelay', 'user_cpus_ptr', 'utask', 'utime', 'vfork_done', 'vmacache', 'vol', 'wake_cpu', 'wake_entry', 'wake_q', 'wakee_flip_decay_ts', 'wakee_flips', 'write']
 ```
 
 ## Links
