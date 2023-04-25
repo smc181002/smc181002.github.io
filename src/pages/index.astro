@@ -2,7 +2,7 @@
 import MainHead from '../components/common/MainHead.astro';
 import Nav from '../components/common/Nav.astro';
 import Hero from '../components/home/Hero.astro';
-/* import LatestBlog from '../components/home/LatestBlog.astro'; */
+import LatestBlog from '../components/home/LatestBlog.astro';
 ---
 
 <html lang="en" class="scroll-smooth scroll-pt-24">
@@ -15,7 +15,7 @@ import Hero from '../components/home/Hero.astro';
   </div>
   <div class="absolute -z-10 top-14 left-1/2 -translate-x-1/2 lpt:w-[80vw] lpt-lg:w-[60vw] hidden lpt:flex">
     <div class="w-full h-full absolute bg-matty-50/10 dark:bg-matty-900/[0.65]"></div>
-    <img src={`${import.meta.env.BASE_URL}/assets/gradient.svg`} alt="gradient">
+    <img src={`${import.meta.env.BASE_URL}assets/gradient.svg`} alt="gradient">
   </div>
   <div class="flex flex-col w-screen min-h-screen">
     <div class="flex-1 mt-30">
@@ -33,7 +33,7 @@ import Hero from '../components/home/Hero.astro';
         <i class="font-italics">If you can't explain it to a six year old, you don't <br /> understand it yourself</i> - <b>Albert Einstein</b> 
       </div>
 
-      <!-- <LatestBlog /> -->
+      <LatestBlog />
     </div>
   </div>
 </body>

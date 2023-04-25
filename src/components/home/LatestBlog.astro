@@ -1,12 +1,44 @@
 ---
-import Hash from '../common/Hash.astro';
-import parse from 'rss-to-json';
+// import Hash from '../common/Hash.astro';
 
+import {extract} from '@extractus/feed-extractor';
 interface MarkdownFrontmatter {
 	publishDate: number;
 }
 
-let rss = await parse('https://smc181002.medium.com/feed');
+interface RSSEntry {
+  id?: string;
+  title: string;
+  link: string;
+  published: string;
+  description: string;
+  category: string[];
+}
+
+interface RssOutput {
+  title: string;
+  link: string;
+  description: string;
+  language: string;
+  generator?: string;
+  published: string;
+  entries: RSSEntry[];
+}
+const url = 'https://smc181002.medium.com/feed';
+
+const feed = await extract(url, {
+  getExtraEntryFields: (feedEntry: RSSEntry) => {
+    const {
+      category
+    } = feedEntry
+    return {
+      category: category,
+    }
+  }
+})
+
+// let rss2 = await parser.parseUrl('https://smc181002.medium.com/feed');
+// console.log(rss2);
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const printDate = (date) => {
   let d = new Date(date)
@@ -18,7 +50,8 @@ const printDate = (date) => {
 <section class="mx-auto prose dark:prose-invert font-sans dark:text-white-50">
   <h2 id="blogs">Blogs</h2>
   <div class="flex flex-wrap flex-col">
-  {rss.items.map((item) => (
+    {console.log(feed)}
+  {feed.entries.map((item) => (
     <h3>
       <a href={import.meta.env.BASE_URL + item.link} target="_blank">{item.title}</a>
     </h3>
@@ -31,22 +64,3 @@ const printDate = (date) => {
   ))}
   </div>
 </section>
-<!-- 
-<section class="flex flex-col px-4 sm:px-16 bg-blue-500 py-10 border-t-[1px] border-t-zinc-200/40 dark:border-t-zinc-700/60">
-  <h2 class="scroll-mt-24 group flex whitespace-pre-wrap text-3xl sm:text-4xl font-['Poppins'] mb-6" id="about">
-    <span id="latest-blog" class="text-white mr-2">Latest Blog</span>
-    <Hash href="#latest-blog" dark={true}/>
-  </h2>
-  
-  <div class="text-sm md:text-lg decoration-1 flex">
-    <ul class="pl-8">
-      {featuredBlogs.map((blog) => (
-        <li class="text-white list-disc">
-          <a href={blog.url} class="underline decoration-1 hover:decoration-2" >
-            {blog.frontmatter.title}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </div>
-</section> -->
