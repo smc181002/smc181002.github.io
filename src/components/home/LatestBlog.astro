@@ -39,10 +39,10 @@ const feed = await extract(url, {
 
 // let rss2 = await parser.parseUrl('https://smc181002.medium.com/feed');
 // console.log(rss2);
-const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const printDate = (date) => {
-  let d = new Date(date)
-  return `${months[d.getMonth()]}, ${d.getDate()} ${d.getFullYear()}`
+  let dateOptions:Intl.DateTimeFormatOptions = { dateStyle: 'medium', timeStyle: 'short' };
+  return new Date(date).toLocaleString('en-IN', dateOptions);
+  
 }
 
 ---
@@ -50,7 +50,6 @@ const printDate = (date) => {
 <section class="mx-auto prose dark:prose-invert font-sans dark:text-white-50">
   <h2 id="blogs">Blogs</h2>
   <div class="flex flex-wrap flex-col">
-    {console.log(feed)}
   {feed.entries.map((item) => (
     <h3>
       <a href={import.meta.env.BASE_URL + item.link} target="_blank">{item.title}</a>
