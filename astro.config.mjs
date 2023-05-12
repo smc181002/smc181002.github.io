@@ -5,6 +5,7 @@
 // helpful tooltips, and warnings if your exported object is invalid.
 // You can disable this by removing "@ts-check" and `@type` comments below.
 import svelte from '@astrojs/svelte'; // @ts-check
+import sitemap from '@astrojs/sitemap'; // @ts-check
 
 import { defineConfig } from "astro/config";
 
@@ -16,11 +17,11 @@ export default defineConfig( /** @type {import('astro').AstroUserConfig} */
   server: {
     host: true
   },
-  site: "https://smc181002.github.io/",
+  site: "https://smc181002.me",
   // site: "https://scis.uohyd.ac.in/~19mcme12/",
   // base: "~19mcme12",
   // Enable the Svelte renderer to support Svelte components.
-  integrations: [svelte()],
+  integrations: [svelte(), sitemap()],
   markdown: {
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)

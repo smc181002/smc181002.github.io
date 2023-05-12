@@ -26,24 +26,24 @@ const techDevops = [
 <head>
   <MainHead title="Meher Chaitanya - Home" description="Meher Chaitanya: Cloud Architect, Web developer..." />
 </head>
-<body class="dark:bg-matty-900 selection:bg-blue-500 dark:selection:bg-blue-400 dark:selection:text-matty-900 selection:text-blue-50 text-xl text-matty-800 overflow-x-hidden">
+<body class="dark:bg-matty-900 selection:bg-blue-500 dark:selection:bg-blue-400 dark:selection:text-matty-900 selection:text-blue-50 text-xl text-matty-800 dark:text-matty-50 overflow-x-hidden">
   <div class="z-[100] fixed w-screen ">
-    <Nav active="/resume"/>
+    <Nav active="resume"/>
   </div>
   <div class="prose dark:prose-invert prose-custom flex flex-col w-full px-4 tbl:px-14 lpt:px-0 max-w-none lpt:w-3/4 lpt-lg:w-4/6 mx-auto min-h-screen">
-    <div class="flex-1 pt-24 font-sans bg-matty">
-        <div class="text-lg"> Check out my <a target="_blank" href="https://docs.google.com/document/d/e/2PACX-1vRnbLgEZsDC7xzRM_hJrET3WnkvHgMgL1t0Va5BPogfam4-O5uNzVQi5GtxfCChgOvEZBSGw2_9GvZ1/pub" class="font-sans">Resume Here </a></div>
+    <div class="flex-1 pt-24 font-roboto-flex bg-matty">
+        <div class="text-lg"> Check out my <a target="_blank" href="https://docs.google.com/document/d/e/2PACX-1vRnbLgEZsDC7xzRM_hJrET3WnkvHgMgL1t0Va5BPogfam4-O5uNzVQi5GtxfCChgOvEZBSGw2_9GvZ1/pub" class="font-roboto-flex">Resume Here </a></div>
         <!-- <iframe class="w-full h-[28rem] lpt:flex hidden border-2 border-matty-100 rounded-lg shadow" src="https://docs.google.com/document/d/e/2PACX-1vRnbLgEZsDC7xzRM_hJrET3WnkvHgMgL1t0Va5BPogfam4-O5uNzVQi5GtxfCChgOvEZBSGw2_9GvZ1/pub"></iframe> -->
         <h2 class="font-medium">Technologies worked with</h2>
         <h3 class="font-medium">Full Stack</h3>
-        <div class="grid tbl:grid-cols-2 lpt:grid-cols-3 lpt-lg:grid-cols-4 gap-x-4 gap-y-8 font-sans bg-matty">
+        <div class="grid tbl:grid-cols-2 lpt:grid-cols-3 lpt-lg:grid-cols-4 gap-x-4 gap-y-8 font-roboto-flex bg-matty">
             {techSoftware.map(({name, logo}) => (
                 <TechView name={name} logo={logo} />
             ))}
         </div>
         <hr />
         <h3 class="font-medium">Devops</h3>
-        <div class="grid tbl:grid-cols-2 lpt:grid-cols-3 lpt-lg:grid-cols-4 gap-x-4 gap-y-8 font-sans bg-matty">
+        <div class="grid tbl:grid-cols-2 lpt:grid-cols-3 lpt-lg:grid-cols-4 gap-x-4 gap-y-8 font-roboto-flex bg-matty">
             {techDevops.map(({name, logo}) => (
                 <TechView name={name} logo={logo} />
             ))}
@@ -53,7 +53,7 @@ const techDevops = [
                 Hi! My name is Meher Chaitanya and I am currently a <b>4th year student</b>  at the University of Hyderabad, pursuing my <b> I.M.Tech </b> degree. I have a strong background in dev-ops and cloud computing, and have gained hands-on experience working with various tools and technologies in these areas. Some of the dev-ops tools that I have worked with include containers with Kubernetes and OpenShift, and CI/CD with Jenkins. In the realm of cloud computing, I have experience working with tools such as AWS, OpenFaaS, and Minio.
             </p>
             <p>
-                To demonstrate my skills and knowledge, I have built several mini projects at an industry level. These projects have allowed me to apply my skills and knowledge in a practical setting, and have given me valuable experience working on real-world problems. Here is the link for the <a href={`${import.meta.env.BASE_URL}projects`} class="text-blue-500 dark:text-blue-300 font-sans">projects</a>  page
+                To demonstrate my skills and knowledge, I have built several mini projects at an industry level. These projects have allowed me to apply my skills and knowledge in a practical setting, and have given me valuable experience working on real-world problems. Here is the link for the <a href={`${import.meta.env.BASE_URL}projects`} class="text-blue-500 dark:text-blue-300 font-roboto-flex">projects</a>  page
             </p>
             <p>
                 In addition to my work on these projects, I also enjoy sharing my knowledge and expertise through blogging. I write about the concepts and technologies that I have mastered in order to help others learn and grow, as well as to give back to the tech community.

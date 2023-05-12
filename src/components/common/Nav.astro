@@ -10,7 +10,7 @@ const actionsList = [
 // let hover = " hover:underline hover:decoration-4 transition-all hover:decoration-indigo-500 dark:decoration-indigo-300 hover:underline-offset-2 ";
 let hover = "  ";
 function activeHighlight(action) {
-  return (active == action.path) ? "underline decoration-2 decoration-indigo-500 dark:decoration-indigo-300  underline-offset-2 text-matty-700 font-medium" : "";
+  return (active == action.path) ? "underline decoration-2 decoration-indigo-500 dark:decoration-indigo-300 underline-offset-2 text-matty-700 font-medium " : "";
 }
 ---
 
@@ -22,12 +22,12 @@ function activeHighlight(action) {
         src={import.meta.env.BASE_URL + "assets/logo.svg" }
         alt="logo" 
         class="w-[24px] mr-2 tbl:m-0"> 
-      <span class="lpt:ml-4 dark:text-white font-['Poppins'] lpt:inline hidden text-md font-medium">Meher Chaitanya</span> 
+      <span class="lpt:ml-4 dark:text-white font-roboto-flex lpt:inline hidden text-md font-medium">Meher Chaitanya</span> 
     </a>
     {
       !active && 
     <a href="#blogs"
-    class="tbl:ml-4 text-sm tbl:text-base lpt:ml-16 lpt-lg:ml-24 font-['Poppins'] font-medium flex items-center gap-2 dark:text-matty-50">
+    class="tbl:ml-4 text-sm tbl:text-base lpt:ml-16 lpt-lg:ml-24 font-roboto-flex font-medium flex items-center gap-2 dark:text-matty-50">
       Blogs 
       <span class="material-symbols-rounded animate-bounce"> arrow_circle_down </span> 
     </a>
@@ -51,10 +51,10 @@ function activeHighlight(action) {
       </div>
     </div>
 
-    <div class="ml-2 tbl:ml-4 lpt:ml-6 text-matty-900 font-medium dark:text-white font-['Poppins'] flex gap-2 tbl:gap-4 lpt:gap-6 items-center text-sm">
+    <div class="font-roboto-flex ml-2 tbl:ml-4 lpt:ml-6 text-matty-900 font-medium dark:text-white font-['Poppins'] flex gap-2 tbl:gap-4 lpt:gap-6 items-center text-sm">
       {actionsList.map( (action) => (
         <a 
-          class={activeHighlight(action) + /* hover + */ "text-sm tbl:text-base dark:text-white"} 
+          class={activeHighlight(action) + /* hover + */ "font-roboto-flex text-sm tbl:text-base dark:text-white"} 
           href={import.meta.env.BASE_URL + action.path}>
           {action.name}
         </a>
