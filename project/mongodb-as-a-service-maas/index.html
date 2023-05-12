@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth scroll-pt-24">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+
+<title>A Case Study of Automated Kubernetes deployment of production level Database - MongoDB as a Service</title>
+
+
+
+<link rel="canonical" href="https://smc181002.me/project/mongodb-as-a-service-maas/">
+
+<meta name="description" content="Donations are a great way to give back to the world by helping the person in needful. But many organizations being centralized can change and tamper the transactions...
+">
+
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="A Case Study of Automated Kubernetes deployment of production level Database - MongoDB as a Service's Website">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1586867072539-6c4a71a5b82a?ixlib=rb-4.0.3&#38;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&#38;auto=format&#38;fit=crop&#38;w=870&#38;q=80">
+<meta property="og:url" content="https://smc181002.me/project/mongodb-as-a-service-maas/">
+
+
+<meta property="og:description" content="Donations are a great way to give back to the world by helping the person in needful. But many organizations being centralized can change and tamper the transactions...
+">
+
+
+
+
+
+
+<meta property="og:image:url" content="https://images.unsplash.com/photo-1586867072539-6c4a71a5b82a?ixlib=rb-4.0.3&#38;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&#38;auto=format&#38;fit=crop&#38;w=870&#38;q=80">
+
+<meta property="og:image:type" content="image/jpeg">
+
+<meta property="og:image:height">
+<meta property="og:image:alt" content="Meher Chaitanya">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@smc181002">
+
+
+
+
+<meta name="twitter:creator" content="@smc181002">
+
+
+
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=VT323&family=Atkinson+Hyperlegible:wght@400&display=swap">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&family=Atkinson+Hyperlegible:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<meta name="generator" content="Astro v1.8.0">
+<link rel="alternate" type="application/rss+xml" title="smc181002 » Projects" href="https://smc181002.me/rss.xml">
+<link rel="sitemap" href="/sitemap-index.xml">
+  <link rel="stylesheet" href="/assets/avml-and-volatility3.bdd4f8a0.css" /></head>
+  <body class="bg-matty-50 dark:bg-matty-900 selection:bg-blue-500/90 dark:selection:bg-blue-400/90 dark:selection:text-matty-900 selection:text-blue-50 overflow-x-hidden font-roboto-flex">
+    <div class="z-[100] fixed w-screen print:hidden"> 
+      
+<nav class="flex px-2 py-6 tbl:px-6 tbl:py-6 z-[10000] w-full backdrop-blur flex-none bg-matty-50/80 dark:bg-matty-900/80 supports-backdrop-blur:bg-white/50 border-b-[1px] dark:border-b-matty-400/20 border-b-matty-900/10 gap-x-4 tbl:gap-x-0">
+  <div class="flex mx-auto w-full flex-1 items-center text-center text-matty-900">
+    <a href="/" class="flex items-center"> 
+      <img src="/assets/logo.svg" alt="logo" class="w-[24px] mr-2 tbl:m-0"> 
+      <span class="lpt:ml-4 dark:text-white font-roboto-flex lpt:inline hidden text-md font-medium">Meher Chaitanya</span> 
+    </a>
+    
+  </div>
+  <div class="flex">
+
+    <div class="theme-toggle flex">
+      <div class="flex">
+        <input type="radio" id="light" name="theme-toggle" value="light" class="peer hidden" aria-label="Use light theme">
+        <label for="light" title="Use light theme" class="cursor-pointer text-matty-200 peer-checked:hidden flex items-center">
+          <span class="material-symbols-rounded"> light_mode </span>
+        </label>
+      </div>
+
+      <div class="flex">
+        <input type="radio" id="dark" name="theme-toggle" value="dark" class="peer hidden" aria-label="Use dark theme">
+        <label for="dark" title="Use dark theme" class="cursor-pointer text-matty-800 peer-checked:hidden dark:peer-checked:text-white flex items-center">
+          <span class="material-symbols-rounded"> dark_mode </span>
+        </label>
+      </div>
+    </div>
+
+    <div class="font-roboto-flex ml-2 tbl:ml-4 lpt:ml-6 text-matty-900 font-medium dark:text-white font-['Poppins'] flex gap-2 tbl:gap-4 lpt:gap-6 items-center text-sm">
+      <a class="underline decoration-2 decoration-indigo-500 dark:decoration-indigo-300 underline-offset-2 text-matty-700 font-medium font-roboto-flex text-sm tbl:text-base dark:text-white" href="/projects">
+          Projects
+        </a><a class="font-roboto-flex text-sm tbl:text-base dark:text-white" href="/resume">
+          Resume
+        </a><a class="font-roboto-flex text-sm tbl:text-base dark:text-white" href="/contact">
+          Contact
+        </a>
+    </div>
+  </div>
+</nav>
+<script>
+  // localStorage.theme = 'light'
+  const checkTheme = () => {
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+      document.getElementById('dark').checked = true
+      document.getElementById('light').checked = false
+    } else {
+      document.documentElement.classList.remove('dark')
+      document.getElementById('light').checked = true
+      document.getElementById('dark').checked = false
+    }
+  }
+
+  checkTheme()
+
+  document.getElementById('dark').addEventListener("click", () => {
+    localStorage.theme = 'dark'
+    checkTheme()
+  })
+
+  document.getElementById('light').addEventListener("click", () => {
+    localStorage.theme = 'light'
+    checkTheme()
+  })
+
+</script> 
+    </div>
+    <div class="relative flex flex-col min-h-screen">
+      <img src="https://images.unsplash.com/photo-1586867072539-6c4a71a5b82a?ixlib=rb-4.0.3&#38;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&#38;auto=format&#38;fit=crop&#38;w=870&#38;q=80" alt="A Case Study of Automated Kubernetes deployment of production level Database - MongoDB as a Service" class="object-cover pt-16 tbl:h-[60vh] min-w-full">
+      <!-- <div class="flex -translate-y-6 py-10 w-full backdrop-blur-3xl flex-none bg-gradient-to-t from-matty-50 dark:from-matty-900">
+      </div> -->
+      <div class="mt-16 mx-auto prose prose-matty dark:prose-invert prose-custom mbl-md:pt-2 tbl:pt-0 flex-1 px-2 mbl-md:px-2 tbl:px-8 lpt:px-16 max-w-none mbl-md:w-full tbl:w-full lpt:w-5/6 lpt-lg:w-4/6 tracking-wide prose-a:truncate">
+        <h1 class=""> A Case Study of Automated Kubernetes deployment of production level Database - MongoDB as a Service </h1>
+        <div class="flex gap-4 flex-wrap">
+          <div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    design
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    dev
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    branding
+</div>
+        </div>
+        <hr>
+        <h3 class="print:hidden">Read Time</h3>
+        <p class="print:hidden">~ 1 min read</p>
+        <h3>Authors</h3>
+        <div class="tbl:text-base lpt:text-lg lpt-lg:text-xl font-medium grid grid-cols-1 tbl:grid-cols-2 lpt-lg:grid-cols-3 gap-4 justify-items-start">
+          <div class="flex items-center gap-1">
+            <img class="not-prose border-0 m-0 rounded-full w-4 h-4 tbl:w-6 tbl:h-6 lpt:w-10 lpt:h-10" src="https://avatars.githubusercontent.com/u/53662575" alt="profile">
+            <a href="https://github.com/smc181002" class="dark:text-matty-50" target="_blank"> Meher Chaitanya </a>
+          </div>
+          <div class="flex items-center gap-1">
+              <img class="not-prose border-0 m-0 rounded-full w-4 h-4 tbl:w-6 tbl:h-6 lpt:w-10 lpt:h-10" src="https://avatars.githubusercontent.com/u/54907384" alt="profile">
+              <a href="https://github.com/vivekkr2001" class="dark:text-matty-50" target="_blank">Vivek Kumar</a>
+            </div><div class="flex items-center gap-1">
+              <img class="not-prose border-0 m-0 rounded-full w-4 h-4 tbl:w-6 tbl:h-6 lpt:w-10 lpt:h-10" src="https://avatars.githubusercontent.com/u/60841152" alt="profile">
+              <a href="https://github.com/srinivas-commits" class="dark:text-matty-50" target="_blank">KPSSS Srinu</a>
+            </div><div class="flex items-center gap-1">
+              <img class="not-prose border-0 m-0 rounded-full w-4 h-4 tbl:w-6 tbl:h-6 lpt:w-10 lpt:h-10" src="https://avatars.githubusercontent.com/u/86924837" alt="profile">
+              <a href="https://github.com/SrikrishnaDantu" class="dark:text-matty-50" target="_blank">Srikrishna Dantu</a>
+            </div>
+
+        </div>
+        <hr>
+        <div class="flex flex-col dark:text-matty-200">
+          <p>Script in Progress…</p>
+        </div>
+      </div>
+    </div>
+    <div class="z-[10] fixed bottom-0 w-screen flex flex-col h-screen"> 
+  <div class="flex-1 backdrop-blur bg-white/80 dark:bg-matty-900/80"> </div>
+  <div class="flex justify-center items-center z-[10000] w-full py-2 bg-amber-200 text-amber-700 text-center">
+      This blog is still in a draft state
+  </div>
+</div>
+  </body></html>

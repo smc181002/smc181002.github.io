@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth scroll-pt-24">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+
+<title>Analysing the memory in Linux machines with the volatility3 Framework and AVML</title>
+
+
+
+<link rel="canonical" href="https://smc181002.me/project/avml-and-volatility3/">
+
+
+
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="Analysing the memory in Linux machines with the volatility3 Framework and AVML's Website">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/project/avml-and-volatility3/avml-volatility3.webp">
+<meta property="og:url" content="https://smc181002.me/project/avml-and-volatility3/">
+
+
+
+
+
+
+
+
+
+<meta property="og:image:url" content="/assets/project/avml-and-volatility3/avml-volatility3.webp">
+
+<meta property="og:image:type" content="image/jpeg">
+
+<meta property="og:image:height">
+<meta property="og:image:alt" content="Meher Chaitanya">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@smc181002">
+
+
+
+
+<meta name="twitter:creator" content="@smc181002">
+
+
+
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=VT323&family=Atkinson+Hyperlegible:wght@400&display=swap">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&family=Atkinson+Hyperlegible:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<meta name="generator" content="Astro v1.8.0">
+<link rel="alternate" type="application/rss+xml" title="smc181002 » Projects" href="https://smc181002.me/rss.xml">
+<link rel="sitemap" href="/sitemap-index.xml">
+  <link rel="stylesheet" href="/assets/avml-and-volatility3.bdd4f8a0.css" /></head>
+  <body class="bg-matty-50 dark:bg-matty-900 selection:bg-blue-500/90 dark:selection:bg-blue-400/90 dark:selection:text-matty-900 selection:text-blue-50 overflow-x-hidden font-roboto-flex">
+    <div class="z-[100] fixed w-screen print:hidden"> 
+      
+<nav class="flex px-2 py-6 tbl:px-6 tbl:py-6 z-[10000] w-full backdrop-blur flex-none bg-matty-50/80 dark:bg-matty-900/80 supports-backdrop-blur:bg-white/50 border-b-[1px] dark:border-b-matty-400/20 border-b-matty-900/10 gap-x-4 tbl:gap-x-0">
+  <div class="flex mx-auto w-full flex-1 items-center text-center text-matty-900">
+    <a href="/" class="flex items-center"> 
+      <img src="/assets/logo.svg" alt="logo" class="w-[24px] mr-2 tbl:m-0"> 
+      <span class="lpt:ml-4 dark:text-white font-roboto-flex lpt:inline hidden text-md font-medium">Meher Chaitanya</span> 
+    </a>
+    
+  </div>
+  <div class="flex">
+
+    <div class="theme-toggle flex">
+      <div class="flex">
+        <input type="radio" id="light" name="theme-toggle" value="light" class="peer hidden" aria-label="Use light theme">
+        <label for="light" title="Use light theme" class="cursor-pointer text-matty-200 peer-checked:hidden flex items-center">
+          <span class="material-symbols-rounded"> light_mode </span>
+        </label>
+      </div>
+
+      <div class="flex">
+        <input type="radio" id="dark" name="theme-toggle" value="dark" class="peer hidden" aria-label="Use dark theme">
+        <label for="dark" title="Use dark theme" class="cursor-pointer text-matty-800 peer-checked:hidden dark:peer-checked:text-white flex items-center">
+          <span class="material-symbols-rounded"> dark_mode </span>
+        </label>
+      </div>
+    </div>
+
+    <div class="font-roboto-flex ml-2 tbl:ml-4 lpt:ml-6 text-matty-900 font-medium dark:text-white font-['Poppins'] flex gap-2 tbl:gap-4 lpt:gap-6 items-center text-sm">
+      <a class="underline decoration-2 decoration-indigo-500 dark:decoration-indigo-300 underline-offset-2 text-matty-700 font-medium font-roboto-flex text-sm tbl:text-base dark:text-white" href="/projects">
+          Projects
+        </a><a class="font-roboto-flex text-sm tbl:text-base dark:text-white" href="/resume">
+          Resume
+        </a><a class="font-roboto-flex text-sm tbl:text-base dark:text-white" href="/contact">
+          Contact
+        </a>
+    </div>
+  </div>
+</nav>
+<script>
+  // localStorage.theme = 'light'
+  const checkTheme = () => {
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+      document.getElementById('dark').checked = true
+      document.getElementById('light').checked = false
+    } else {
+      document.documentElement.classList.remove('dark')
+      document.getElementById('light').checked = true
+      document.getElementById('dark').checked = false
+    }
+  }
+
+  checkTheme()
+
+  document.getElementById('dark').addEventListener("click", () => {
+    localStorage.theme = 'dark'
+    checkTheme()
+  })
+
+  document.getElementById('light').addEventListener("click", () => {
+    localStorage.theme = 'light'
+    checkTheme()
+  })
+
+</script> 
+    </div>
+    <div class="relative flex flex-col min-h-screen">
+      <img src="/assets/project/avml-and-volatility3/avml-volatility3.webp" alt="Analysing the memory in Linux machines with the volatility3 Framework and AVML" class="object-cover pt-16 tbl:h-[60vh] min-w-full">
+      <!-- <div class="flex -translate-y-6 py-10 w-full backdrop-blur-3xl flex-none bg-gradient-to-t from-matty-50 dark:from-matty-900">
+      </div> -->
+      <div class="mt-16 mx-auto prose prose-matty dark:prose-invert prose-custom mbl-md:pt-2 tbl:pt-0 flex-1 px-2 mbl-md:px-2 tbl:px-8 lpt:px-16 max-w-none mbl-md:w-full tbl:w-full lpt:w-5/6 lpt-lg:w-4/6 tracking-wide prose-a:truncate">
+        <h1 class=""> Analysing the memory in Linux machines with the volatility3 Framework and AVML </h1>
+        <div class="flex gap-4 flex-wrap">
+          <div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    forensics
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    memory
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    linux
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    avml
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    microsoft
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    volatility
+</div>
+        </div>
+        <hr>
+        <h3 class="print:hidden">Read Time</h3>
+        <p class="print:hidden">~ 7 min read</p>
+        <h3>Author</h3>
+        <div class="tbl:text-base lpt:text-lg lpt-lg:text-xl font-medium grid grid-cols-1 tbl:grid-cols-2 lpt-lg:grid-cols-3 gap-4 justify-items-start">
+          <div class="flex items-center gap-1">
+            <img class="not-prose border-0 m-0 rounded-full w-4 h-4 tbl:w-6 tbl:h-6 lpt:w-10 lpt:h-10" src="https://avatars.githubusercontent.com/u/53662575" alt="profile">
+            <a href="https://github.com/smc181002" class="dark:text-matty-50" target="_blank"> Meher Chaitanya </a>
+          </div>
+          
+
+        </div>
+        <hr>
+        <div class="flex flex-col dark:text-matty-200">
+          <h2 id="tldr">TL;DR</h2>
+<p>This project consists of the procedure to create a memory
+image for a system using AVLM from Microsoft and perform
+analysis on that system using Volatility3 framework.</p>
+<h2 id="avml-microsoft">AVML (Microsoft)</h2>
+<p>AVML is a memory acquisition tool developed under microsoft
+and is a portable tool build in rust. This allows the
+software to be executed as a static binary and doesnt
+require any knowledge of the target OS distribution or the
+kernel without which tools like <code>LiME</code> wont work.</p>
+<p>AVML internally uses the LiME output format (if compression
+is not used) for imaging and provides extended features
+allowing the image to be pushed to object storages.</p>
+<p>Compression feature in AVML will be useful in terms of
+portability as exporting bigger RAM size machines will use
+a lot more memory.</p>
+<h3 id="installation-of-avml">Installation of AVML</h3>
+<p>The Software required in the Forensics system are:</p>
+<ul>
+<li><code>wget</code></li>
+</ul>
+<p>The current latest avml can be found in the github
+page in the release section. This project uses
+<a href="https://github.com/microsoft/avml/releases/tag/v0.11.0"><code>v0.11.0</code></a>.</p>
+<p>The software can be downloaded by running the command:</p>
+<pre is:raw="" class="astro-code" style="background-color: #FDF6E3; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #657B83">wget https://github.com/microsoft/avml/releases/download/v0.11.0/avml </span><span style="color: #859900">&#x26;&#x26;</span></span>
+<span class="line"><span style="color: #657B83">chmod +x avml</span></span></code></pre>
+<h3 id="creating-memory-image-with-avml">Creating memory image with AVML</h3>
+<p>To create the memory image, we just need to run the command</p>
+<pre is:raw="" class="astro-code" style="background-color: #FDF6E3; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #657B83">sudo ./avml --compressed ./linux-image.compressed.mem</span></span></code></pre>
+<p>The compressed memory image should now be extracted and
+this can be done with the help of <code>avml-convert</code> command
+also provided by avml in the github release page. This can
+be installed by using the below command.</p>
+<pre is:raw="" class="astro-code" style="background-color: #FDF6E3; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #657B83">wget https://github.com/microsoft/avml/releases/download/v0.11.0/avml-convert </span><span style="color: #859900">&#x26;&#x26;</span></span>
+<span class="line"><span style="color: #657B83">chmod +x avml-convert</span></span></code></pre>
+<h2 id="voalitlity-3">Voalitlity 3</h2>
+<h3 id="installation">Installation</h3>
+<p>The Software required in the Forensics system are:</p>
+<ul>
+<li><code>make</code></li>
+<li><code>dwarfdump</code></li>
+<li><code>gcc</code></li>
+<li><code>linux-headers-KERNEL_VERSION</code></li>
+</ul>
+<p>The <code>KERNEL_VERSION</code> can be obtained from the command
+<code>uname</code></p>
+<pre is:raw="" class="astro-code" style="background-color: #FDF6E3; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #657B83">uname -r</span></span>
+<span class="line"><span style="color: #93A1A1"># output: 5.15.0-67-generic</span></span></code></pre>
+<blockquote>
+<p>The important note is that the kernel release and the
+flavor of the Linux OS should exactly match inorder to
+perform analysis.</p>
+</blockquote>
+<h3 id="creating-debug-symbols-in-volatility">Creating debug symbols in volatility</h3>
+<p>First, we need to install the source code from the
+repository.</p>
+<pre is:raw="" class="astro-code" style="background-color: #FDF6E3; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #657B83">git clone https://github.com/volatilityfoundation/volatility3.git</span></span></code></pre>
+<p>Volatility3 made a move from <code>profiles</code> to <code>symbol tables</code>
+which is a major change from v2 to v3.
+<a href="https://volatility3.readthedocs.io/en/latest/vol2to3.html">Check all the changes here</a>.</p>
+<p>To get these symbol tables that are required as for the
+image, we can either find it in the
+<a href="https://isf-server.techanarchy.net/">Volatility isf-server</a>.</p>
+<p>The search term can be extracted from the volatility
+framework by running the below command.</p>
+<pre is:raw="" class="astro-code" style="background-color: #FDF6E3; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #657B83">python3 volatility3/vol.py -f ./linux-image.mem banners</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #93A1A1"># output: </span></span>
+<span class="line"><span style="color: #93A1A1"># 0xacbf6f7	Linux version 5.15.0-67-generic (buildd@lcy02-amd64-116) (gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, GNU ld (GNU Binutils for Ubuntu) 2.38) #74-Ubuntu SMP Wed Feb 22 14:14:39 UTC 2023 (Ubuntu 5.15.0-67.74-generic 5.15.85)</span></span>
+<span class="line"><span style="color: #93A1A1"># 0x27c00200	Linux version 5.15.0-67-generic (buildd@lcy02-amd64-116) (gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0, GNU ld (GNU Binutils for Ubuntu) 2.38) #74-Ubuntu SMP Wed Feb 22 14:14:39 UTC 2023 (Ubuntu 5.15.0-67.74-generic 5.15.85)</span></span>
+<span class="line"><span style="color: #93A1A1"># .</span></span>
+<span class="line"><span style="color: #93A1A1"># .</span></span></code></pre>
+<p>But if the string is not available(which in most case wont
+be available in custom environment of kernel like in my
+case), we need to build our own ISF (Intermediate Symbol
+Format) file. To achieve this, the volatility foundation
+provides us with tools required called <code>dwarf2json</code> that
+creates a dump json file.</p>
+<pre is:raw="" class="astro-code" style="background-color: #FDF6E3; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #657B83">git clone https://github.com/volatilityfoundation/dwarf2json.git </span><span style="color: #859900">&#x26;&#x26;</span><span style="color: #657B83"> \</span></span>
+<span class="line"><span style="color: #268BD2">cd</span><span style="color: #657B83"> dwarf2json/</span></span>
+<span class="line"><span style="color: #657B83">go build</span></span></code></pre>
+<p>To get this software, we can comiple from the source and to
+install this, we require <code>golang</code>. we can install the
+software using <code>sudo apt-get install golang-go</code>.</p>
+<p>Once we install the golang compiler, we run <code>go build</code> in
+<code>dwarf2json</code> directory and use the compiled output to run
+the below command.</p>
+<pre is:raw="" class="astro-code" style="background-color: #FDF6E3; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #657B83">sudo ./dwarf2json linux --elf /usr/lib/debug/boot/vmlinux-</span><span style="color: #2AA198">$(uname -r)</span><span style="color: #657B83"> </span><span style="color: #859900">></span><span style="color: #657B83"> output.json</span></span></code></pre>
+<blockquote>
+<p>Reference: <a href="https://volatility3.readthedocs.io/en/latest/symbol-tables.html">https://volatility3.readthedocs.io/en/latest/symbol-tables.html</a></p>
+</blockquote>
+<p>But when we do this in the real environment, we maynot
+have the kernel debug symbols readily donwloaded system.
+To download this, we need to add out own deb repos and the
+required GPG key into the keyrings.</p>
+<pre is:raw="" class="astro-code" style="background-color: #FDF6E3; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #657B83">codename=</span><span style="color: #2AA198">$(lsb_release -c </span><span style="color: #859900">|</span><span style="color: #2AA198"> awk  '{print $2}')</span></span>
+<span class="line"><span style="color: #657B83">sudo tee /etc/apt/sources.list.d/ddebs.list </span><span style="color: #859900">&#x3C;&#x3C;</span><span style="color: #2AA198"> </span><span style="color: #859900">EOF</span></span>
+<span class="line"><span style="color: #2AA198">deb http://ddebs.ubuntu.com/ </span><span style="color: #859900">${</span><span style="color: #268BD2">codename</span><span style="color: #859900">}</span><span style="color: #2AA198">      main restricted universe multiverse</span></span>
+<span class="line"><span style="color: #2AA198">deb http://ddebs.ubuntu.com/ </span><span style="color: #859900">${</span><span style="color: #268BD2">codename</span><span style="color: #859900">}</span><span style="color: #2AA198">-security main restricted universe multiverse</span></span>
+<span class="line"><span style="color: #2AA198">deb http://ddebs.ubuntu.com/ </span><span style="color: #859900">${</span><span style="color: #268BD2">codename</span><span style="color: #859900">}</span><span style="color: #2AA198">-updates  main restricted universe multiverse</span></span>
+<span class="line"><span style="color: #2AA198">deb http://ddebs.ubuntu.com/ </span><span style="color: #859900">${</span><span style="color: #268BD2">codename</span><span style="color: #859900">}</span><span style="color: #2AA198">-proposed main restricted universe multiverse</span></span>
+<span class="line"><span style="color: #859900">EOF</span></span></code></pre>
+<pre is:raw="" class="astro-code" style="background-color: #FDF6E3; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"></span>
+<span class="line"><span style="color: #93A1A1"># FOR UBUNTU >= 16.04</span></span>
+<span class="line"><span style="color: #657B83">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C8CAB6595FDFF622</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #93A1A1"># FOR UBUNTU older versions</span></span>
+<span class="line"><span style="color: #657B83">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ECDCAD72428D7C01</span></span></code></pre>
+<blockquote>
+<p>Adding the keyring from public newtorks like university
+internet could be restricted.</p>
+</blockquote>
+<p>Now update the repo and start installing the apt debug
+symbols according to the kernel.</p>
+<pre is:raw="" class="astro-code" style="background-color: #FDF6E3; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #657B83">sudo apt-get update </span><span style="color: #859900">&#x26;&#x26;</span><span style="color: #657B83"> \</span></span>
+<span class="line"><span style="color: #657B83">sudo apt-get install -y linux-image-</span><span style="color: #2AA198">$(uname -r)</span><span style="color: #657B83">-dbgsym</span></span></code></pre>
+<p>The above will add the <code>vmlinux-$(uname -r)</code> into the
+required directory that can be used to construct the json
+formatted debug symbols.</p>
+<p>The <u><strong>important point</strong></u> to note here is that the
+image maynot be built with minimal memory and for building
+large kernels for debug symbols would require atleast
+<code>8GiB</code> main memory.</p>
+<p>After building the <code>output.json</code> file finally, it should be
+moved to <code>volatility3/volatility3/symbols</code> and the symbols
+will be automatically parsed by the framework to perform on
+the required memory image.</p>
+<blockquote>
+<p>Reference: <a href="https://hadibrais.wordpress.com/2017/03/13/installing-ubuntu-kernel-debugging-symbols/">https://hadibrais.wordpress.com/2017/03/13/installing-ubuntu-kernel-debugging-symbols/</a></p>
+</blockquote>
+<h3 id="using-volatility">Using Volatility</h3>
+<p>Once the symbol configuration is done, we can use the image
+created from <code>avml</code> to use it in analysing the information
+like programs running currently with <code>linux.pstree.PsTree</code>
+option and to check the network connections with
+<code>linux.sockstart</code> option.</p>
+<p>Help command can be used to find out all the options that
+can be used.</p>
+<pre is:raw="" class="astro-code" style="background-color: #FDF6E3; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #657B83">python3 volatility3/vol.py -f ./linux-image.mem --help</span></span></code></pre>
+<h2 id="using-volshell">Using Volshell</h2>
+<p>This code basically does the same thing as pslist outputted
+as in the plugin. But we have access to all the attributes
+of the <code>task_list</code> class.</p>
+<pre is:raw="" class="astro-code" style="background-color: #FDF6E3; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #859900">from</span><span style="color: #657B83"> volatility3.plugins.linux </span><span style="color: #859900">import</span><span style="color: #657B83"> pslist</span></span>
+<span class="line"><span style="color: #859900">from</span><span style="color: #657B83"> volatility3.framework.objects </span><span style="color: #859900">import</span><span style="color: #657B83"> utility</span></span>
+<span class="line"><span style="color: #859900">from</span><span style="color: #657B83"> volatility3.framework.renderers </span><span style="color: #859900">import</span><span style="color: #657B83"> format_hints</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #268BD2">print</span><span style="color: #657B83">(</span><span style="color: #2AA198">"OFFSET (V)      PID     TID     PPID    COMM"</span><span style="color: #657B83">)</span></span>
+<span class="line"><span style="color: #859900">for</span><span style="color: #657B83"> proc </span><span style="color: #859900">in</span><span style="color: #657B83"> pslist.PsList.list_tasks(</span><span style="color: #268BD2">self</span><span style="color: #657B83">.context, </span><span style="color: #268BD2">self</span><span style="color: #657B83">.config[</span><span style="color: #2AA198">'kernel'</span><span style="color: #657B83">]):</span></span>
+<span class="line"><span style="color: #657B83">    </span><span style="color: #268BD2">print</span><span style="color: #657B83">(</span></span>
+<span class="line"><span style="color: #657B83">            </span><span style="color: #268BD2">hex</span><span style="color: #657B83">(format_hints.Hex(proc0.vol.offset)) , </span><span style="color: #2AA198">"</span><span style="color: #CB4B16">\t</span><span style="color: #2AA198">"</span><span style="color: #657B83"> , </span></span>
+<span class="line"><span style="color: #657B83">            proc.pid, </span><span style="color: #2AA198">"</span><span style="color: #CB4B16">\t</span><span style="color: #2AA198">"</span><span style="color: #657B83"> , </span></span>
+<span class="line"><span style="color: #657B83">            proc.parent.tgid,  </span><span style="color: #2AA198">"</span><span style="color: #CB4B16">\t</span><span style="color: #2AA198">"</span><span style="color: #657B83"> , </span></span>
+<span class="line"><span style="color: #657B83">            proc.tgid, </span><span style="color: #2AA198">"</span><span style="color: #CB4B16">\t</span><span style="color: #2AA198">"</span><span style="color: #657B83"> , </span></span>
+<span class="line"><span style="color: #657B83">            utility.array_to_string(proc.comm), </span><span style="color: #2AA198">"</span><span style="color: #CB4B16">\t</span><span style="color: #2AA198">"</span><span style="color: #657B83">)</span></span></code></pre>
+<pre is:raw="" class="astro-code" style="background-color: #FDF6E3; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #859900">>>></span><span style="color: #657B83"> </span><span style="color: #268BD2">dir</span><span style="color: #657B83">(proc0)</span></span>
+<span class="line"><span style="color: #93A1A1"># Output: ['VolTemplateProxy', '__abstractmethods__', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattr__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__mce_reserved', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__state', '__str__', '__subclasshook__', '__weakref__', '_abc_impl', '_add_process_layer', '_check_members', '_concrete_members', '_context', '_vol', 'acct_rss_mem1', 'acct_timexpd', 'acct_vm_mem1', 'active_memcg', 'active_mm', 'add_process_layer', 'alloc_lock', 'atomic_flags', 'audit_context', 'backing_dev_info', 'bio_list', 'blocked', 'bpf_ctx', 'bpf_storage', 'btrace_seq', 'cached_requested_key', 'capture_control', 'cast', 'cg_list', 'cgroups', 'children', 'clear_child_tid', 'closid', 'comm', 'compat_robust_list', 'core_cookie', 'core_node', 'core_occupation', 'cpu', 'cpus_mask', 'cpus_ptr', 'cpuset_mem_spread_rotor', 'cpuset_slab_spread_rotor', 'cred', 'curr_ret_depth', 'curr_ret_stack', 'default_timer_slack_ns', 'delays', 'dirty_paused_when', 'dl', 'exit_code', 'exit_signal', 'exit_state', 'files', 'flags', 'frozen', 'fs', 'ftrace_timestamp', 'futex_exit_mutex', 'futex_state', 'get_process_memory_sections', 'get_symbol_table_name', 'get_threads', 'group_leader', 'gtime', 'has_member', 'has_valid_member', 'has_valid_members', 'il_prev', 'in_eventfd', 'in_execve', 'in_iowait', 'in_memstall', 'in_ubsan', 'in_user_fault', 'io_context', 'io_uring', 'ioac', 'is_kernel_thread', 'is_thread_group_leader', 'is_user_thread', 'jobctl', 'journal_info', 'kmap_ctrl', 'kretprobe_instances', 'l1d_flush_kill', 'last_siginfo', 'last_sum_exec_runtime', 'last_switch_count', 'last_switch_time', 'last_task_numa_placement', 'last_wakee', 'loginuid', 'maj_flt', 'mce_addr', 'mce_count', 'mce_kflags', 'mce_kill_me', 'mce_ripv', 'mce_vaddr', 'mce_whole_page', 'member', 'memcg_in_oom', 'memcg_nr_pages_over_high', 'memcg_oom_gfp_mask', 'memcg_oom_order', 'mempolicy', 'mems_allowed', 'mems_allowed_seq', 'migration_disabled', 'migration_flags', 'migration_pending', 'min_flt', 'mm', 'nameidata', 'nivcsw', 'no_cgroup_migration', 'node_stamp', 'normal_prio', 'nr_cpus_allowed', 'nr_dirtied', 'nr_dirtied_pause', 'nsproxy', 'numa_faults', 'numa_faults_locality', 'numa_group', 'numa_migrate_retry', 'numa_pages_migrated', 'numa_preferred_nid', 'numa_scan_period', 'numa_scan_period_max', 'numa_scan_seq', 'numa_work', 'nvcsw', 'on_cpu', 'on_rq', 'oom_reaper_list', 'oom_reaper_timer', 'pagefault_disabled', 'parent', 'parent_exec_id', 'patch_state', 'pdeath_signal', 'pending', 'perf_event_ctxp', 'perf_event_list', 'perf_event_mutex', 'personality', 'pf_io_worker', 'pi_blocked_on', 'pi_lock', 'pi_state_cache', 'pi_state_list', 'pi_top_task', 'pi_waiters', 'pid', 'pid_links', 'plug', 'policy', 'posix_cputimers', 'posix_cputimers_work', 'preempt_notifiers', 'pref_node_fork', 'prev_cputime', 'prio', 'psi_flags', 'ptrace', 'ptrace_entry', 'ptrace_message', 'ptraced', 'ptracer_cred', 'pushable_dl_tasks', 'pushable_tasks', 'rcu', 'rcu_users', 'real_blocked', 'real_cred', 'real_parent', 'recent_used_cpu', 'reclaim_state', 'restart_block', 'restore_sigmask', 'ret_stack', 'rmid', 'robust_list', 'rseq', 'rseq_event_mask', 'rseq_sig', 'rss_stat', 'rt', 'rt_priority', 'sas_ss_flags', 'sas_ss_size', 'sas_ss_sp', 'saved_sigmask', 'sched_class', 'sched_contributes_to_load', 'sched_info', 'sched_migrated', 'sched_psi_wake_requeue', 'sched_remote_wakeup', 'sched_reset_on_fork', 'sched_task_group', 'se', 'seccomp', 'security', 'self_exec_id', 'sequential_io', 'sequential_io_avg', 'sessionid', 'set_child_tid', 'sibling', 'sighand', 'signal', 'splice_pipe', 'stack', 'stack_canary', 'stack_refcount', 'stack_vm_area', 'start_boottime', 'start_time', 'static_prio', 'stime', 'syscall_dispatch', 'sysvsem', 'sysvshm', 'task_frag', 'task_works', 'tasks', 'tgid', 'thread', 'thread_group', 'thread_info', 'thread_node', 'thread_pid', 'throttle_queue', 'timer_slack_ns', 'tlb_ubc', 'total_numa_faults', 'trace', 'trace_overrun', 'trace_recursion', 'tracing_graph_pause', 'trc_holdout_list', 'trc_ipi_to_cpu', 'trc_reader_checked', 'trc_reader_nesting', 'trc_reader_special', 'uclamp', 'uclamp_req', 'usage', 'use_memdelay', 'user_cpus_ptr', 'utask', 'utime', 'vfork_done', 'vmacache', 'vol', 'wake_cpu', 'wake_entry', 'wake_q', 'wakee_flip_decay_ts', 'wakee_flips', 'write']</span></span></code></pre>
+<h2 id="links">Links</h2>
+<ul>
+<li>AVML - <a href="https://github.com/microsoft/avml.git">https://github.com/microsoft/avml.git</a></li>
+<li>Voalitlity3 - <a href="https://github.com/volatilityfoundation/volatility3.git">https://github.com/volatilityfoundation/volatility3.git</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+    
+  </body></html>

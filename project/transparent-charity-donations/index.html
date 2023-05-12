@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth scroll-pt-24">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+
+<title>Towards a Decentralised web - Building Smart Contracts to support Transparent Charity Donations Trust</title>
+
+
+
+<link rel="canonical" href="https://smc181002.me/project/transparent-charity-donations/">
+
+<meta name="description" content="Charitable donations are an important way for individuals and organizations to give back to their communities and make a positive impact in the world. However, it can be difficult for donors to know where their money is going and whether it is being used effectively. This is where trusted transparent charity donations come in.
+">
+
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="Towards a Decentralised web - Building Smart Contracts to support Transparent Charity Donations Trust's Website">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/project/avml-and-volatility3/Mask group.png">
+<meta property="og:url" content="https://smc181002.me/project/transparent-charity-donations/">
+
+
+<meta property="og:description" content="Charitable donations are an important way for individuals and organizations to give back to their communities and make a positive impact in the world. However, it can be difficult for donors to know where their money is going and whether it is being used effectively. This is where trusted transparent charity donations come in.
+">
+
+
+
+
+
+
+<meta property="og:image:url" content="/assets/project/avml-and-volatility3/Mask group.png">
+
+<meta property="og:image:type" content="image/jpeg">
+
+<meta property="og:image:height">
+<meta property="og:image:alt" content="Meher Chaitanya">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@smc181002">
+
+
+
+
+<meta name="twitter:creator" content="@smc181002">
+
+
+
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=VT323&family=Atkinson+Hyperlegible:wght@400&display=swap">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&family=Atkinson+Hyperlegible:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<meta name="generator" content="Astro v1.8.0">
+<link rel="alternate" type="application/rss+xml" title="smc181002 » Projects" href="https://smc181002.me/rss.xml">
+<link rel="sitemap" href="/sitemap-index.xml">
+  <link rel="stylesheet" href="/assets/avml-and-volatility3.bdd4f8a0.css" /></head>
+  <body class="bg-matty-50 dark:bg-matty-900 selection:bg-blue-500/90 dark:selection:bg-blue-400/90 dark:selection:text-matty-900 selection:text-blue-50 overflow-x-hidden font-roboto-flex">
+    <div class="z-[100] fixed w-screen print:hidden"> 
+      
+<nav class="flex px-2 py-6 tbl:px-6 tbl:py-6 z-[10000] w-full backdrop-blur flex-none bg-matty-50/80 dark:bg-matty-900/80 supports-backdrop-blur:bg-white/50 border-b-[1px] dark:border-b-matty-400/20 border-b-matty-900/10 gap-x-4 tbl:gap-x-0">
+  <div class="flex mx-auto w-full flex-1 items-center text-center text-matty-900">
+    <a href="/" class="flex items-center"> 
+      <img src="/assets/logo.svg" alt="logo" class="w-[24px] mr-2 tbl:m-0"> 
+      <span class="lpt:ml-4 dark:text-white font-roboto-flex lpt:inline hidden text-md font-medium">Meher Chaitanya</span> 
+    </a>
+    
+  </div>
+  <div class="flex">
+
+    <div class="theme-toggle flex">
+      <div class="flex">
+        <input type="radio" id="light" name="theme-toggle" value="light" class="peer hidden" aria-label="Use light theme">
+        <label for="light" title="Use light theme" class="cursor-pointer text-matty-200 peer-checked:hidden flex items-center">
+          <span class="material-symbols-rounded"> light_mode </span>
+        </label>
+      </div>
+
+      <div class="flex">
+        <input type="radio" id="dark" name="theme-toggle" value="dark" class="peer hidden" aria-label="Use dark theme">
+        <label for="dark" title="Use dark theme" class="cursor-pointer text-matty-800 peer-checked:hidden dark:peer-checked:text-white flex items-center">
+          <span class="material-symbols-rounded"> dark_mode </span>
+        </label>
+      </div>
+    </div>
+
+    <div class="font-roboto-flex ml-2 tbl:ml-4 lpt:ml-6 text-matty-900 font-medium dark:text-white font-['Poppins'] flex gap-2 tbl:gap-4 lpt:gap-6 items-center text-sm">
+      <a class="underline decoration-2 decoration-indigo-500 dark:decoration-indigo-300 underline-offset-2 text-matty-700 font-medium font-roboto-flex text-sm tbl:text-base dark:text-white" href="/projects">
+          Projects
+        </a><a class="font-roboto-flex text-sm tbl:text-base dark:text-white" href="/resume">
+          Resume
+        </a><a class="font-roboto-flex text-sm tbl:text-base dark:text-white" href="/contact">
+          Contact
+        </a>
+    </div>
+  </div>
+</nav>
+<script>
+  // localStorage.theme = 'light'
+  const checkTheme = () => {
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+      document.getElementById('dark').checked = true
+      document.getElementById('light').checked = false
+    } else {
+      document.documentElement.classList.remove('dark')
+      document.getElementById('light').checked = true
+      document.getElementById('dark').checked = false
+    }
+  }
+
+  checkTheme()
+
+  document.getElementById('dark').addEventListener("click", () => {
+    localStorage.theme = 'dark'
+    checkTheme()
+  })
+
+  document.getElementById('light').addEventListener("click", () => {
+    localStorage.theme = 'light'
+    checkTheme()
+  })
+
+</script> 
+    </div>
+    <div class="relative flex flex-col min-h-screen">
+      <img src="/assets/project/avml-and-volatility3/Mask group.png" alt="Towards a Decentralised web - Building Smart Contracts to support Transparent Charity Donations Trust" class="object-cover pt-16 tbl:h-[60vh] min-w-full">
+      <!-- <div class="flex -translate-y-6 py-10 w-full backdrop-blur-3xl flex-none bg-gradient-to-t from-matty-50 dark:from-matty-900">
+      </div> -->
+      <div class="mt-16 mx-auto prose prose-matty dark:prose-invert prose-custom mbl-md:pt-2 tbl:pt-0 flex-1 px-2 mbl-md:px-2 tbl:px-8 lpt:px-16 max-w-none mbl-md:w-full tbl:w-full lpt:w-5/6 lpt-lg:w-4/6 tracking-wide prose-a:truncate">
+        <h1 class=""> Towards a Decentralised web - Building Smart Contracts to support Transparent Charity Donations Trust </h1>
+        <div class="flex gap-4 flex-wrap">
+          <div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    blockchain
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    svelte
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    web3
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    smart contract
+</div>
+        </div>
+        <hr>
+        <h3 class="print:hidden">Read Time</h3>
+        <p class="print:hidden">~ 5 min read</p>
+        <h3>Authors</h3>
+        <div class="tbl:text-base lpt:text-lg lpt-lg:text-xl font-medium grid grid-cols-1 tbl:grid-cols-2 lpt-lg:grid-cols-3 gap-4 justify-items-start">
+          <div class="flex items-center gap-1">
+            <img class="not-prose border-0 m-0 rounded-full w-4 h-4 tbl:w-6 tbl:h-6 lpt:w-10 lpt:h-10" src="https://avatars.githubusercontent.com/u/53662575" alt="profile">
+            <a href="https://github.com/smc181002" class="dark:text-matty-50" target="_blank"> Meher Chaitanya </a>
+          </div>
+          <div class="flex items-center gap-1">
+              <img class="not-prose border-0 m-0 rounded-full w-4 h-4 tbl:w-6 tbl:h-6 lpt:w-10 lpt:h-10" src="https://avatars.githubusercontent.com/u/54907384" alt="profile">
+              <a href="https://github.com/vivekkr2001" class="dark:text-matty-50" target="_blank">Vivek Kumar</a>
+            </div>
+
+        </div>
+        <hr>
+        <div class="flex flex-col dark:text-matty-200">
+          <h2 id="introduction">Introduction</h2>
+<p>Charitable donations are an important way for individuals and organizations to give back to their communities and make a positive impact in the world. However, it can be difficult for donors to know where their money is going and whether it is being used effectively. This is where trusted transparent charity donations come in.</p>
+<p>Trusted transparent charity donations are a new approach to charitable giving that utilizes smart contracts on the Ethereum blockchain network to ensure that donations are used in an accountable and transparent way. By using smart contracts, donors can track the movement of their donations in real-time and have confidence that their money is being used for the intended purpose.</p>
+<p>In this blog post, we will take a closer look at how trusted transparent charity donations work, and how they are made possible through the use of smart contracts, Solidity programming, and the Ethereum blockchain network. We will also discuss how the frontend of the application is developed using Svelte and how the local environment is set up using Ganache and the Truffle Suite.</p>
+<h2 id="tldr">TL;DR</h2>
+<p>This project consists of a simple smart contract that tracks
+donations and functionality of transferring the required funds
+to the beneficiaries in need of money.</p>
+<h2 id="project-description">Project Description</h2>
+<h3 id="how-trusted-transparent-charity-donations-work">How Trusted Transparent Charity Donations Work:</h3>
+<p>Trusted transparent charity donations are made possible through the use of smart contracts on the Ethereum blockchain network. Smart contracts are self-executing contracts with the terms of the agreement between buyer and seller being directly written into lines of code. They allow for the automation of contract execution, making it possible to track the movement of donations in real-time and ensure that they are being used for the intended purpose.</p>
+<p>To create a trusted transparent charity donation application, developers can use the Solidity programming language to write the smart contracts that will be used to manage the donations. Solidity is a high-level, contract-oriented programming language specifically designed for the Ethereum platform. It allows developers to create complex, self-executing contracts that can be deployed on the Ethereum network.Donations are a great way to give back to the world by helping
+the person in needful.  But many organizations being centralized
+can change and tamper the transactions</p>
+<p>To use the trusted transparent charity donation application, donors will need to have a wallet provider that is compatible with the Ethereum network. This could be a hardware wallet, a software wallet, or a browser extension wallet. The wallet will allow donors to interact with the smart contract and send their donations to the designated charity.</p>
+<p>Once a donor has sent their donation to the charity through the smart contract, the funds will be held in escrow until the charity can prove that they have used the funds for the intended purpose. This can be done through regular updates and reports that are uploaded to the blockchain, allowing donors to track the progress of their donations in real-time.</p>
+<p>The frontend of the trusted transparent charity donation application is developed using the Svelte framework. Svelte is a modern JavaScript framework that allows developers to build fast and lightweight web applications. It is easy to learn and use, making it a popular choice for developing the frontend of blockchain-based applications.</p>
+<p>To set up the local environment for the trusted transparent charity donation application, developers can use the Ganache tool and the Truffle Suite. Ganache is a local Ethereum blockchain that allows developers to test their smart contracts and applications in a simulated environment. The Truffle Suite is a collection of tools that help developers build, test, and deploy their blockchain-based applications.</p>
+<h2 id="application-details">Application Details</h2>
+<h3 id="user-interface">User Interface</h3>
+<p>This simple user interface consists of 4 sections dividing the
+functionalities of the application as:</p>
+<ul>
+<li>Making and Listing Donations</li>
+<li>Charity payments done to benefeciaries by the organization</li>
+<li>The benefeciary list</li>
+<li>Owner options that include creating the benefeciary and Paying the benefeciary</li>
+</ul>
+<p><img src="../../assets/project/transparent-charity-donations/donations-page.png" alt="donations-page"></p>
+<p>The first page as seen in the above image allows for the donors to look at the donations made to the organization. This application is designed to show the amount in Gwei for demo purposes. The donors are provided with a form to the right that prompts input details like the user name (optional) and the payment that need to be done in Gwei. Any amount below 1 Gwei is restricted in the contract logic. The Donor account address is automatically fetched from the tranasction and the record is added to the contract’s database.</p>
+<p><img src="../../assets/project/transparent-charity-donations/charity-payments-page.png" alt="charity-payments-page"></p>
+<p>The second page consists of Payments that the organization has done to the charity’s benefeciaries. The payments functionality through UI is provided in the owner options page but this page only provides the list of payment transactions to the Benefeciaries.</p>
+<p><img src="../../assets/project/transparent-charity-donations/benefeciaries-list.png" alt="benefeciaries-list"></p>
+<p>Continuing with the next page is the list of benefeciaries that are in the database of the contract that the organization will be paying the funds collected through donations.</p>
+<p><img src="../../assets/project/transparent-charity-donations/owner-options-page.png" alt="owner-options-page"></p>
+<p>The final page is the owner options page that consists of the features only a owner of the contract can access through. The owner list is stored in the contract through the account address and verified as a part of these functionalities.</p>
+<ul>
+<li>The first funtionality is the ability to add more benefeciaries to the charity organization.</li>
+<li>The second funtionality is the payments of funds to the benefeciaries based on the availability of total funds and the requirement of the benefeciary.</li>
+</ul>
+<h3 id="conclusion">Conclusion:</h3>
+<p>Trusted transparent charity donations are a revolutionary new way for donors to give back to their communities and make a positive impact in the world. By using smart contracts on the Ethereum blockchain network, donors can track the movement of their donations in real-time and have confidence that their money is being used for the intended purpose. The trusted transparent charity donation source code is available on GitHub at <a href="https://github.com/smc181002/transparent-charity-donations">https://github.com/smc181002/transparent-charity-donations</a>, and the frontend code can be found in the <code>dapp-fe</code> directory, while the smart contract is located in the <code>contracts</code> directory.</p>
+<h2 id="links--references">Links &#x26; References</h2>
+<p>Github Repo - <a href="https://github.com/smc181002/transparent-charity-donations">https://github.com/smc181002/transparent-charity-donations</a></p>
+        </div>
+      </div>
+    </div>
+    
+  </body></html>

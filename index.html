@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth scroll-pt-24">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+
+<title>Meher Chaitanya - Home</title>
+
+
+
+<link rel="canonical" href="https://smc181002.me/">
+
+<meta name="description" content="Meher Chaitanya: Cloud Architect, Web developer...">
+
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="Meher Chaitanya - Home's Website">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://smc181002.me/assets/seo-image.jpg">
+<meta property="og:url" content="https://smc181002.me/">
+
+
+<meta property="og:description" content="Meher Chaitanya: Cloud Architect, Web developer...">
+
+
+
+
+
+
+<meta property="og:image:url" content="https://smc181002.me/assets/seo-image.jpg">
+
+<meta property="og:image:type" content="image/jpeg">
+
+<meta property="og:image:height">
+<meta property="og:image:alt" content="Meher Chaitanya">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@smc181002">
+
+
+
+
+<meta name="twitter:creator" content="@smc181002">
+
+
+
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=VT323&family=Atkinson+Hyperlegible:wght@400&display=swap">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&family=Atkinson+Hyperlegible:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<meta name="generator" content="Astro v1.8.0">
+<link rel="alternate" type="application/rss+xml" title="smc181002 » Projects" href="https://smc181002.me/rss.xml">
+<link rel="sitemap" href="/sitemap-index.xml">
+<link rel="stylesheet" href="/assets/avml-and-volatility3.bdd4f8a0.css" /></head>
+<body class="dark:bg-matty-900 selection:bg-blue-500 dark:selection:bg-blue-400 dark:selection:text-matty-900 selection:text-blue-50 bg-no-repeat bg-fixed bg-cover text-xl font-roboto-flex text-matty-800 overflow-x-hidden">
+  <div class="z-[100] fixed w-screen ">
+    
+<nav class="flex px-2 py-6 tbl:px-6 tbl:py-6 z-[10000] w-full backdrop-blur flex-none bg-matty-50/80 dark:bg-matty-900/80 supports-backdrop-blur:bg-white/50 border-b-[1px] dark:border-b-matty-400/20 border-b-matty-900/10 gap-x-4 tbl:gap-x-0">
+  <div class="flex mx-auto w-full flex-1 items-center text-center text-matty-900">
+    <a href="/" class="flex items-center"> 
+      <img src="/assets/logo.svg" alt="logo" class="w-[24px] mr-2 tbl:m-0"> 
+      <span class="lpt:ml-4 dark:text-white font-roboto-flex lpt:inline hidden text-md font-medium">Meher Chaitanya</span> 
+    </a>
+    <a href="#blogs" class="tbl:ml-4 text-sm tbl:text-base lpt:ml-16 lpt-lg:ml-24 font-roboto-flex font-medium flex items-center gap-2 dark:text-matty-50">
+      Blogs 
+      <span class="material-symbols-rounded animate-bounce"> arrow_circle_down </span> 
+    </a>
+  </div>
+  <div class="flex">
+
+    <div class="theme-toggle flex">
+      <div class="flex">
+        <input type="radio" id="light" name="theme-toggle" value="light" class="peer hidden" aria-label="Use light theme">
+        <label for="light" title="Use light theme" class="cursor-pointer text-matty-200 peer-checked:hidden flex items-center">
+          <span class="material-symbols-rounded"> light_mode </span>
+        </label>
+      </div>
+
+      <div class="flex">
+        <input type="radio" id="dark" name="theme-toggle" value="dark" class="peer hidden" aria-label="Use dark theme">
+        <label for="dark" title="Use dark theme" class="cursor-pointer text-matty-800 peer-checked:hidden dark:peer-checked:text-white flex items-center">
+          <span class="material-symbols-rounded"> dark_mode </span>
+        </label>
+      </div>
+    </div>
+
+    <div class="font-roboto-flex ml-2 tbl:ml-4 lpt:ml-6 text-matty-900 font-medium dark:text-white font-['Poppins'] flex gap-2 tbl:gap-4 lpt:gap-6 items-center text-sm">
+      <a class="font-roboto-flex text-sm tbl:text-base dark:text-white" href="/projects">
+          Projects
+        </a><a class="font-roboto-flex text-sm tbl:text-base dark:text-white" href="/resume">
+          Resume
+        </a><a class="font-roboto-flex text-sm tbl:text-base dark:text-white" href="/contact">
+          Contact
+        </a>
+    </div>
+  </div>
+</nav>
+<script>
+  // localStorage.theme = 'light'
+  const checkTheme = () => {
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+      document.getElementById('dark').checked = true
+      document.getElementById('light').checked = false
+    } else {
+      document.documentElement.classList.remove('dark')
+      document.getElementById('light').checked = true
+      document.getElementById('dark').checked = false
+    }
+  }
+
+  checkTheme()
+
+  document.getElementById('dark').addEventListener("click", () => {
+    localStorage.theme = 'dark'
+    checkTheme()
+  })
+
+  document.getElementById('light').addEventListener("click", () => {
+    localStorage.theme = 'light'
+    checkTheme()
+  })
+
+</script>
+  </div>
+  <div class="absolute -z-10 top-14 left-1/2 -translate-x-1/2 lpt:w-[80vw] lpt-lg:w-[60vw] hidden lpt:flex">
+    <div class="w-full h-full absolute bg-matty-50/10 dark:bg-matty-900/[0.65]"></div>
+    <img src="/assets/gradient.svg" alt="gradient">
+  </div>
+  <div class="flex flex-col w-screen min-h-screen">
+    <div class="flex-1 mt-30">
+      <div class="min-h-[60vh] pt-24 lpt:w-[60vw] mx-auto px-2 tbl:px-8 lpt-lg:mt-10 lpt:mt-12 tbl:mt-0 font-roboto-flex flex flex-col gap-x-24 lpt:gap-x-4 items-center justify-center dark:text-white">
+  <div class="flex my-6">
+    <h1 class="font-fraunces text-3xl tbl:text-4xl lpt-lg:text-5xl font-semibold text-matty-900 dark:text-matty-50 text-center">
+      The Future is Here, and It's Powered by Computers
+    </h1>
+  </div>
+  <div class="text-sm mbl-lg:text-base lpt-lg:text-lg pt-8 text-matty-800 dark:text-matty-100 text-center relative flex-col items-start justify-center">
+    Hi 👋. I am A student pursuing Integrated Masters in Computer Science from University of Hyderabad. I enjoy creating solutions with software development and skilled in deploying those applications in industry standard environments with cloud computing and devops
+  </div>
+  <div class="mt-14 font-medium flex gap-x-6 gap-y-8 flex-col tbl:flex-row w-full place-content-center items-center">
+    <a class="w-max bg-blue-600 dark:bg-blue-600 text-white dark:text-matty-50 border-[.16rem] dark:border-white border-matty-900 px-6 py-4 lpt-lg:px-8 lpt-lg:py-4 cursor-pointer drop-shadow-[.2rem_.2rem_rgba(0,0,0,1)] dark:drop-shadow-[.2rem_.2rem_rgba(256,256,256,1)] dark:hover:drop-shadow-none hover:drop-shadow-none hover:rounded-2xl transition-all text-base" href="/projects">Projects &#8594;</a>
+    <a class="w-max flex gap-2 bg-white dark:bg-matty-900 text-matty-900 dark:text-matty-50 border-[.16rem] dark:border-white border-matty-900 px-6 py-4 lpt-lg:px-8 lpt-lg:py-4 cursor-pointer drop-shadow-[.2rem_.2rem_rgba(0,0,0,1)] dark:drop-shadow-[.2rem_.2rem_rgba(256,256,256,1)] dark:hover:drop-shadow-none hover:drop-shadow-none hover:rounded-2xl transition-all text-base" href="https://github.com/smc181002" target="_blank"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path class="stroke-matty-900 group-hover:stroke-blue-600 dark:group-hover:stroke-matty-50 dark:stroke-matty-50" d="M9 18.9999C4 20.4999 4 16.4999 2 15.9999M16 21.9999V18.1299C16.0375 17.6531 15.9731 17.1737 15.811 16.7237C15.6489 16.2737 15.3929 15.8634 15.06 15.5199C18.2 15.1699 21.5 13.9799 21.5 8.51994C21.4997 7.12376 20.9627 5.78114 20 4.76994C20.4559 3.54844 20.4236 2.19829 19.91 0.999938C19.91 0.999938 18.73 0.649938 16 2.47994C13.708 1.85876 11.292 1.85876 9 2.47994C6.27 0.649938 5.09 0.999938 5.09 0.999938C4.57638 2.19829 4.54414 3.54844 5 4.76994C4.03013 5.78864 3.49252 7.1434 3.5 8.54994C3.5 13.9699 6.8 15.1599 9.94 15.5499C9.611 15.8899 9.35726 16.2953 9.19531 16.7399C9.03335 17.1844 8.96681 17.658 9 18.1299V21.9999" stroke="#1E2326" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg> Github</a>
+    <!-- <a class="w-max group flex items-center gap-2 dark:text-matty-50 text-matty-900 px-6 py-4 lpt-lg:px-8 lpt-lg:py-4 cursor-pointer text-base hover:text-blue-600 hover:underline transition-all" href="https://github.com/smc181002" target="_blank"> <Github /> Github</a> -->
+  </div>
+</div>
+    </div>
+    <div class="pb-10 flex flex-col gap-y-8 items-center pt-20 px-2 tbl:px-6">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect class="fill-matty-800 dark:fill-matty-100" x="40" y="40" width="40" height="40" fill="#2E3539"></rect>
+        <rect class="fill-matty-700 dark:fill-matty-500" y="40" width="40" height="40" fill="#444F56"></rect>
+        <rect class="fill-matty-600 dark:fill-matty-400" width="40" height="40" fill="#5E696F"></rect>
+        <rect class="fill-matty-500 dark:fill-matty-300" x="40" width="40" height="40" fill="#70797F"></rect>
+      </svg>
+
+      <div class="font-roboto-flex mbl-md:text-sm tbl:text-md lpt:text-lg dark:text-matty-50">
+        <i class="font-italics">If you can't explain it to a six year old, you don't <br> understand it yourself</i> - <b>Albert Einstein</b> 
+      </div>
+
+      <section class="mx-auto flex flex-col prose prose-lg dark:prose-invert font-roboto-flex dark:text-white-50">
+  <h2 id="blogs" class="font-fraunces">Blogs</h2>
+  <div class="flex flex-wrap flex-col">
+  <h3 class="font-fraunces">
+      <a href="/https://smc181002.medium.com/how-loops-in-network-can-be-solved-with-stp-using-7-switches-in-topology-c54ae3b040cb?source=rss-ee5d12b9cb1a------2" target="_blank">How Loops in Network can be solved with STP (Using 7 switches in topology)</a>
+    </h3><div class="font-readable py-2">02-Jan-2023, 4:05 pm</div><div class="flex gap-4 flex-wrap">
+      <div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    networking
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    stp-network
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    spanning-tree
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    network
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    network-switches
+</div>
+    </div><h3 class="font-fraunces">
+      <a href="/https://awstip.com/eliminate-vendor-lock-in-of-serverless-workloads-with-openfaas-474807383ce1?source=rss-ee5d12b9cb1a------2" target="_blank">Eliminate vendor lock-in of Serverless workloads with OpenFaaS</a>
+    </h3><div class="font-readable py-2">06-Oct-2022, 11:55 am</div><div class="flex gap-4 flex-wrap">
+      <div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    kubernetes
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    openfaas
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    vendor-lock-in
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    serverless
+</div>
+    </div><h3 class="font-fraunces">
+      <a href="/https://smc181002.medium.com/creating-terraform-module-for-aws-vpc-creation-fa2e5d0f3e3e?source=rss-ee5d12b9cb1a------2" target="_blank">Creating Terraform module for AWS VPC creation</a>
+    </h3><div class="font-readable py-2">23-Jun-2021, 9:13 am</div><div class="flex gap-4 flex-wrap">
+      <div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    terraform-modules
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    aws-vpc
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    terraform
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    arthbylw
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    aws
+</div>
+    </div><h3 class="font-fraunces">
+      <a href="/https://smc181002.medium.com/managed-mysql-with-amazon-rds-a56f7fab8b55?source=rss-ee5d12b9cb1a------2" target="_blank">Managed MySQL with Amazon RDS</a>
+    </h3><div class="font-readable py-2">24-May-2021, 6:53 am</div><div class="flex gap-4 flex-wrap">
+      <div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    amazon-rds
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    wordpress
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    mysql
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    arthbylw
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    righteducation
+</div>
+    </div><h3 class="font-fraunces">
+      <a href="/https://smc181002.medium.com/launching-kubernetes-with-ansible-roles-5f53b91d8f20?source=rss-ee5d12b9cb1a------2" target="_blank">Launching Kubernetes with Ansible roles</a>
+    </h3><div class="font-readable py-2">10-Apr-2021, 4:24 pm</div><div class="flex gap-4 flex-wrap">
+      <div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    arthbylw
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    ansible
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    kubernetes
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    aws
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    ansible-collection
+</div>
+    </div><h3 class="font-fraunces">
+      <a href="/https://smc181002.medium.com/configuring-docker-containers-with-ansible-via-ssh-b7eb5b672b27?source=rss-ee5d12b9cb1a------2" target="_blank">Configuring docker containers with ansible via SSH</a>
+    </h3><div class="font-readable py-2">28-Mar-2021, 3:42 pm</div><div class="flex gap-4 flex-wrap">
+      <div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    docker
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    apache-httpd
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    ssh
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    arthbylw
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    ansible
+</div>
+    </div><h3 class="font-fraunces">
+      <a href="/https://smc181002.medium.com/dynamically-changing-variables-based-on-os-distro-in-ansible-playbook-6338cb4793ce?source=rss-ee5d12b9cb1a------2" target="_blank">Dynamically changing variables based on OS distro in Ansible Playbook</a>
+    </h3><div class="font-readable py-2">28-Mar-2021, 10:27 am</div><div class="flex gap-4 flex-wrap">
+      <div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    ansible
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    ansible-playbook
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    arthbylw
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    distro-linux
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    linuxworld
+</div>
+    </div><h3 class="font-fraunces">
+      <a href="/https://smc181002.medium.com/creating-a-network-topology-such-that-a-can-connect-to-b-and-c-but-b-and-c-can-only-connect-to-a-28c64589be3f?source=rss-ee5d12b9cb1a------2" target="_blank">Creating a Network Topology such that A can connect to B and C but B and C can only connect to A</a>
+    </h3><div class="font-readable py-2">28-Mar-2021, 6:17 am</div><div class="flex gap-4 flex-wrap">
+      <div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    networking
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    vimal-daga
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    arthbylw
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    linuxworld
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    network-topology
+</div>
+    </div><h3 class="font-fraunces">
+      <a href="/https://smc181002.medium.com/running-gui-application-in-docker-with-xming-e9d81c5600e?source=rss-ee5d12b9cb1a------2" target="_blank">Running GUI application in Docker with Xming</a>
+    </h3><div class="font-readable py-2">23-Mar-2021, 9:35 am</div><div class="flex gap-4 flex-wrap">
+      <div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    arthbylw
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    linuxworld
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    containers
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    docker
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    vimal-daga
+</div>
+    </div><h3 class="font-fraunces">
+      <a href="/https://smc181002.medium.com/openshift-industry-use-cases-b20ca056de9c?source=rss-ee5d12b9cb1a------2" target="_blank">OpenShift Industry Use Cases</a>
+    </h3><div class="font-readable py-2">13-Mar-2021, 3:39 pm</div><div class="flex gap-4 flex-wrap">
+      <div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    openshift
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    devops
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    linuxworld
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    arthbylw
+</div><div class="rounded-lg py-1 px-3 bg-[#d6e3ff] text-[#001b3d] dark:bg-[#00468c] dark:text-[#d6e3ff]">
+    vimal-daga
+</div>
+    </div>
+  </div>
+</section>
+    </div>
+  </div>
+</body></html>
