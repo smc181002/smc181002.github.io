@@ -2,32 +2,15 @@
 // import Hash from '../common/Hash.astro';
 
 import {extract} from '@extractus/feed-extractor';
+import Tag from '../common/Tag.astro';
 interface MarkdownFrontmatter {
 	publishDate: number;
 }
 
-interface RSSEntry {
-  id?: string;
-  title: string;
-  link: string;
-  published: string;
-  description: string;
-  category: string[];
-}
-
-interface RssOutput {
-  title: string;
-  link: string;
-  description: string;
-  language: string;
-  generator?: string;
-  published: string;
-  entries: RSSEntry[];
-}
 const url = 'https://smc181002.medium.com/feed';
 
 const feed = await extract(url, {
-  getExtraEntryFields: (feedEntry: RSSEntry) => {
+  getExtraEntryFields: (feedEntry) => {
     const {
       category
     } = feedEntry
@@ -47,17 +30,17 @@ const printDate = (date) => {
 
 ---
 
-<section class="mx-auto prose dark:prose-invert font-sans dark:text-white-50">
-  <h2 id="blogs">Blogs</h2>
+<section class="mx-auto flex flex-col prose prose-lg dark:prose-invert font-roboto-flex dark:text-white-50">
+  <h2 id="blogs" class="font-fraunces">Blogs</h2>
   <div class="flex flex-wrap flex-col">
   {feed.entries.map((item) => (
-    <h3>
+    <h3 class="font-fraunces">
       <a href={import.meta.env.BASE_URL + item.link} target="_blank">{item.title}</a>
     </h3>
     <div class="font-readable py-2">{printDate(item.published)}</div>
     <div class="flex gap-4 flex-wrap">
       {item.category.map( tag => (
-        <div class="rounded-lg py-1 px-3 bg-blue-200/60 dark:bg-blue-900/40 text-blue-800 dark:text-blue-100/90">{tag}</div>
+        <Tag>{tag}</Tag>
       ))}
     </div>
   ))}

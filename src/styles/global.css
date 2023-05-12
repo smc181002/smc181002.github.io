@@ -15,14 +15,26 @@
 
     @font-face {
         font-family: 'Roboto Flex head';
-        src: url('/robotoflex.ttf');
+        src: url('/assets/fonts/robotoflex.ttf');
+    }
+
+    @font-face {
+        font-family: 'Fraunces Var';
+        src: url('/assets/fonts/fraunces.ttf');
     }
 
     .font-roboto-flex {
         font-family: 'Roboto Flex head';
         font-style: normal;
-        font-stretch: 107%;
-        font-variation-settings: "opsz" 38, "slnt" 0, "GRAD" 25, "XTRA" 476, "YOPQ" 79, "YTAS" 724, "YTDE" -140, "YTFI" 688, "YTLC" 489, "YTUC" 615;
+        font-stretch: 125%;
+        font-variation-settings: "slnt" 0, "GRAD" 38, "XTRA" 468, "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712;
+        font-optical-sizing: auto;
+    }
+
+    .font-fraunces {
+        font-family: 'Fraunces Var';
+        font-style: normal;
+        font-variation-settings: 'SOFT' 0, 'WONK' 0;
         font-optical-sizing: auto;
     }
 
@@ -33,7 +45,7 @@
         prose-th:border prose-td:border prose-th:p-4 prose-td:p-4 
         prose-a:underline-offset-2 hover:prose-a:decoration-2 
         prose-a:decoration-1 prose-a:decoration-blue-500 lpt:prose-pre:text-lg
-        prose-img:rounded-3xl prose-img:border-[1px] prose-headings:font-sans font-roboto-flex text-clip overflow-x-hidden;
+        prose-img:rounded-3xl prose-img:border-[1px] prose-headings:font-fraunces font-roboto-flex text-clip overflow-x-hidden;
     }
 }
 

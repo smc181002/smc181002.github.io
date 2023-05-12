@@ -13,6 +13,8 @@ let projects = (await Astro.glob('./project/**/*.{md,mdx}'))
               });
 
 // console.log(projects[0].frontmatter)
+
+let featured = await projects.filter((project) => (project.frontmatter.featured == true))
 ---
 
 <html lang="en" class="scroll-smooth scroll-pt-24">
@@ -21,28 +23,38 @@ let projects = (await Astro.glob('./project/**/*.{md,mdx}'))
 </head>
 <body class="dark:bg-matty-900 selection:bg-blue-500 dark:selection:bg-blue-400 dark:selection:text-matty-900 selection:text-blue-50 text-xl text-matty-800 overflow-x-hidden">
   <div class="z-[100] fixed w-screen ">
-    <Nav active="/projects"/>
+    <Nav active="projects"/>
   </div>
-  <div class="px-2 tbl:px-6 lpt:px-12 pt-32 font-sans text-base text-matty-800 dark:text-matty-100">
-    <h1 class="text-5xl my-4 text-matty-900 dark:text-matty-50 font-medium">Projects</h1>
-    <div>A window to view my work and effort</div>
-    <div class="grid lpt:grid-cols-2 lpt-lg:grid-cols-3 py-12 gap-x-8 gap-y-12">
-        {projects.length > 0 ? projects.map(({frontmatter, url}) => (
-            <Card 
-                title={frontmatter.title} 
-                description={frontmatter.description} 
-                image={frontmatter.image} 
-                pubDate={frontmatter.pubDate} 
-                author={frontmatter.author} 
-                coauthors={frontmatter.coauthors}
-                tags={frontmatter.tags}
-                url={url}
-            />
-        )) : 
-        (<div class="flex flex-col items-center">
-            <Nothing />
-            <div>Projects are being drafted... Will be uploaded soon.</div>
-        </div>)}
+  <div class="px-2 tbl:px-6 lpt:px-12 pt-32 font-roboto-flex text-base text-matty-800 dark:text-matty-100">
+    <h3 class="text-center text-3xl my-4  text-matty-900 dark:text-matty-50 font-medium font-fraunces">Every great accomplishment begins with a project</h3>
+    <!-- <div>A window to view my work and effort</div> -->
+    <div class="grid grid-cols-11 max-w-[72rem] mx-auto md:gap-x-12 lpt-lg:gap-x-24">
+      <div class="md:col-span-7 col-span-12 grid lpt:grid-cols-1 lpt-lg:grid-cols-1 py-12 gap-x-8 gap-y-12">
+          {projects.length > 0 ? projects.map(({frontmatter, url}) => (
+              <Card 
+                  title={frontmatter.title} 
+                  description={frontmatter.description} 
+                  image={frontmatter.image} 
+                  pubDate={frontmatter.pubDate} 
+                  author={frontmatter.author} 
+                  coauthors={frontmatter.coauthors}
+                  tags={frontmatter.tags}
+                  url={url}
+              />
+          )) : 
+          (<div class="flex flex-col items-center">
+              <Nothing />
+              <div>Projects are being drafted... Will be uploaded soon.</div>
+          </div>)}
+      </div>
+      <div class="flex flex-col md:col-span-4 col-span-12 my-12">
+        <h2 class="font-fraunces text-2xl mb-4">Featured Projects</h2>
+        <div class="flex flex-col gap-y-4 text-blue-600 hover:text-blue-700 dark:text-blue-200 dark:hover:text-blue-100">
+          {featured.map(({frontmatter, url}) => (
+            <a href={url} class="hover:underline underline-offset-2 decoration-1 decoration-blue-500">{frontmatter.title}</a>
+          ))}
+        </div>
+      </div>
     </div>
   </div>
 </body>

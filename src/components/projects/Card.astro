@@ -1,5 +1,6 @@
 ---
 import type CardProps from '../../interfaces/CardProps'
+import Tag from '../common/Tag.astro';
 const {title, description, image, author, coauthors, pubDate, url, tags} = Astro.props;
 const finalAuthors = `${author.name} ${ coauthors ? "+" + (coauthors.length ) + " Other" + (coauthors.length > 1 ? "s" : "") : "" }`
 ---
@@ -9,12 +10,12 @@ const finalAuthors = `${author.name} ${ coauthors ? "+" + (coauthors.length ) + 
 >
     <img src={image} alt={title} class="object-cover h-80 rounded-2xl hover:rounded-[3rem] transition-all"/>
     <div class="flex flex-col gap-y-2">
-        <h1 class="text-2xl font-medium text-matty-900 dark:text-matty-50 py-2"> {title} </h1>
+        <h1 class="font-fraunces text-3xl font-medium text-matty-900 dark:text-matty-50 py-2 underline underline-offset-2 hover:decoration-2 decoration-1 decoration-blue-500"> {title} </h1>
         <div class="font-medium text-matty-900 dark:text-matty-50"> {finalAuthors} </div>
         <div class="text-matty-700 dark:text-matty-200 font-readable"> {pubDate} </div>
           <div class="flex gap-4 flex-wrap">
             {tags.map( tag => (
-              <div class="rounded-lg py-1 px-3 bg-blue-200/60 dark:bg-blue-900/40 text-blue-800 dark:text-blue-100/90">{tag}</div>
+              <Tag>{tag}</Tag>
             ))}
           </div>
     </div>

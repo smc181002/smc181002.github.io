@@ -1,9 +1,9 @@
 ---
 layout: ../../layouts/project.astro
-title: Memory Forensics with AVML and Volatility3 Framework
+title: Analysing the memory in Linux machines with the volatility3 Framework and AVML
 client: Self
 pubDate: Mar 20, 2023
-image: https://images.unsplash.com/photo-1630568002650-3ee79302fda5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80
+image: /assets/project/avml-and-volatility3/avml-volatility3.webp
 description: |
   
 author: 
