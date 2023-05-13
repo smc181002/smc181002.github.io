@@ -35,7 +35,7 @@ const printDate = (date) => {
   <div class="flex flex-wrap flex-col">
   {feed.entries.map((item) => (
     <h3 class="font-fraunces">
-      <a href={import.meta.env.BASE_URL + item.link} target="_blank">{item.title}</a>
+      <a href={item.link} target="_blank">{item.title}</a>
     </h3>
     <div class="font-readable py-2">{printDate(item.published)}</div>
     <div class="flex gap-4 flex-wrap">
