@@ -38,13 +38,23 @@
         font-optical-sizing: auto;
     }
 
-    .prose-custom {
+    /* .prose-custom {
         @apply lpt:prose-h1:text-6xl lpt-lg:prose-h1:text-7xl 
         lpt:prose-p:text-xl lpt:prose-a:text-xl lpt:prose-ul:text-xl prose-table:w-full 
         prose-table:border-collapse prose-table:table-auto prose-th:text-left 
         prose-th:border prose-td:border prose-th:p-4 prose-td:p-4 
         prose-a:underline-offset-2 hover:prose-a:decoration-2 
         prose-a:decoration-1 prose-a:decoration-blue-500 lpt:prose-pre:text-lg
+        prose-img:rounded-3xl prose-img:border-[1px] prose-headings:font-fraunces font-roboto-flex text-clip overflow-x-hidden;
+    } */
+
+
+    .prose-custom {
+        @apply
+        prose-table:border-collapse prose-table:table-auto prose-th:text-left 
+        prose-th:border prose-td:border prose-th:p-4 prose-td:p-4 
+        prose-a:underline-offset-2 hover:prose-a:decoration-2 
+        prose-a:decoration-1 prose-a:decoration-blue-500
         prose-img:rounded-3xl prose-img:border-[1px] prose-headings:font-fraunces font-roboto-flex text-clip overflow-x-hidden;
     }
 }
