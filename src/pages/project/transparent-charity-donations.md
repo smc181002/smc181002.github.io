@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/project.astro
-title: Towards a Decentralised web - Building Smart Contracts to support Transparent Charity Donations Trust
+title: Building Smart Contracts for Transparent Charity Donations
 client: Self
 pubDate: Dec 16, 2022
 image: /assets/project/avml-and-volatility3/Mask group.png

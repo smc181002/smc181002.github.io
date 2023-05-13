@@ -2,6 +2,7 @@
 import MainHead from '../components/common/MainHead.astro';
 import Nav from '../components/common/Nav.astro';
 import TechView from '../components/resume/TechView.astro';
+import MainBody from '../layouts/main.astro'
 
 const techSoftware = [
     {name: "Astro", logo: "astro"},
@@ -22,11 +23,11 @@ const techDevops = [
 ]
 ---
 
-<html lang="en" class="scroll-smooth">
-<head>
-  <MainHead title="Meher Chaitanya - Home" description="Meher Chaitanya: Cloud Architect, Web developer..." />
-</head>
-<body class="dark:bg-matty-900 selection:bg-blue-500 dark:selection:bg-blue-400 dark:selection:text-matty-900 selection:text-blue-50 text-xl text-matty-800 dark:text-matty-50 overflow-x-hidden">
+<MainBody 
+    title="Meher Chaitanya - Resume" 
+    description="Meher Chaitanya: Cloud Architect, Web developer"
+    imageUrl="/assets/og-seo-resume.jpg"
+>
   <div class="z-[100] fixed w-screen ">
     <Nav active="resume"/>
   </div>
@@ -64,5 +65,4 @@ const techDevops = [
         </div>
     </div>
   </div>
-</body>
-</html>
+</MainBody>
