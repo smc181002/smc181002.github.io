@@ -3,6 +3,7 @@ import MainHead from '../components/common/MainHead.astro';
 import Nav from '../components/common/Nav.astro';
 import Card from '../components/projects/Card.astro'
 import Nothing from '../components/icons/Nothing.astro'
+import MainBody from '../layouts/main.astro'
 
 let projects = (await Astro.glob('./project/**/*.{md,mdx}'))
               .filter(project => !project.frontmatter.draft)
@@ -17,11 +18,11 @@ let projects = (await Astro.glob('./project/**/*.{md,mdx}'))
 let featured = await projects.filter((project) => (project.frontmatter.featured == true))
 ---
 
-<html lang="en" class="scroll-smooth scroll-pt-24">
-<head>
-  <MainHead title="Meher Chaitanya - Projects" description="View my (Meher Chaitanya's) projects" />
-</head>
-<body class="dark:bg-matty-900 selection:bg-blue-500 dark:selection:bg-blue-400 dark:selection:text-matty-900 selection:text-blue-50 text-xl text-matty-800 overflow-x-hidden">
+<MainBody 
+  title="Meher Chaitanya - Projects" 
+  description="View my (Meher Chaitanya's) projects" 
+  imageUrl="/assets/og-seo-projects.jpg"
+>
   <div class="z-[100] fixed w-screen ">
     <Nav active="projects"/>
   </div>
@@ -57,5 +58,4 @@ let featured = await projects.filter((project) => (project.frontmatter.featured 
       </div>
     </div>
   </div>
-</body>
-</html>
+</MainBody>
