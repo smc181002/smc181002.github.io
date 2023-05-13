@@ -1,11 +1,13 @@
 ---
 layout: ../../layouts/project.astro
-title: Analysing the memory in Linux machines with the volatility3 Framework and AVML
+title: Analysing memory in Linux with the volatility3 and AVML
 client: Self
 pubDate: Mar 20, 2023
 image: /assets/project/avml-and-volatility3/avml-volatility3.webp
 description: |
-  
+  This project consists of the procedure to create a memory 
+  image for a system using AVLM from Microsoft and perform
+  analysis on that system using Volatility3 framework.
 author: 
   name: Meher Chaitanya
   link:  https://github.com/smc181002
