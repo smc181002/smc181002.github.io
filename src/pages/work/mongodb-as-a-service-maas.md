@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/project.astro
+layout: ../../layouts/work.astro
 title: MaaS - Dynamic Kubernetes of production MongoDB Sharded Database
 client: Self
 pubDate: Aug 5, 2022
@@ -21,7 +21,7 @@ coauthors:
   - name: Srikrishna Dantu
     link: https://github.com/SrikrishnaDantu
     profile: https://avatars.githubusercontent.com/u/86924837
-predraft: true
+draft: true
 tags:
   - design
   - dev

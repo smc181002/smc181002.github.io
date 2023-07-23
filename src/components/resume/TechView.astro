@@ -15,7 +15,7 @@ const {name, logo} = Astro.props;
 ---
 
 <div class="flex gap-2 items-center">
-    <div class="bg-matty-50 p-4 rounded-full shadow-lg dark:shadow-[inset_1px_1px_2px_rgba(114,114,114,0.45)] dark:bg-matty-800">
+    <div class="bg-matty-50 p-4 rounded-full shadow-[1px_1px_4px_rgba(245,248,254,1),-1px_-1px_8px_rgba(245,248,254,1)] dark:shadow-[inset_1px_1px_2px_rgba(114,114,114,0.45)] dark:bg-neutral-20">
         {logo == "aws" && <AWS />}
         {logo == "ansible" && <Ansible />}
         {logo == "astro" && <AstroJS />}

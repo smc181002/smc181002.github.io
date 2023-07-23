@@ -6,7 +6,7 @@ export async function get(context) {
         description: `Meher Chaitanya's project blogging page`,
         site: context.site,
         items: await pagesGlobToRssItems(
-            import.meta.glob('./project/*.{md,mdx}'),
+            import.meta.glob('./work/*.{md,mdx}'),
         ),
     });
 }

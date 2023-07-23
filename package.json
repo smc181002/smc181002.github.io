@@ -21,6 +21,8 @@
     "@astrojs/rss": "^2.3.1",
     "@astrojs/sitemap": "^1.3.1",
     "@astrojs/svelte": "^1.0.2",
+    "@ceol/medium-feed-parser": "^0.1.0",
+    "@ceol/varna-tailwind": "1.0.3",
     "@extractus/feed-extractor": "^6.2.1",
     "astro-seo": "^0.7.1",
     "reading-time": "^1.5.0",

@@ -2,7 +2,6 @@
 // import Hash from '../common/Hash.astro';
 
 import {extract} from '@extractus/feed-extractor';
-import Tag from '../common/Tag.astro';
 interface MarkdownFrontmatter {
 	publishDate: number;
 }
@@ -30,19 +29,39 @@ const printDate = (date) => {
 
 ---
 
-<section class="mx-auto flex flex-col prose prose-lg dark:prose-invert font-roboto-flex dark:text-white-50">
-  <h2 id="blogs" class="font-fraunces">Blogs</h2>
-  <div class="flex flex-wrap flex-col">
-  {feed.entries.map((item) => (
-    <h3 class="font-fraunces">
-      <a href={item.link} target="_blank">{item.title}</a>
-    </h3>
-    <div class="font-readable py-2">{printDate(item.published)}</div>
-    <div class="flex gap-4 flex-wrap">
-      {item.category.map( tag => (
-        <Tag>{tag}</Tag>
-      ))}
+<section class="my-20 relative flex flex-col gap-y-8 max-w-full">
+  <svg class="absolute h-full" width="54" height="816" viewBox="0 0 54 816" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M41.4814 803.5V43.2407C41.4814 25.9869 27.4945 12 10.2408 12V12C-7.01292 12 -20.9998 25.9869 -20.9998 43.2406V53.7921" stroke="#030F30" stroke-width="24" stroke-linecap="square"/>
+  </svg>
+  {feed.entries.slice(0,3).map(item => (
+    <div class="-translate-x-10 flex items-center group cursor-pointer w-full">
+      <svg width="216" height="63" viewBox="0 0 36 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.66079e-06 33L194 33" class="stroke-light-primary-10 dark:stroke-dark-primary-90" stroke-width="24" stroke-linecap="square"/>
+        <circle cx="0.447533" cy="31.4475" r="23.9994" 
+          class="fill-light-bg dark:fill-dark-bg 
+          stroke-light-primary-80 group-hover:stroke-light-primary 
+          dark:stroke-dark-primary-30 dark:group-hover:stroke-dark-primary" 
+          stroke-width="14.8962"
+        />
+      </svg>
+      <a href={item.link} target="_blank" class="-translate-x-3 group-hover:-translate-x-1 transition-all flex flex-col bg-light-container dark:bg-dark-primary-20 w-full px-9 py-6">
+        <div class="flex gap-x-6 text-sm text-l-ctr-txt-l dark:text-d-ctr-txt-l">
+          <div>24.Jun.2023</div>
+          <!--
+          <div>5min read</div>
+          -->
+        </div>
+        <h1 class="text-light-container-headings dark:text-dark-container-headings font-semibold my-4 text-5xl">
+          {item.title}
+        </h1>
+      </a>
     </div>
   ))}
+  <div class="absolute bottom-0 z-[100] left-1/2 -translate-x-1/2">
+    <a href="/blogs" class="z-[100] bg-light-primary-10 text-light-primary-95 dark:text-d-pr-10 dark:bg-d-pr-95 w-max text-center px-8 py-4">
+      Show more blogs
+    </a>
+  </div>
+  <div class="pointer-events-none absolute bottom-0 w-full h-20 bg-gradient-to-t from-30% from-light-bg dark:from-dark-bg">
   </div>
 </section>

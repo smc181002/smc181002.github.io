@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/project.astro
+layout: ../../layouts/work.astro
 title: Analysing memory in Linux with the volatility3 and AVML
 client: Self
 pubDate: Mar 20, 2023

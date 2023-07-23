@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/project.astro
+layout: ../../layouts/work.astro
 title: Memory Forensics with LiME and Volatility Framework
 client: Self
 pubDate: Mar 19, 2023

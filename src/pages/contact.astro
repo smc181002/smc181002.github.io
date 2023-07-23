@@ -1,6 +1,5 @@
 ---
-import MainHead from '../components/common/MainHead.astro';
-import Nav from '../components/common/Nav.astro';
+import MainBody from '../layouts/main.astro';
 
 let contactInfo = [
   {
@@ -32,17 +31,30 @@ let contactInfo = [
 
 ---
 
-<html lang="en" class="scroll-smooth scroll-pt-24">
-<head>
-  <MainHead title="Meher Chaitanya - Home" description="Meher Chaitanya: Cloud Architect, Web developer..." />
-</head>
-<body class="dark:bg-matty-900 selection:bg-blue-500 dark:selection:bg-blue-400 dark:selection:text-matty-900 selection:text-blue-50 bg-no-repeat bg-fixed bg-cover text-xl font-roboto-flex text-matty-800 overflow-x-hidden">
-  <div class="z-[100] fixed w-screen ">
-    <Nav active="contact"/>
-  </div>
-  <!-- <div class="w-screen min-h-screen"> -->
-    <div class="px-8 prose gap-x-6 gap-y-8 font-roboto-flex mx-auto flex-1 grid lpt:grid-cols-3 tbl:grid-cols-2 grid-cols-1 justify-center pt-24 place-items-center min-w-14">
-      {contactInfo.map(({text, link, hovColor}) => (
+<MainBody title="Meher Chaitanya - Contact" description="Meher Chaitanya: Cloud Architect, Web developer..." >
+    <main class="pt-32 pb-12 lpt:px-12 prose dark:prose-invert prose-custom min-h-[80vh]">
+      <h1 class="font-medium font-sans">Want to talk to me?</h1>
+      <form
+        action="https://formspree.io/f/mwkdpwpz"
+        method="POST"
+        class="flex flex-col gap-y-3"
+      >
+        <label class="flex flex-col gap-y-2">
+          Email*
+          <input autocomplete="off" type="email" name="email" placeholder="Enter your email here*" class="p-4 bg-transparent border border-neutral-70 focus:border-neutral-20 focus:outline-none dark:border-neutral-40 dark:focus:border-neutral-95">
+        </label>
+        <label class="flex flex-col gap-y-2">
+          Message
+          <textarea name="message" placeholder="Leave a message to me" class="p-4 bg-transparent border border-neutral-70 focus:border-neutral-20 focus:outline-none dark:border-neutral-40 dark:focus:border-neutral-95" rows="5"></textarea>
+        </label>
+        <button type="submit" class="flex gap-x-2 items-center w-fit mt-4 bg-light-primary-10 text-light-primary-95 dark:text-d-pr-10 dark:bg-d-pr-98 text-center px-8 py-4">
+          Send <span class="material-symbols-rounded">send</span>
+        </button>
+      </form>
+    </main>
+</MainBody>
+
+      <!-- {contactInfo.map(({text, link, hovColor}) => (
         <a href={link} target="_blank" class={`w-full flex justify-center bg-white 
           dark:bg-matty-900 text-matty-900 dark:text-matty-50 border-[.16rem] 
           dark:border-white border-matty-900 px-6 py-4 lpt-lg:px-8 lpt-lg:py-4 
@@ -52,10 +64,7 @@ let contactInfo = [
         >
         {text}
         </a>
-      ))}
+      ))} -->
         <!-- <a href="https://twitter.com/smc181002" target="_blank">Twitter - @smc181002</a>
         <a href="http://github.com/smc181002" target="_blank">Github - smc181002</a>
         <a href="http://discordapp.com/users/622000670974935060" target="_blank">Discord - smc181002#7325</a> -->
-    </div>
-</body>
-</html>

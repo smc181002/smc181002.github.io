@@ -1,4 +1,5 @@
 ---
+import Logo from '../icons/Logo.astro';
 import Techno from './Techno.svelte';
 const {active} = Astro.props;
 const actionsList = [
@@ -16,53 +17,54 @@ function activeHighlight(action) {
 ---
 
 <Techno />
-<nav class="flex px-2 py-6 tbl:px-6 tbl:py-6 z-[10000] w-full backdrop-blur flex-none bg-matty-50/80 dark:bg-matty-900/80 supports-backdrop-blur:bg-white/50 border-b-[1px] dark:border-b-matty-400/20 border-b-matty-900/10 gap-x-4 tbl:gap-x-0">
-  <div class="flex mx-auto w-full flex-1 items-center text-center text-matty-900">
-    <a href={import.meta.env.BASE_URL} class="flex items-center"> 
-      <img 
-        src={import.meta.env.BASE_URL + "assets/logo.svg" }
-        alt="logo" 
-        class="w-[24px] mr-2 tbl:m-0"> 
-      <span class="lpt:ml-4 dark:text-white font-roboto-flex lpt:inline hidden text-md font-medium">Meher Chaitanya</span> 
-    </a>
-    {
-      !active && 
-    <a href="#blogs"
-    class="tbl:ml-4 text-sm tbl:text-base lpt:ml-16 lpt-lg:ml-24 font-roboto-flex font-semibold flex items-center gap-2 dark:text-matty-50">
-      Blogs 
-      <span class="material-symbols-rounded animate-bounce"> arrow_circle_down </span> 
-    </a>
-    }
-  </div>
-  <div class="flex">
 
-    <div class="theme-toggle flex">
-      <div class="flex">
-        <input type="radio" id="light" name="theme-toggle" value="light" class="peer hidden" aria-label="Use light theme">
-        <label for="light" title="Use light theme" class="cursor-pointer text-matty-200 peer-checked:hidden flex items-center">
-          <span class="material-symbols-rounded"> light_mode </span>
-        </label>
-      </div>
-
-      <div class="flex">
-        <input type="radio" id="dark" name="theme-toggle" value="dark" class="peer hidden" aria-label="Use dark theme">
-        <label for="dark" title="Use dark theme" class="cursor-pointer text-matty-800 peer-checked:hidden dark:peer-checked:text-white flex items-center">
-          <span class="material-symbols-rounded"> dark_mode </span>
-        </label>
-      </div>
+<div class="top-20 right-8 absolute flex bg-neutral-20 text-neutral-90 dark:bg-dark-primary-95 dark:text-neutral-10 border-4 border-light-bg dark:border-dark-bg rounded-full">
+  <div class="theme-toggle flex">
+    <div class="flex">
+      <input type="radio" id="light" name="theme-toggle" value="light" class="peer hidden" aria-label="Use light theme">
+      <label for="light" title="Use light theme" class="cursor-pointer peer-checked:hidden flex items-center">
+        <span class="material-symbols-rounded  px-4 py-2"> light_mode </span>
+      </label>
     </div>
 
-    <div class="font-roboto-flex ml-2 tbl:ml-4 lpt:ml-6 text-matty-900 font-medium dark:text-white font-['Poppins'] flex gap-2 tbl:gap-4 lpt:gap-6 items-center text-sm">
-      {actionsList.map( (action) => (
-        <a 
-          class={activeHighlight(action) + "font-roboto-flex text-sm tbl:text-base font-semibold"} 
-          href={import.meta.env.BASE_URL + action.path}>
-          {action.name}
-        </a>
-      ))}
+    <div class="flex">
+      <input type="radio" id="dark" name="theme-toggle" value="dark" class="peer hidden" aria-label="Use dark theme">
+      <label for="dark" title="Use dark theme" class="cursor-pointer peer-checked:hidden flex items-center">
+        <span class="material-symbols-rounded px-4 py-2"> dark_mode </span>
+      </label>
     </div>
   </div>
+</div>
+
+<nav class="font-sans bg-light-bg dark:bg-dark-bg text-light-headings dark:text-dark-headings flex flex-row font-normal text-sm py-0 tbl:px-10 px-4 justify-between items-center">
+  <a href="/" class="text-light-primary dark:text-dark-headings flex flex-row items-center gap-x-2">
+    <Logo/>
+    <!-- <span class="lpt:block hidden">
+      @smc181002
+    </span> -->
+  </a>
+  <ul class="flex mbl-lg:gap-x-6 gap-x-5 font-semibold ">
+    <li>
+      <a href="/blogs">
+        Blogs
+      </a>
+    </li>
+    <li>
+      <a href="/works">
+        Work
+      </a>
+    </li>
+    <li>
+      <a href="/about">
+        About
+      </a>
+    </li>
+  </ul>
+  <a href="/contact" class="font-semibold">
+    Contact
+  </a>
 </nav>
+
 <script is:inline>
   // localStorage.theme = 'light'
   const checkTheme = () => {
