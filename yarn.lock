@@ -357,10 +357,22 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
+"@ceol/medium-feed-parser@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@ceol/medium-feed-parser/-/medium-feed-parser-0.1.0.tgz#66f5d5d6dad05d2ea08c5a8667a83429e2861e1d"
+  integrity sha512-WeVuXu8v78trvikXbzr7VhyvqNDoW4qLZrXIldGJ0OwQINycm2r85UonvR8+CuHjNHyR2lQlSih42GiywXe30Q==
+  dependencies:
+    xml2js "^0.5.0"
+
 "@ceol/tailwind-tooltip@^0.1.3":
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/@ceol/tailwind-tooltip/-/tailwind-tooltip-0.1.4.tgz#7a882191a7008dba07f1324f77e32f7be4d433e6"
   integrity sha512-hdd/zAhBqWrmBtfAoAMlQJaODq274l7i1sF8zSNY3oH7CbyDBPOrdeqkMaXpAWJ1QP4oVJcxIQ4iABehWVSD3g==
+
+"@ceol/varna-tailwind@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@ceol/varna-tailwind/-/varna-tailwind-1.0.3.tgz#4e53562739794c325d77b92a471e73ad5079f6ea"
+  integrity sha512-XzU8acPDtoNHOceqKxeB2rHBbyxQxb91Z9TA/C+VO2/+Nf8tsMEcM0MG+ZsjS+pjbIlAEV8CCk8TiB75V5aUPw==
 
 "@emmetio/abbreviation@^2.2.3":
   version "2.2.3"

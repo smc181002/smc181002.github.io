@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/project.astro
+layout: ../../layouts/work.astro
 title: Building Smart Contracts for Transparent Charity Donations
 client: Self
 pubDate: Dec 16, 2022

@@ -1,39 +1,45 @@
 ---
-import MainHead from '../components/common/MainHead.astro';
-import Nav from '../components/common/Nav.astro';
-import Hero from '../components/home/Hero.astro';
+import MainBody from '../layouts/main.astro';
 import LatestBlog from '../components/home/LatestBlog.astro';
+import Graphic from '../components/icons/Graphic.astro';
 ---
-<html lang="en" class="scroll-smooth scroll-pt-24">
-<head>
-  <MainHead title="Meher Chaitanya - Home" description="Meher Chaitanya: Cloud Architect, Web developer..." />
-</head>
-<body class="dark:bg-matty-900 selection:bg-blue-500 dark:selection:bg-blue-400 dark:selection:text-matty-900 selection:text-blue-50 bg-no-repeat bg-fixed bg-cover text-xl font-roboto-flex text-matty-800 overflow-x-hidden">
-  <div class="z-[100] fixed w-screen ">
-    <Nav />
-  </div>
-  <div class="absolute -z-10 top-14 left-1/2 -translate-x-1/2 lpt:w-[80vw] lpt-lg:w-[60vw] hidden lpt:flex">
-    <div class="w-full h-full absolute bg-matty-50/10 dark:bg-matty-900/[0.65]"></div>
-    <img src={`${import.meta.env.BASE_URL}assets/gradient.svg`} alt="gradient">
-  </div>
-  <div class="flex flex-col w-screen min-h-screen">
-    <div class="flex-1 mt-30">
-      <Hero />
-    </div>
-    <div class="pb-10 flex flex-col gap-y-8 items-center pt-20 px-2 tbl:px-6">
-      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect class="fill-matty-800 dark:fill-matty-100" x="40" y="40" width="40" height="40" fill="#2E3539"/>
-        <rect class="fill-matty-700 dark:fill-matty-500" y="40" width="40" height="40" fill="#444F56"/>
-        <rect class="fill-matty-600 dark:fill-matty-400" width="40" height="40" fill="#5E696F"/>
-        <rect class="fill-matty-500 dark:fill-matty-300" x="40" width="40" height="40" fill="#70797F"/>
-      </svg>
-
-      <div class="font-roboto-flex mbl-md:text-sm tbl:text-md lpt:text-lg dark:text-matty-50">
-        <i class="font-italics">If you can't explain it to a six year old, you don't <br /> understand it yourself</i> - <b>Albert Einstein</b> 
+<MainBody 
+    title="Meher Chaitanya - Resume" 
+    description="Meher Chaitanya: Cloud Architect, Web developer"
+    imageUrl="/assets/og-seo-resume.jpg"
+>
+  <main class="pt-16 font-sans">
+    <!-- <img class="w-full" src={Graphic} alt="graphic"/> -->
+    <div class="w-screen relative">
+      <Graphic/>
+      <div class="absolute bottom-0 w-full h-10 bg-gradient-to-t from-30% from-light-bg dark:from-dark-bg">
       </div>
-
-      <LatestBlog />
     </div>
-  </div>
-</body>
-</html>
+    <div class="px-10 py-8 text-clip max-w-6xl">
+      <h1 class="text-6xl my-4 text-light-headings dark:text-dark-headings font-semibold ">Design. Develop. Deploy</h1>
+      <p class="text-normal text-light-headings dark:text-dark-headings">
+        Skilled in the 
+        <strong class="text-light-primary dark:text-dark-primary">
+          3Ds
+        </strong> 
+        of mordern software development</p>
+      <div class="text-normal text-light-text dark:text-dark-text my-4 flex flex-col gap-y-2">
+        <p>
+          Namaste 🙏 . I am <strong>“Sri Meher Chaitanya Varma Nadimpalli”</strong>. 
+          Yep, a long name....Well, you can call me either 
+          <span class="text-light-primary font-medium">Meher </span> 
+          or 
+          <span class="text-light-primary font-medium"> Chaitanya</span> .
+        </p>
+        <p>
+          If you are curious about what I do?
+        </p>
+      </div>
+      <div class="flex gap-x-4 items-center">
+        <a href="/" class="px-8 py-4 bg-light-primary text-light-primary-95 dark:bg-dark-primary dark:text-d-pr-95">Check my work</a>
+        <a href="/">or check out by <strong>blogs</strong> below</a>
+      </div>
+    </div>
+    <LatestBlog/>
+  </main>
+</MainBody>

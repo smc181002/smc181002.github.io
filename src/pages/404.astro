@@ -1,18 +1,24 @@
 ---
 // Component Imports
-import MainHead from '../components/common/MainHead.astro';
-import Nav from '../components/common/Nav.astro';
-import Footer from '../components/common/Footer.astro';
+import MainBody from '../layouts/main.astro';
 ---
 
-<html lang="en">
-<head>
-  <MainHead title="Meher Chaitanya - Home" description="Meher Chaitanya: Cloud Architect, Web developer..." />
-</head>
-<body class="bg-[url('/assets/background.svg')] bg-no-repeat bg-fixed bg-cover text-xl  dark:bg-matty-900 text-matty-600 overflow-x-hidden">
-  <div class="z-[100] fixed w-screen text-matty-900 ">
-    <Nav />
-  </div>
+<MainBody 
+  title="Meher Chaitanya - Home" 
+  description="Meher Chaitanya: Cloud Architect, Web developer..."
+  imageUrl="/assets/og-seo-resume.jpg"
+>
+  <main class="font-sans flex flex-col justify-center w-full px-4 tbl:px-14 lpt:px-0 max-w-none lpt:w-3/4 lpt-lg:w-4/6 mx-auto min-h-[80vh]">
+      <div class="flex-1 flex flex-col justify-center items-center">
+        <h1 class="px-4 sm:px-auto text-4xl text-center sm:text-5xl xl:text-7xl mb-8 font-medium text-light-headings dark:text-dark-headings">
+          This Page Doesn't Exist
+        </h1>
+          <a href={import.meta.env.BASE_URL} class="front-readable text-lg underline decoration-light-primary underline-offset-2 dark:decoration-dark-primary decoration-2 xl:text-2xl dark:text-white">Go to Home
+          </a>
+      </div>
+  </main>
+</MainBody>
+<!-- <MainBody title="Meher Chaitanya - Home" description="Meher Chaitanya: Cloud Architect, Web developer..." />
   <div class="flex flex-col min-h-screen">
       <div class="flex-1 pt-48 px-16">
         <div class="flex-1 flex flex-col justify-center items-center">
@@ -24,9 +30,4 @@ import Footer from '../components/common/Footer.astro';
           </ul>
         </div>
       </div>
-      <div>
-          <Footer />
-      </div>
-  </div>
-</body>
-</html>
+  </div> -->

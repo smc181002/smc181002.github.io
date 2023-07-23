@@ -1,12 +1,35 @@
 ---
-    let name = "Meher Chaitanya";
+const links: Array<{name: string, link:string, external?: boolean}> = [
+  {name: "Blogs", link: "/blogs"},
+  {name: "RSS", link: "/rss.xml"},
+  {name: "Work", link: "/work"},
+  {name: "About", link: "/about"},
+  {name: "Contact", link: "/contact"},
+  {name: "CeolDevs", link: "https://github.com/ceoldevs", external: true},
+]
 ---
+<footer class="font-sans">
+  <div class="lpt:px-10 tbl:px-8 px-4">
+    <h1 class="lpt:text-4xl text-3xl font-semibold text-l-hd dark:text-d-hd mt-5 mb-10">Footer Links</h1>
+    <div class="text-l-txt dark:text-d-txt flex gap-x-12 max-w-3xl flex-wrap">
+      {links.map(item => (
+        item.external == true ? 
+        ( <a href={item.link} target="_blank">{item.name}</a>) :
+        ( <a href={item.link}>{item.name}</a>)
+      ))}
+    </div>
+  </div>
 
-<footer class="font-roboto-flex flex text-sm items-center backdrop-blur bg-matty-100/60 dark:bg-matty-700 dark:text-matty-50 px-4 py-2">
-  <div class="flex-1">
-    &copy; {new Date().getFullYear()} {name}
-  </div>
-  <div>
-    <a href="mailto:meherchaitanya18802@gmail.com" class="pr-4 smc-underline-indigo-500 hover:decoration-2">Contact</a>
-  </div>
+  <svg class="w-full" viewBox="0 0 1280 234" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M864.408 123.43H788.272C762.677 123.43 741.928 144.179 741.928 169.774V303.84C741.928 321.665 727.478 336.115 709.653 336.115V336.115C691.828 336.115 677.378 321.665 677.378 303.84V44.6889C677.378 26.6353 662.742 12 644.689 12V12C626.635 12 612 26.6353 612 44.6889V123.43" class="stroke-l-pr-10 dark:stroke-d-pr-95" stroke-width="24" stroke-linecap="round"/>
+    <rect width="135" height="44" transform="matrix(-1 0 0 1 353 190)" class="fill-[#3D66F5] dark:fill-[#3355CC]"/>
+    <rect width="135" height="9" transform="matrix(-1 0 0 1 218 225)"  class="fill-[#3D66F5] dark:fill-[#3355CC]"/>
+    <rect width="135" height="84" transform="matrix(-1 0 0 1 459 150)"  class="fill-[#3D66F5] dark:fill-[#3355CC]"/>
+    <rect width="423" height="180" transform="matrix(-1 0 0 1 1280 54)" class="fill-[#0DF280] dark:fill-[#33CC80]"/>
+    <rect y="88" width="797" height="72" class="fill-[#0DF280] dark:fill-[#33CC80]"/>
+    <path d="M40 354.573L40 237.962V121.689C40 103.635 54.6353 89 72.6889 89V89C90.7425 89 105.378 103.635 105.378 121.689V180.225C105.378 198.05 119.828 212.5 137.653 212.5V212.5C155.478 212.5 169.928 198.05 169.928 180.225V121.482C169.928 103.543 184.471 89 202.41 89V89C220.349 89 234.892 103.543 234.892 121.482V144.725C234.892 162.55 249.342 177 267.167 177V177C284.992 177 299.442 162.55 299.442 144.725V121.482C299.442 103.543 313.985 89 331.924 89V89C349.863 89 364.406 103.543 364.406 121.482V137.5" class="stroke-l-pr-10 dark:stroke-d-pr-95" stroke-width="24.827" stroke-linecap="round"/>
+    <circle cx="611.552" cy="123.552" r="53.0795" class="fill-l-bg dark:fill-d-bg stroke-[#3D66F5] dark:stroke-[#3355CC]" stroke="#3D66F5" stroke-width="32.9459"/>
+    <rect x="902" y="12" width="378" height="222" class="fill-[#3D66F5] dark:fill-[#3355CC]"/>
+    <path d="M1294.41 172.493C1301.04 172.493 1306.41 167.12 1306.41 160.493C1306.41 153.865 1301.04 148.493 1294.41 148.493V172.493ZM914 111.5H902V135.5H914V111.5ZM1074.69 182.423C1068.06 182.423 1062.69 187.795 1062.69 194.423C1062.69 201.05 1068.06 206.423 1074.69 206.423V182.423ZM1139.65 42C1133.03 42 1127.65 47.3726 1127.65 54C1127.65 60.6274 1133.03 66 1139.65 66V42ZM1294.41 148.493H1218.27V172.493H1294.41V148.493ZM1183.93 114.149V86.2751H1159.93V114.149H1183.93ZM1095.38 86.2751V161.734H1119.38V86.2751H1095.38ZM1054 161.734V158.961H1030V161.734H1054ZM1006.54 111.5H914V135.5H1006.54V111.5ZM1054 158.961C1054 132.749 1032.75 111.5 1006.54 111.5V135.5C1019.5 135.5 1030 146.004 1030 158.961H1054ZM1074.69 182.423C1063.26 182.423 1054 173.16 1054 161.734H1030C1030 186.415 1050.01 206.423 1074.69 206.423V182.423ZM1095.38 161.734C1095.38 173.16 1086.11 182.423 1074.69 182.423V206.423C1099.37 206.423 1119.38 186.415 1119.38 161.734H1095.38ZM1139.65 42C1115.2 42 1095.38 61.8226 1095.38 86.2751H1119.38C1119.38 75.0775 1128.46 66 1139.65 66V42ZM1183.93 86.2751C1183.93 61.8226 1164.11 42 1139.65 42V66C1150.85 66 1159.93 75.0775 1159.93 86.2751H1183.93ZM1218.27 148.493C1199.3 148.493 1183.93 133.116 1183.93 114.149H1159.93C1159.93 146.371 1186.05 172.493 1218.27 172.493V148.493Z" class="fill-l-pr-95" />
+  </svg>
 </footer>

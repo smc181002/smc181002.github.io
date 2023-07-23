@@ -1,4 +1,6 @@
 // tailwind.config.cjs
+const colors = require('@ceol/varna-tailwind')
+
 module.exports = {
   content: [
     './public/**/*.html',
@@ -6,7 +8,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'sans': ['Poppins', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+      'sans': ['Sora', 'Poppins', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
     },
     extend: {
       fontFamily: {
@@ -20,6 +22,7 @@ module.exports = {
         "mbl-md": "321px",
       },
       colors: {
+        ...colors(223,4,4),
         matty: {
           "50": "#fafafa",
           "100": "#ebebec",

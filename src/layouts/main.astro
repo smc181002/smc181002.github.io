@@ -1,19 +1,26 @@
 ---
+import Footer from '../components/common/Footer.astro';
 import MainHead from '../components/common/MainHead.astro';
 import Nav from '../components/common/Nav.astro';
 
 const {
     title="Meher Chaitanya - Home", 
     description="Meher Chaitanya: Cloud Architect, Web developer...",
-    imageUrl = "/assets/smc.png"
+    imageUrl = "/assets/smc.png",
+    active="/"
 } = Astro.props;
 ---
 
 <html lang="en" class="scroll-smooth scroll-pt-24">
-    <head>
+<head>
     <MainHead title={title} description={description} imageUrl={imageUrl}/>
-    </head>
-    <body class="dark:bg-matty-900 selection:bg-blue-500 dark:selection:bg-blue-400 dark:selection:text-matty-900 selection:text-blue-50 bg-no-repeat bg-fixed bg-cover text-xl font-roboto-flex text-matty-800 overflow-x-hidden">
-        <slot/>
-    </body>
+</head>
+<body class="bg-light-bg dark:bg-dark-bg text-normal text-light-text dark:text-dark-text font-sans overflow-x-hidden">
+  <div class="z-[100] fixed w-screen">
+    <Nav active={active}/>
+  </div>
+    <slot></slot>
+    <Footer />
+</body>
 </html>
+
