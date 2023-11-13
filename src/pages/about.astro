@@ -1,107 +1,38 @@
 ---
-import TechView from '../components/resume/TechView.astro'
-import MainBody from '../layouts/main.astro'
-
-const techSoftware = [
-    {name: "Astro", logo: "astro"},
-    {name: "Typescript", logo: "ts"},
-    {name: "React.js", logo: "react"},
-    {name: "Next.js", logo: "next"},
-    {name: "Svelte.js", logo: "svelte"},
-    {name: "SvelteKit", logo: "svelte"},
-    {name: "Mongodb", logo: "mongodb"},
-    // {name: "Ansible", logo: "ansible"},
-]
-const techDevops = [
-    {name: "Ansible", logo: "ansible"},
-    {name: "AWS", logo: "aws"},
-    {name: "Docker", logo: "docker"},
-    {name: "Terraform", logo: "terraform"},
-    {name: "Kubernetes", logo: "kube"},
-]
+import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
-<MainBody 
-    title="Meher Chaitanya - Resume" 
-    description="Meher Chaitanya: Cloud Architect, Web developer"
-    imageUrl="/assets/og-seo-resume.jpg"
-    active="about"
->
-  <div class="prose dark:prose-invert prose-custom flex flex-col w-full px-4 tbl:px-14 lpt:px-0 max-w-none lpt:w-3/4 lpt-lg:w-4/6 mx-auto min-h-[80vh]">
-    <div class="flex-1 pt-24 text-light-text dark:text-dark-text">
-        <!-- <div class="text-lg"> Check out my <a target="_blank" href="https://docs.google.com/document/d/e/2PACX-1vRnbLgEZsDC7xzRM_hJrET3WnkvHgMgL1t0Va5BPogfam4-O5uNzVQi5GtxfCChgOvEZBSGw2_9GvZ1/pub" class="font-roboto-flex">Resume Here </a></div>
-        <h2 class="font-medium">Technologies worked with</h2>
-        <h3 class="font-medium">Full Stack</h3>
-        <div class="grid tbl:grid-cols-2 lpt:grid-cols-3 lpt-lg:grid-cols-4 gap-x-4 gap-y-8 font-roboto-flex bg-matty">
-            {techSoftware.map(({name, logo}) => (
-                <TechView name={name} logo={logo} />
-            ))}
-        </div>
-        <hr />
-        <h3 class="font-medium">Devops</h3>
-        <div class="grid tbl:grid-cols-2 lpt:grid-cols-3 lpt-lg:grid-cols-4 gap-x-4 gap-y-8 font-roboto-flex bg-matty">
-            {techDevops.map(({name, logo}) => (
-                <TechView name={name} logo={logo} />
-            ))}
-        </div> -->
-        <div class="pt-8 font-sans">
-            <p>
-                <!-- Hi! My name is Meher Chaitanya and I am currently a <b>4th year student</b>  at the University of Hyderabad, pursuing my <b> I.M.Tech </b> degree. I have a strong background in dev-ops and cloud computing, and have gained hands-on experience working with various tools and technologies in these areas. Some of the dev-ops tools that I have worked with include containers with Kubernetes and OpenShift, and CI/CD with Jenkins. In the realm of cloud computing, I have experience working with tools such as AWS, OpenFaaS, and Minio.
-            </p>
-            <p>
-                To demonstrate my skills and knowledge, I have built several mini projects at an industry level. These projects have allowed me to apply my skills and knowledge in a practical setting, and have given me valuable experience working on real-world problems. Here is the link for the <a href={`${import.meta.env.BASE_URL}projects`} class="text-blue-500 dark:text-blue-300 font-roboto-flex">projects</a>  page
-            </p>
-            <p>
-                In addition to my work on these projects, I also enjoy sharing my knowledge and expertise through blogging. I write about the concepts and technologies that I have mastered in order to help others learn and grow, as well as to give back to the tech community.
-            </p>
-            <p>
-                Overall, I am a driven and ambitious individual with a strong desire to make a positive impact in the tech industry. I am excited to see where my passions and skills will take me in the future, and I am always open to new opportunities to learn and grow as a developer
-            </p> -->
-            <p>
-                Namaste Everyone 🙏, This is Sri Meher Chaitanya Varma Nadimpalli. 
-                I go by the name Meher Chaitanya in the net but you are free to 
-                choose any one of the names over there 😉. I am currently a 
-                student at <a href="https://uohyd.ac.in">University of Hyderabad</a>
-                Pursuing Integrated M.Tech in Computer Sciences at 
-                <a href="https://scis.uohyd.ac.in" class="">School of Computer and Information Sciences</a>
-            </p>
-            <p>
-                My interests and skills currently lie in Cloud computing and web development
-                but I am constantly exploring and expanding my knowledge into more innovative
-                fields of Machine Learning and Internet of Things to create the future
-            </p>
-            <p>
-                I am currently Interning at GE (General Electric Vernova) and contributing to 
-                what can be called as the humankind's greatest invention - The Electricity Grid.
-            </p>
-            <p>
-                Coming to my learning experience, I tend to follow a way of learning designed by myself
-                with experience from my childhood. When diving into a concept, first thing is to explore
-                about the concepts in a higher level. And after each iteration, go deeper in each concept.
-                This is something similar to how a BFS algorithm traverses the tree. I tend to do projects
-                in the concepts that I want to master which stands as a proof and application of knowledge.
-            </p>
-            <p>
-                Blogging is the part of my learning process that concludes my learning by sharing my knowledge 
-                and also acting as a material for future reference. You can checkout my
-                blogs at <a href="https://smc181002.medium.com" target="_blank">medium.com</a>
-            </p>
-        </div>
-        <section class="mb-14">
-            <h2 class="font-medium">Technologies worked with</h2>
-            <h3 class="font-medium">Full Stack</h3>
-            <div class="grid tbl:grid-cols-2 lpt:grid-cols-3 lpt-lg:grid-cols-4 gap-x-4 gap-y-8 font-roboto-flex bg-matty">
-                {techSoftware.map(({name, logo}) => (
-                    <TechView name={name} logo={logo} />
-                ))}
-            </div>
-            <h3 class="font-medium">Devops</h3>
-            <div class="grid tbl:grid-cols-2 lpt:grid-cols-3 lpt-lg:grid-cols-4 gap-x-4 gap-y-8 font-roboto-flex bg-matty">
-                {techDevops.map(({name, logo}) => (
-                    <TechView name={name} logo={logo} />
-                ))}
-            </div>
-        </section>
-    </div>
-  </div>
-</MainBody>
+<BaseLayout>
+    <main class="prose max-w-4xl pt-32 min-h-[80vh] font-sans text-[#17191C] px-4 mbl-lg:px-10 tbl:px-10 lpt-lg:px-20 tbl:mt-0">
+        <h1>
+            About Me
+        </h1>
+        <p>
+            I am a Intern@<a class="hover:bg-[#005e60] hover:text-white transition-all" href="https://gevernova.com">GE Vernova</a> 
+            working with Advanced Data and Machine Learning oriented algorithms in 
+            the mission of digitizing the grid.
+        </p>
+        <p>
+            I am also final year Integrated Masters student in 
+            <a class="hover:bg-[#b20000] hover:text-white transition-all" href="https://gevernova.com">SCIS@UoH</a>.
+        </p>
+        <p>
+            My interests range in various branches of computer science like 
+            Software development, Cloud Computing, DevOps, Machine Learning and IoT.
+
+            The wide range of interests makes me a generalist who is more intersted 
+            in the idea of problem solving with computers rather than fixating on a 
+            single technology, tool or a concept.
+        </p>
+        <p>
+            As my hobby, I am intersted in exploring new technologies which provide the 
+            state of the art solutions to the existing problems and stay up to date with
+            the industry.
+        </p>
+        <p>
+            I am also AWS Certified Solutions Architect (SAA-CO2) and Redhat Certified 
+            Kubernetes and OpenShift Specalist
+            (<a href="https://www.credly.com/badges/e654870d-b9e5-4a5d-8506-8b6d6001a64e/public_url" class="hover:bg-[#ef0000] hover:text-white transition-all">DO180</a>).
+        </p>
+    </main>
+</BaseLayout>

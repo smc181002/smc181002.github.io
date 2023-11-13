@@ -1,0 +1,43 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const works = await getCollection('works');
+  return works.map((work) => ({
+    params: { slug: work.slug },
+    props: work,
+  }));
+}
+
+type Props = CollectionEntry<'works'>;
+const work = Astro.props;
+const { Content } = await work.render();
+---
+
+<BaseLayout>
+    <main class="font-sans min-h-screen">
+      <article class="sm:px-10 px-6 pt-20">
+        <div class="mt-20 mb-14">
+            <h1 class="mb-14 lpt-lg:text-5xl text-4xl font-semibold items-center">
+                {work.data.title}
+            </h1>
+            <div class="font-semibold text-slate-500">
+              `type: {work.data.categories[0]}`
+            </div>
+            <div class="flex gap-x-2 mt-2 font-semibold text-l-pr-50">
+              {work.data.tags.map(tag => (
+                <div>#{tag}
+                  </div>
+
+              ))}
+              <!-- `type: {work.data.categories[0]}` -->
+            </div>
+        </div>
+        <div class="prose text-ellipsis overflow-x-hidden lg:ml-40 sm:prose-base prose-sm prose-headings:font-semibold">
+          <Content />
+        </div>
+      </article>
+    </main>
+</BaseLayout>

@@ -1,45 +1,57 @@
 ---
-import MainBody from '../layouts/main.astro';
-import LatestBlog from '../components/home/LatestBlog.astro';
-import Graphic from '../components/icons/Graphic.astro';
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Button from '../components/icons/Button.astro';
+import { getCollection } from 'astro:content';
+
+const works = await getCollection('works')
+let filteredWorks = works.slice(0,4)
+const sortedWorks = filteredWorks.sort((a,b) => {
+    let c = new Date(a.data.date)
+    let d = new Date(b.data.date)
+
+    return c<d ? 1 : -1;
+});
 ---
-<MainBody 
-    title="Meher Chaitanya - Resume" 
-    description="Meher Chaitanya: Cloud Architect, Web developer"
-    imageUrl="/assets/og-seo-resume.jpg"
->
-  <main class="pt-16 font-sans">
-    <!-- <img class="w-full" src={Graphic} alt="graphic"/> -->
-    <div class="w-screen relative">
-      <Graphic/>
-      <div class="absolute bottom-0 w-full h-10 bg-gradient-to-t from-30% from-light-bg dark:from-dark-bg">
-      </div>
-    </div>
-    <div class="px-10 py-8 text-clip max-w-6xl">
-      <h1 class="text-6xl my-4 text-light-headings dark:text-dark-headings font-semibold ">Design. Develop. Deploy</h1>
-      <p class="text-normal text-light-headings dark:text-dark-headings">
-        Skilled in the 
-        <strong class="text-light-primary dark:text-dark-primary">
-          3Ds
-        </strong> 
-        of mordern software development</p>
-      <div class="text-normal text-light-text dark:text-dark-text my-4 flex flex-col gap-y-2">
-        <p>
-          Namaste 🙏 . I am <strong>“Sri Meher Chaitanya Varma Nadimpalli”</strong>. 
-          Yep, a long name....Well, you can call me either 
-          <span class="text-light-primary font-medium">Meher </span> 
-          or 
-          <span class="text-light-primary font-medium"> Chaitanya</span> .
-        </p>
-        <p>
-          If you are curious about what I do?
-        </p>
-      </div>
-      <div class="flex gap-x-4 items-center">
-        <a href="/" class="px-8 py-4 bg-light-primary text-light-primary-95 dark:bg-dark-primary dark:text-d-pr-95">Check my work</a>
-        <a href="/">or check out by <strong>blogs</strong> below</a>
-      </div>
-    </div>
-    <LatestBlog/>
-  </main>
-</MainBody>
+
+<BaseLayout>
+    <main class="font-sans text-[#17191C] px-4 mbl-lg:px-10 tbl:px-10 lpt-lg:px-20 tbl:mt-0">
+        <section class="relative flex gap-x-30 w-full min-h-[95vh] items-center">
+            <h1 class="mt-16 flex-[7] font-semibold text-3xl mbl-md:text-4xl tbl:text-5xl leading-tight">
+                Unveiling the Boundless World of Tech where I Dive 
+                Deep into Machine Learning, Cloud Computing, 
+                Web Development, and <a href="/about" class="text-l-pr-50 transition-all hover:underline decoration-custom-bg hover:bg-l-pr-50 hover:text-l-bg">More</a>. 
+            </h1>
+            <a href="#">
+                <img src="/assets/9petal-3d.png" width="360rem" alt="9petal" class="flex-[3] z-[-100] hidden lg:block overflow-x-hidden">
+            </a>
+            <a href="#works" class="absolute bottom-0 flex items-center"> <span class="material-symbols-rounded animate-bounce">arrow_downward</span> Scroll Down</a>
+        </section>
+        <section id="works" class="my-10">
+            <div>
+                <h4 class="font-bold text-2xl mb-4">Works & Projects</h4>
+                <span class="flex items-center text-lg gap-x-2 italic"><Button/> Learning from doing</span>
+            </div>
+            <div class="mt-10 max-w-5xl flex flex-col gap-y-8">
+                {sortedWorks.map((work, i) => (
+                    <a href={`/work/${work.slug}`} class="flex flex-col justify-center">
+                        <div class="flex items-center gap-5">
+                            <span class="text-sm"> 0{i+1} </span>
+                            <div>
+                                <h1 class="hover:underline text-4xl font-semibold mb-2">{work.data.title}</h1>
+                                <p>{work.data.description}</p>
+                            </div>
+                        </div>
+                    </a>
+                ))}
+            <hr>
+            </div>
+            <div class="mt-8">
+                <div class="px-6 italic">There are more!</div>
+                <a href="/works/1" class="flex items-center gap-4 font-bold text-3xl px-6 text-l-pr-50">
+                    <span class="hover:underline "> view all works </span>
+                    <span class="material-symbols-rounded">arrow_forward</span>
+                </a>
+            </div>
+        </section>
+    </main>
+</BaseLayout>

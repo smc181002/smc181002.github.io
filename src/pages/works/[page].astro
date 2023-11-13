@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Button from '../../components/icons/Button.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths({ paginate }) {
+    const works = await getCollection('works');
+    const sortedWorks = works.sort((a,b) => {
+        let c = new Date(a.data.date)
+        let d = new Date(b.data.date)
+
+        return c<d ? 1 : -1;
+    });
+    return paginate(sortedWorks, { pageSize: 10 });
+}
+
+const {page} = Astro.props;
+---
+
+<BaseLayout>
+    <main class="font-sans text-[#17191C] pt-20 px-4 mbl-lg:px-10 tbl:px-16 lpt-lg:px-20 tbl:mt-0">
+        <section id="works" class="py-10">
+            <div>
+                <h4 class="font-bold text-2xl mb-4">Projects</h4>
+                <span class="flex items-center text-lg gap-x-2 italic"><Button/> Learning from doing</span>
+            </div>
+            <div class="mt-10 max-w-5xl flex flex-col gap-y-8">
+                {page.data.map((work, i) => (
+                    <a href={`/work/${work.slug}`} class="flex flex-col justify-center">
+                        <div class="flex items-center gap-5">
+                            <div>
+                                <h1 class="hover:underline text-4xl font-semibold mb-2">{work.data.title}</h1>
+                                <p>{work.data.description}</p>
+                            </div>
+                        </div>
+                    </a>
+                ))}
+                <div class={`flex items-center gap-4`}>
+                    <a href={page.url.prev} class={`flex items-center ${(page.url.prev ? "text-l-pr-50" : "text-slate-400")}`}>
+                        <span class="material-symbols-rounded">arrow_left</span>
+                        Prev
+                    </a>
+                    <a href={page.url.next} class={`flex items-center ${(page.url.next ? "text-l-pr-50" : "text-slate-400")}`}>
+                        Next
+                        <span class="material-symbols-rounded">arrow_right</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+</BaseLayout>

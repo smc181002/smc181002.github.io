@@ -1,0 +1,36 @@
+---
+import '@fontsource/sora';
+
+import BaseHead from '../components/common/BaseHead.astro'
+import Nav from '../components/common/Nav.astro'
+import Footer from '../components/common/Footer.astro';
+
+const { title, description, imageUrl } = Astro.props
+---
+
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <BaseHead {title} {description} {imageUrl}/>
+  </head>
+  <body class="bg-custom-bg">
+      <Nav/>
+      <div class="">
+        <slot /> <!-- your content is injected here -->
+      </div>
+      <Footer/>
+  </body>
+  <script>
+    const favicon = document.querySelector('link[rel="icon"]')
+
+    document.addEventListener("visibilitychange", () => {
+        const hidden = document.hidden
+
+        favicon.setAttribute(
+            "href", 
+            `/favicon${hidden ? "-hidden" : ""}.svg`
+        )
+    })
+  </script>
+</html>

@@ -1,17 +1,8 @@
-// Full Astro Configuration API Documentation:
-// https://docs.astro.build/reference/configuration-reference
-// @type-check enabled!
-// VSCode and other TypeScript-enabled text editors will provide auto-completion,
-// helpful tooltips, and warnings if your exported object is invalid.
-// You can disable this by removing "@ts-check" and `@type` comments below.
-import svelte from '@astrojs/svelte'; // @ts-check
-import sitemap from '@astrojs/sitemap'; // @ts-check
+import { defineConfig } from 'astro/config';
+import tailwind from "@astrojs/tailwind";
+import mdx from "@astrojs/mdx";
 
-import { defineConfig } from "astro/config";
-
-// https://astro.build/config
-
-// https://astro.build/config
+import sitemap from "@astrojs/sitemap";
 export default defineConfig( /** @type {import('astro').AstroUserConfig} */
 {
   server: {
@@ -21,7 +12,7 @@ export default defineConfig( /** @type {import('astro').AstroUserConfig} */
   // site: "https://scis.uohyd.ac.in/~19mcme12/",
   // base: "~19mcme12",
   // Enable the Svelte renderer to support Svelte components.
-  integrations: [svelte(), sitemap()],
+  integrations: [tailwind(), mdx(), sitemap()],
   markdown: {
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
