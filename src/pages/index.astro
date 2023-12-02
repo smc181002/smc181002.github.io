@@ -15,18 +15,30 @@ const sortedWorks = filteredWorks.sort((a,b) => {
 
 <BaseLayout>
     <main class="font-sans text-[#17191C] px-4 mbl-lg:px-10 tbl:px-10 lpt-lg:px-20 tbl:mt-0">
-        <section class="relative flex gap-x-30 w-full min-h-[95vh] items-center">
-            <h1 class="mt-16 flex-[7] font-semibold text-3xl mbl-md:text-4xl tbl:text-5xl leading-tight">
-                Unveiling the Boundless World of Tech where I Dive 
-                Deep into Machine Learning, Cloud Computing, 
-                Web Development, and <a href="/about" class="text-l-pr-50 transition-all hover:underline decoration-custom-bg hover:bg-l-pr-50 hover:text-l-bg">More</a>. 
-            </h1>
-            <a href="#">
-                <img src="/assets/9petal-3d.png" width="360rem" alt="9petal" class="flex-[3] z-[-100] hidden lg:block overflow-x-hidden">
-            </a>
+        <section class="justify-center relative flex gap-x-30 w-full min-h-[60vh] tbl:min-h-[95vh] items-center">
+            <!-- <a href="#" class="z-[100]"> -->
+            <div class="z-[100]">
+                <img src="/assets/logo-gearlike.png" width="560rem" alt="9petal" class="flex-[3] block overflow-x-hidden">
+            </div>
+            <!-- </a> -->
+            <div class="z-[1] absolute flex flex-row gap-10 w-full overflow-hidden whitespace-nowrap scrolling_text">
+                <div class="flex flex-row gap-10 lg:text-5xl sm:text-4xl text-2xl font-bold text">
+                    <span>Developer. Engineer.</span>
+                    <span>Developer. Engineer.</span>
+                    <span>Developer. Engineer.</span>
+                </div>
+                <div class="flex flex-row gap-10 lg:text-5xl sm:text-4xl text-2xl font-bold text">
+                    <span>Developer. Engineer.</span>
+                    <span>Developer. Engineer.</span>
+                    <span>Developer. Engineer.</span>
+                </div>
+            </div>
+            
             <a href="#works" class="absolute bottom-0 flex items-center"> <span class="material-symbols-rounded animate-bounce">arrow_downward</span> Scroll Down</a>
         </section>
-        <section id="works" class="my-10">
+        <section id="" class="my-10 pt-10">
+        </section>
+        <section id="works" class="my-10 pt-10">
             <div>
                 <h4 class="font-bold text-2xl mb-4">Works & Projects</h4>
                 <span class="flex items-center text-lg gap-x-2 italic"><Button/> Learning from doing</span>
@@ -55,3 +67,18 @@ const sortedWorks = filteredWorks.sort((a,b) => {
         </section>
     </main>
 </BaseLayout>
+
+<style>
+	@keyframes animate_text {
+		from {
+		transform: translate3d(0, 0, 0);
+		}
+		to {
+		transform: translate3d(-100%, 0, 0);
+		}
+	}
+
+	.text {
+		animation: animate_text 30s linear infinite; /* The animation property */
+	}
+</style>
