@@ -21,19 +21,13 @@ const sortedWorks = filteredWorks.sort((a,b) => {
                 <img src="/assets/logo-gearlike.png" width="560rem" alt="9petal" class="flex-[3] block overflow-x-hidden">
             </div>
             <!-- </a> -->
-            <div class="z-[1] absolute flex flex-row gap-10 w-full overflow-hidden whitespace-nowrap scrolling_text">
-                <div class="flex flex-row gap-10 lg:text-5xl sm:text-4xl text-2xl font-bold text">
-                    <span>Developer. Engineer.</span>
-                    <span>Developer. Engineer.</span>
-                    <span>Developer. Engineer.</span>
-                </div>
-                <div class="flex flex-row gap-10 lg:text-5xl sm:text-4xl text-2xl font-bold text">
+            <div data-speed="slow" class="scroller z-[1] absolute flex flex-row gap-10 w-full overflow-hidden whitespace-nowrap">
+                <div class="scroller__inner flex flex-row gap-10 lg:text-5xl sm:text-4xl text-2xl font-bold text">
                     <span>Developer. Engineer.</span>
                     <span>Developer. Engineer.</span>
                     <span>Developer. Engineer.</span>
                 </div>
             </div>
-            
             <a href="#works" class="absolute bottom-0 flex items-center"> <span class="material-symbols-rounded animate-bounce">arrow_downward</span> Scroll Down</a>
         </section>
         <section id="" class="my-10 pt-10">
@@ -69,16 +63,85 @@ const sortedWorks = filteredWorks.sort((a,b) => {
 </BaseLayout>
 
 <style>
-	@keyframes animate_text {
-		from {
-		transform: translate3d(0, 0, 0);
-		}
-		to {
-		transform: translate3d(-100%, 0, 0);
-		}
-	}
+.scroller__inner {
+  /* padding-block: 1rem; */
+  display: flex;
+  flex-wrap: wrap;
+  /* gap: 1rem; */
+}
 
-	.text {
-		animation: animate_text 30s linear infinite; /* The animation property */
-	}
+.scroller[data-animated="true"] {
+  overflow: hidden;
+  -webkit-mask: linear-gradient(
+    90deg,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller[data-animated="true"] .scroller__inner {
+  flex-wrap: nowrap;
+  animation: scroll var(--_animation-duration, 40s)
+    var(--_animation-direction, forwards) linear infinite;
+}
+
+.scroller[data-direction="right"] {
+  --_animation-direction: reverse;
+}
+
+.scroller[data-direction="left"] {
+  --_animation-direction: forwards;
+}
+
+.scroller[data-speed="faster"] {
+  --_animation-duration: 10s;
+}
+
+.scroller[data-speed="fast"] {
+  --_animation-duration: 20s;
+}
+
+.scroller[data-speed="slow"] {
+  --_animation-duration: 60s;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+
 </style>
+
+<script>
+    const scrollers = document.querySelectorAll(".scroller");
+
+// If a user hasn't opted in for recuded motion, then we add the animation
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  addAnimation();
+}
+
+function addAnimation() {
+  scrollers.forEach((scroller) => {
+    // add data-animated="true" to every `.scroller` on the page
+    scroller.setAttribute("data-animated", true);
+
+    // Make an array from the elements within `.scroller-inner`
+    const scrollerInner = scroller.querySelector(".scroller__inner");
+    const scrollerContent = Array.from(scrollerInner.children);
+
+    // For each item in the array, clone it
+    // add aria-hidden to it
+    // add it into the `.scroller-inner`
+    scrollerContent.forEach((item) => {
+      const duplicatedItem = item.cloneNode(true);
+      duplicatedItem.setAttribute("aria-hidden", true);
+      scrollerInner.appendChild(duplicatedItem);
+    });
+  });
+}
+
+</script>
