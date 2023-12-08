@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import Button from '../../components/icons/Button.astro';
 import { getCollection } from 'astro:content';
+import WorkItem from '../../components/works/WorkItem.svelte'
 
 export async function getStaticPaths({ paginate }) {
     const works = await getCollection('works');
@@ -18,7 +19,7 @@ const {page} = Astro.props;
 ---
 
 <BaseLayout>
-    <main class="font-sans text-[#17191C] pt-20 px-4 mbl-lg:px-10 tbl:px-16 lpt-lg:px-20 tbl:mt-0">
+    <main class="font-sans pt-20 px-4 mbl-lg:px-10 tbl:px-16 lpt-lg:px-20 tbl:mt-0">
         <section id="works" class="py-10">
             <div>
                 <h4 class="font-bold text-2xl mb-4">Projects</h4>
@@ -26,14 +27,15 @@ const {page} = Astro.props;
             </div>
             <div class="mt-10 max-w-5xl flex flex-col gap-y-8">
                 {page.data.map((work, i) => (
-                    <a href={`/work/${work.slug}`} class="flex flex-col justify-center">
-                        <div class="flex items-center gap-5">
-                            <div>
-                                <h1 class="hover:underline text-4xl font-semibold mb-2">{work.data.title}</h1>
-                                <p>{work.data.description}</p>
-                            </div>
-                        </div>
-                    </a>
+                    <WorkItem item={work}/>
+                    // <a href={`/work/${work.slug}`} class="flex flex-col justify-center">
+                    //     <div class="flex items-center gap-5">
+                    //         <div>
+                    //             <h1 class="hover:underline text-4xl font-semibold mb-2">{work.data.title}</h1>
+                    //             <p>{work.data.description}</p>
+                    //         </div>
+                    //     </div>
+                    // </a>
                 ))}
                 <div class={`flex items-center gap-4`}>
                     <a href={page.url.prev} class={`flex items-center ${(page.url.prev ? "text-l-pr-50" : "text-slate-400")}`}>

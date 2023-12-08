@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import Button from '../components/icons/Button.astro';
+import ScrollTest from '../components/common/ScrollHero.svelte';
 import { getCollection } from 'astro:content';
+import Button from '../components/icons/Button.astro';
+import Link from '../components/common/Link.astro';
 
 const works = await getCollection('works')
 let filteredWorks = works.slice(0,4)
@@ -14,30 +16,23 @@ const sortedWorks = filteredWorks.sort((a,b) => {
 ---
 
 <BaseLayout>
-    <main class="font-sans text-[#17191C] px-4 mbl-lg:px-10 tbl:px-10 lpt-lg:px-20 tbl:mt-0">
-        <section class="justify-center relative flex gap-x-30 w-full min-h-[60vh] tbl:min-h-[95vh] items-center">
-            <!-- <a href="#" class="z-[100]"> -->
-            <div class="z-[100]">
-                <img src="/assets/logo-gearlike.png" width="560rem" alt="9petal" class="flex-[3] block overflow-x-hidden">
-            </div>
-            <!-- </a> -->
-            <div data-speed="slow" class="scroller z-[1] absolute flex flex-row gap-10 w-full overflow-hidden whitespace-nowrap">
-                <div class="scroller__inner flex flex-row gap-10 lg:text-5xl sm:text-4xl text-2xl font-bold text">
-                    <span>Developer. Engineer.</span>
-                    <span>Developer. Engineer.</span>
-                    <span>Developer. Engineer.</span>
-                </div>
-            </div>
-            <a href="#works" class="absolute bottom-0 flex items-center"> <span class="material-symbols-rounded animate-bounce">arrow_downward</span> Scroll Down</a>
+    <ScrollTest client:only="svelte"/>
+    <main class="font-sans bg-[#17191C] text-[#f1f7ff] tbl:mt-0">
+        <section class="prose prose-2xl z-[100] bg-transparent text-[#f1f7ff] py-10 px-4 mbl-lg:px-10 tbl:px-10 lpt-lg:px-20">
+            <p class="text-2xl">
+                I’m a Intern@<Link link="https://gevernova.com" isExternal={true} color="bg-[#005e60]">GEVernova</Link>
+                working on designing and developing machine learning solutions.
+            </p>
+            <p class="text-inherit text-2xl">
+                I am a generalist exploring multiple fields of computer science and I specalize in various techs from web development, cloud computing, devops & machine learning.
+            </p>
         </section>
-        <section id="" class="my-10 pt-10">
-        </section>
-        <section id="works" class="my-10 pt-10">
-            <div>
+        <section id="works" class="pt-10 z-[10000] px-4 mbl-lg:px-10 tbl:px-10 lpt-lg:px-20 ">
+            <div class="bg-inherit">
                 <h4 class="font-bold text-2xl mb-4">Works & Projects</h4>
                 <span class="flex items-center text-lg gap-x-2 italic"><Button/> Learning from doing</span>
             </div>
-            <div class="mt-10 max-w-5xl flex flex-col gap-y-8">
+            <div class="bg-inherit mt-10 max-w-5xl flex flex-col gap-y-8">
                 {sortedWorks.map((work, i) => (
                     <a href={`/work/${work.slug}`} class="flex flex-col justify-center">
                         <div class="flex items-center gap-5">
@@ -61,87 +56,3 @@ const sortedWorks = filteredWorks.sort((a,b) => {
         </section>
     </main>
 </BaseLayout>
-
-<style>
-.scroller__inner {
-  /* padding-block: 1rem; */
-  display: flex;
-  flex-wrap: wrap;
-  /* gap: 1rem; */
-}
-
-.scroller[data-animated="true"] {
-  overflow: hidden;
-  -webkit-mask: linear-gradient(
-    90deg,
-    transparent,
-    white 20%,
-    white 80%,
-    transparent
-  );
-  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
-}
-
-.scroller[data-animated="true"] .scroller__inner {
-  flex-wrap: nowrap;
-  animation: scroll var(--_animation-duration, 40s)
-    var(--_animation-direction, forwards) linear infinite;
-}
-
-.scroller[data-direction="right"] {
-  --_animation-direction: reverse;
-}
-
-.scroller[data-direction="left"] {
-  --_animation-direction: forwards;
-}
-
-.scroller[data-speed="faster"] {
-  --_animation-duration: 10s;
-}
-
-.scroller[data-speed="fast"] {
-  --_animation-duration: 20s;
-}
-
-.scroller[data-speed="slow"] {
-  --_animation-duration: 60s;
-}
-
-@keyframes scroll {
-  to {
-    transform: translate(calc(-50% - 0.5rem));
-  }
-}
-
-</style>
-
-<script>
-    const scrollers = document.querySelectorAll(".scroller");
-
-// If a user hasn't opted in for recuded motion, then we add the animation
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  addAnimation();
-}
-
-function addAnimation() {
-  scrollers.forEach((scroller) => {
-    // add data-animated="true" to every `.scroller` on the page
-    scroller.setAttribute("data-animated", true);
-
-    // Make an array from the elements within `.scroller-inner`
-    const scrollerInner = scroller.querySelector(".scroller__inner");
-    const scrollerContent = Array.from(scrollerInner.children);
-
-    // For each item in the array, clone it
-    // add aria-hidden to it
-    // add it into the `.scroller-inner`
-    scrollerContent.forEach((item) => {
-      const duplicatedItem = item.cloneNode(true);
-      duplicatedItem.setAttribute("aria-hidden", true);
-      scrollerInner.appendChild(duplicatedItem);
-    });
-  });
-}
-
-</script>

@@ -1,4 +1,5 @@
 ---
+import Link from '../components/common/Link.astro';
 import BaseLayout from '../layouts/BaseLayout.astro'
 
 let experiences = [
@@ -22,7 +23,7 @@ let experiences = [
             link: "https://continuuminnovations.com",
             color: {
                 text: "white",
-                bg: "#005e60",
+                bg: "#cb366c",
             } 
         },
         year: "2021-2022",
@@ -35,7 +36,7 @@ let experiences = [
             link: "https://uohyd.ac.in",
             color: {
                 text: "white",
-                bg: "#005e60",
+                bg: "#c9252c",
             } 
         },
         year: "2019-2024",
@@ -45,27 +46,27 @@ let experiences = [
 ---
 
 <BaseLayout>
-    <main class="prose max-w-6xl pt-32 min-h-[80vh] font-sans text-[#17191C] px-4 mbl-lg:px-10 tbl:px-10 lpt-lg:px-20 tbl:mt-0">
+    <main class="prose text-custom-bg max-w-6xl pt-32 min-h-[80vh] font-sans px-4 mbl-lg:px-10 tbl:px-10 lpt-lg:px-20 tbl:mt-0">
         <p class="text-2xl">
-            I’m a Intern@<a class="hover:bg-[#005e60] hover:text-white transition-all" href="https://gevernova.com">GE Vernova</a>
+            I’m a Intern@<Link link="https://gevernova.com" isExternal={true} color="bg-[#005e60]">GEVernova</Link>
             working on designing and developing machine learning solutions.
         </p>
-        <p class="text-2xl">
+        <p class="text-inherit text-2xl">
             I am a generalist exploring multiple fields of computer science and I specalize in various techs from web development, cloud computing, devops & machine learning.
         </p>
 
         <hr>
 
-        <h2 class="text-3xl">
+        <h2 class="text-inherit text-3xl">
             Experiences & Education
         </h2>
-        <div class="flex flex-col gap-y-5">
+        <div class="text-inherit flex flex-col gap-y-5">
         {experiences.map(({position, company, year, work}) => (
-            <div class="text-2xl break-words">
-                {position}@<a class={`hover:bg-[${company.color.bg}] hover:text-white transition-all`} href={company.link}>{company.name}</a>
+            <div class="text-inherit text-2xl break-words">
+                {position}@<Link isExternal={true} color={company.color.bg} link={company.link}>{company.name}</Link>
             </div>
             <div class="flex gap-4">
-                <span class="text-[#17191C]/60">{year}</span>
+                <span class="text-custom-bg/60">{year}</span>
                 <span>{work}</span>
             </div>
             
@@ -84,7 +85,7 @@ let experiences = [
         <p class="text-2xl">
             I am also AWS Certified Solutions Architect (SAA-CO2) and Redhat Certified 
             Kubernetes and OpenShift Specalist
-            (<a href="https://www.credly.com/badges/e654870d-b9e5-4a5d-8506-8b6d6001a64e/public_url" class="hover:bg-[#ef0000] hover:text-white transition-all">DO180</a>).
+            (<Link link="https://www.credly.com/badges/e654870d-b9e5-4a5d-8506-8b6d6001a64e/public_url" isExternal={true} color="bg-[#ef0000]">EX180</Link>)
         </p>
     </main>
 </BaseLayout>

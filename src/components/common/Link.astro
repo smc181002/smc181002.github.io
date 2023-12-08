@@ -1,0 +1,8 @@
+---
+let {link, isExternal=false, color='bg-l-pr-50'} = Astro.props;
+---
+
+<a target={isExternal? "_blank" : "_self"} rel="noreferrer" href={link} class="text-inherit z-[10] relative w-fit overflow-hidden group">
+    <slot/>
+    <span class={`z-[-1] absolute top-0 left-0 transition-all duration-300 w-0 h-full group-hover:w-full`} style={`background: ${color}`}></span>
+</a>

@@ -1,9 +1,10 @@
 ---
 import Logo from "../icons/Logo.astro";
+import Link from "./Link.astro";
 
 ---
 
-<footer class="py-10 font-sans text-[#17191C] px-4 mbl-lg:px-10 tbl:px-10 lpt-lg:px-20 tbl:mt-0">
+<footer class="py-10 font-sans text-custom-bg bg-custom-black px-4 mbl-lg:px-10 tbl:px-10 lpt-lg:px-20 tbl:mt-0">
     <div class="flex gap-6">
         <div class="hidden tbl:flex">
             <svg width="24" height="33" viewBox="0 0 36 33" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,27 +21,43 @@ import Logo from "../icons/Logo.astro";
             </svg>
         </div>
         <div class="flex w-max flex-col gap-2 pr-4 ">
-            <p class="w-max px-4 py-1 border border-custom-black rounded-lg rounded-bl-none">Hello 👋</p>
-            <p class="max-w-md px-4 py-1 border border-custom-black rounded-lg rounded-l-none">
+            <p class="w-max px-4 py-1 border border-custom-bg rounded-lg rounded-bl-none">Hello 👋</p>
+            <p class="max-w-md px-4 py-1 border border-custom-bg rounded-lg rounded-l-none">
                 Are you also a coding enthusiast like me? <br/>
 
                 And you would like to work with me? 
             </p>
-            <p class="px-4 py-1 border border-custom-black rounded-lg rounded-tl-none">
-                contact me at <a href="mailto:meherchaitanya18802@gmail.com" class="overflow-x-hidden w-max break-all text-l-pr-50 hover:bg-l-pr-50 hover:text-white hover:underline transition-all">meherchaitanya18802@gmail.com</a>
+            <p class="px-4 py-1 border border-custom-bg rounded-lg rounded-tl-none">
+                contact me at 
+                <a href="mailto:meherchaitanya18802@gmail.com" class="overflow-x-hidden w-max break-all text-l-pr-50 hover:bg-l-pr-50 hover:text-white hover:underline transition-all">meherchaitanya18802@gmail.com</a>
             </p>
         </div>
     </div>
     <div class="flex flex-col mbl-lg:items-center mbl-lg:flex-row sm:gap-40 gap-10 mt-10">
         <div class="flex flex-col gap-2">
             <Logo/>
-            <!-- <span class="font-semibold">Ceol Labs &#169; 2023</span> -->
         </div>
         <div class="flex justify-start items-start flex-wrap gap-y-2 gap-x-20">
-            <a rel="noreferrer" target="_blank" href="https://github.com/smc181002/" class="hover:bg-l-pr-50 hover:text-white flex items-center gap-2 h-max border-b-2 border-dashed border-custom-black hover:border-white">GitHub <span class="material-symbols-rounded">arrow_outward</span></a>
-            <a rel="noreferrer" target="_blank" href="https://smc181002.medium.com/" class="hover:bg-l-pr-50 hover:text-white flex items-center gap-2 h-max border-b-2 border-dashed border-custom-black hover:border-white">Medium <span class="material-symbols-rounded">arrow_outward</span></a>
-            <a rel="noreferrer" target="_blank" href="https://twitter.com/smc181002" class="hover:bg-l-pr-50 hover:text-white flex items-center gap-2 h-max border-b-2 border-dashed border-custom-black hover:border-white">Twitter <span class="material-symbols-rounded">arrow_outward</span></a>
-            <a rel="noreferrer" target="_blank" href="https://www.linkedin.com/in/nsmcv18/" class="hover:bg-l-pr-50 hover:text-white flex items-center gap-2 h-max border-b-2 border-dashed border-custom-black hover:border-white">LinkedIn <span class="material-symbols-rounded">arrow_outward</span></a>
+            <Link link="https://github.com/smc181002/" isExternal={true}>
+                <div class="flex items-center gap-2 h-max border-b-2 border-dashed hover:border-white">
+                    GitHub <span class="material-symbols-rounded">arrow_outward</span>
+                </div>
+            </Link>
+            <Link link="https://smc181002.medium.com/" isExternal={true}>
+                <div class="flex items-center gap-2 h-max border-b-2 border-dashed hover:border-white">
+                    Medium <span class="material-symbols-rounded">arrow_outward</span>
+                </div>
+            </Link>
+            <Link link="https://x.com/smc181002" isExternal={true}>
+                <div class="flex items-center gap-2 h-max border-b-2 border-dashed hover:border-white">
+                    X (Twitter) <span class="material-symbols-rounded">arrow_outward</span>
+                </div>
+            </Link>
+            <Link link="https://www.linkedin.com/in/nsmcv18/" isExternal={true}>
+                <div class="flex items-center gap-2 h-max border-b-2 border-dashed hover:border-white">
+                    LinkedIn <span class="material-symbols-rounded">arrow_outward</span>
+                </div>
+            </Link>
         </div>
     </div>
 </footer>
