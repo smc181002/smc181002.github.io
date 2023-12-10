@@ -19,7 +19,7 @@
         <img src="/assets/logo-gearlike.png" width="960rem" alt="9petal" class="flex-[3] block overflow-x-hidden" style="transform: translateY({scrollPosition/2.5}px);" />
     </div>
     <div class="z-[-2] fixed flex flex-row gap-10 w-full overflow-hidden whitespace-nowrap">
-        <div class="bg-gradient-to-b from-40% bg-clip-text from-white to-70% to-custom-text/50 text-transparent h-[20rem] items-center flex flex-row gap-10 lg:text-6xl sm:text-5xl text-4xl font-extrabold" style="transform: translate({-scrollPosition-50}px, 0);">
+        <div class="bg-gradient-to-b from-40% bg-clip-text from-white to-70% to-custom-text/50 text-transparent h-[20rem] items-center flex flex-row gap-10 lg:text-6xl sm:text-5xl text-4xl font-extrabold" style="transform: translate({-scrollPosition+50}px, 0);">
         Developer. Engineer.
         Developer. Engineer.
         Developer. Engineer.
