@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import Button from '../../components/icons/Button.astro';
 import { getCollection } from 'astro:content';
 import WorkItem from '../../components/works/WorkItem.svelte'
 
@@ -18,36 +17,25 @@ export async function getStaticPaths({ paginate }) {
 const {page} = Astro.props;
 ---
 
-<BaseLayout>
-    <main class="font-sans pt-20 px-4 mbl-lg:px-10 tbl:px-16 lpt-lg:px-20 tbl:mt-0">
-        <section id="works" class="py-10">
-            <div>
-                <h4 class="font-bold text-2xl mb-4">Projects</h4>
-                <span class="flex items-center text-lg gap-x-2 italic"><Button/> Learning from doing</span>
+<BaseLayout title="Works">
+    <main class="max-w-[1180px] mx-auto px-4 tbl:px-8 pt-7">
+        <section id="works" class="flex flex-col gap-5">
+            <div class="flex flex-col gap-1">
+                <p class="ek-eyebrow">Learning from doing</p>
+                <h1 class="ek-title">Works</h1>
+                <p class="text-sm text-ek-text-2">Projects, tools and write-ups, newest first</p>
             </div>
-            <div class="mt-10 max-w-5xl flex flex-col gap-y-8">
-                {page.data.map((work, i) => (
-                    <WorkItem item={work}/>
-                    // <a href={`/work/${work.slug}`} class="flex flex-col justify-center">
-                    //     <div class="flex items-center gap-5">
-                    //         <div>
-                    //             <h1 class="hover:underline text-4xl font-semibold mb-2">{work.data.title}</h1>
-                    //             <p>{work.data.description}</p>
-                    //         </div>
-                    //     </div>
-                    // </a>
-                ))}
-                <div class={`flex items-center gap-4`}>
-                    <a href={page.url.prev} class={`flex items-center ${(page.url.prev ? "text-l-pr-50" : "text-slate-400")}`}>
-                        <span class="material-symbols-rounded">arrow_left</span>
-                        Prev
-                    </a>
-                    <a href={page.url.next} class={`flex items-center ${(page.url.next ? "text-l-pr-50" : "text-slate-400")}`}>
-                        Next
-                        <span class="material-symbols-rounded">arrow_right</span>
-                    </a>
-                </div>
+            <div class="ek-card">
+                {page.data.map((work) => <WorkItem item={work}/>)}
             </div>
+            <nav aria-label="Pagination" class="flex items-center gap-2">
+                {page.url.prev
+                    ? <a href={page.url.prev} class="ek-btn-outline"><span class="material-symbols-rounded text-base" aria-hidden="true">arrow_back</span>Previous</a>
+                    : <span class="ek-btn border-hair border-ek-border text-ek-text-3" aria-disabled="true"><span class="material-symbols-rounded text-base" aria-hidden="true">arrow_back</span>Previous</span>}
+                {page.url.next
+                    ? <a href={page.url.next} class="ek-btn-outline">Next<span class="material-symbols-rounded text-base" aria-hidden="true">arrow_forward</span></a>
+                    : <span class="ek-btn border-hair border-ek-border text-ek-text-3" aria-disabled="true">Next<span class="material-symbols-rounded text-base" aria-hidden="true">arrow_forward</span></span>}
+            </nav>
         </section>
     </main>
 </BaseLayout>

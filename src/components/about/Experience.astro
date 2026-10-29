@@ -1,0 +1,29 @@
+---
+// Brand colours stay as small dots; everything else uses the design tokens.
+const experiences = [
+    {company: "GE Vernova", link: "https://gevernova.com", color: "#005e60", role: "Software engineer", year: "2024 – present"},
+    {company: "GE Vernova", link: "https://gevernova.com", color: "#005e60", role: "Intern · Machine learning", year: "2023 – 2024"},
+    {company: "Continuum Innovations", link: "https://continuuminnovations.com", color: "#cb366c", role: "Intern · Cloud architect", year: "2021 – 2022"},
+    {company: "University of Hyderabad", link: "https://uohyd.ac.in", color: "#c9252c", role: "Student · Computer science", year: "2019 – 2024"},
+]
+---
+
+<section id="about" aria-labelledby="about-title" class="flex flex-wrap gap-x-12 gap-y-6 scroll-mt-24">
+    <div class="flex-[1_1_280px] flex flex-col gap-1">
+        <p class="ek-eyebrow">About</p>
+        <h2 id="about-title" class="ek-title">Experience</h2>
+        <p class="mt-2 text-sm text-ek-text-2">Where I've worked and studied, most recent first.</p>
+    </div>
+    <div class="ek-card flex-[999_1_560px] min-w-0">
+        {experiences.map(item => (
+            <a href={item.link} target="_blank" rel="noreferrer" class="flex flex-wrap items-center gap-x-6 gap-y-2 px-5 py-[18px] border-b-hair border-ek-border last:border-b-0 hover:bg-ek-hover transition-colors">
+                <span class="w-2.5 h-2.5 rounded-full" style={`background: ${item.color}`} aria-hidden="true"></span>
+                <span class="flex-[999_1_240px] flex flex-col">
+                    <span class="font-medium">{item.company}</span>
+                    <span class="text-sm text-ek-text-2">{item.role}</span>
+                </span>
+                <span class="text-xs text-ek-text-2 ek-num">{item.year}</span>
+            </a>
+        ))}
+    </div>
+</section>

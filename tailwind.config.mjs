@@ -8,7 +8,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'sans': ['Sora', 'Poppins', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+      'sans': ['Geist', 'Inter', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif']
     },
     extend: {
       fontFamily: {
@@ -21,8 +21,21 @@ module.exports = {
         "mbl-lg": "376px",
         "mbl-md": "321px",
       },
+      borderWidth: {
+        hair: '0.8px',
+      },
+      borderRadius: {
+        DEFAULT: '4px',
+        sm: '3px',
+      },
       colors: {
         ...colors(216,100,50),
+        // ExpenseKrafter tokens, defined as CSS variables in src/styles/global.css
+        ek: Object.fromEntries([
+          'bg', 'surface', 'surface-2', 'surface-3', 'hover', 'border', 'border-strong',
+          'text', 'text-2', 'text-3', 'primary-bg', 'primary-fg', 'primary-hover',
+          'accent', 'accent-ink', 'accent-soft', 'hero-muted', 'hero-rule', 'pos', 'neg',
+        ].map((name) => [name, `var(--ek-${name})`])),
         custom: {
           "bg": "#F1F7FF",
           "black": "#17191C",
@@ -41,6 +54,26 @@ module.exports = {
         }
       },
       typography: ({theme}) => ({
+        ek: {
+          css: {
+            '--tw-prose-body': 'var(--ek-text)',
+            '--tw-prose-headings': 'var(--ek-text)',
+            '--tw-prose-lead': 'var(--ek-text-2)',
+            '--tw-prose-links': 'var(--ek-text)',
+            '--tw-prose-bold': 'var(--ek-text)',
+            '--tw-prose-counters': 'var(--ek-text-2)',
+            '--tw-prose-bullets': 'var(--ek-text-3)',
+            '--tw-prose-hr': 'var(--ek-border)',
+            '--tw-prose-quotes': 'var(--ek-text)',
+            '--tw-prose-quote-borders': 'var(--ek-border-strong)',
+            '--tw-prose-captions': 'var(--ek-text-2)',
+            '--tw-prose-code': 'var(--ek-text)',
+            '--tw-prose-pre-code': 'var(--ek-text)',
+            '--tw-prose-pre-bg': 'var(--ek-surface-2)',
+            '--tw-prose-th-borders': 'var(--ek-border-strong)',
+            '--tw-prose-td-borders': 'var(--ek-border)',
+          }
+        },
         matty: {
           css: {
             '--tw-prose-body': theme('colors.matty[700]'),

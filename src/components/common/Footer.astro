@@ -1,63 +1,32 @@
 ---
-import Logo from "../icons/Logo.astro";
-import Link from "./Link.astro";
+import { MEDIUM_PROFILE } from '../../lib/medium';
 
+const socials = [
+    {name: "GitHub", link: "https://github.com/smc181002/"},
+    {name: "Medium", link: MEDIUM_PROFILE},
+    {name: "X (Twitter)", link: "https://x.com/smc181002"},
+    {name: "LinkedIn", link: "https://www.linkedin.com/in/nsmcv18/"},
+]
 ---
 
-<footer class="py-10 font-sans text-custom-bg bg-custom-black px-4 mbl-lg:px-10 tbl:px-10 lpt-lg:px-20 tbl:mt-0">
-    <div class="flex gap-6">
-        <div class="hidden tbl:flex">
-            <svg width="24" height="33" viewBox="0 0 36 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="32" cy="29" r="4" fill="#19BF66"/>
-                <rect x="-0.475933" y="0.475933" width="2.66523" height="18.2758" rx="1.33261" transform="matrix(1 0 0 -1 14.707 19.2761)" fill="#0066FF" stroke="#0066FF" stroke-width="0.951867"/>
-                <rect x="-0.058662" y="0.67051" width="2.66523" height="16.3721" rx="1.33261" transform="matrix(0.766044 -0.642788 -0.642788 -0.766044 15.8982 19.8198)" fill="#0066FF" stroke="#0066FF" stroke-width="0.951867"/>
-                <rect x="24.1796" y="5.08877" width="2.66523" height="16.3721" rx="1.33261" transform="rotate(40 24.1796 5.08877)" fill="#0066FF" stroke="#0066FF" stroke-width="0.951867"/>
-                <rect x="0.386058" y="0.551348" width="2.66523" height="16.3721" rx="1.33261" transform="matrix(0.173648 -0.984808 -0.984808 -0.173648 17.048 19.5283)" fill="#0066FF" stroke="#0066FF" stroke-width="0.951867"/>
-                <rect x="30.0887" y="13.5844" width="2.66523" height="16.3721" rx="1.33261" transform="rotate(80 30.0887 13.5844)" fill="#0066FF" stroke="#0066FF" stroke-width="0.951867"/>
-                <rect x="0.650137" y="0.174204" width="2.66523" height="16.3721" rx="1.33261" transform="matrix(-0.5 -0.866025 -0.866025 0.5 17.86 18.5544)" fill="#0066FF" stroke="#0066FF" stroke-width="0.951867"/>
-                <rect x="29.1872" y="23.9562" width="2.66523" height="16.3721" rx="1.33261" transform="rotate(120 29.1872 23.9562)" fill="#0066FF" stroke="#0066FF" stroke-width="0.951867"/>
-                <rect x="0.61001" y="-0.284452" width="2.66523" height="16.3721" rx="1.33261" transform="matrix(-0.939693 -0.34202 -0.34202 0.939693 17.7271 17.1973)" fill="#0066FF" stroke="#0066FF" stroke-width="0.951867"/>
-                <rect x="0.284452" y="-0.61001" width="2.66523" height="16.3721" rx="1.33261" transform="matrix(-0.939693 0.34202 0.34202 0.939693 16.8869 16.2858)" fill="#0066FF" stroke="#0066FF" stroke-width="0.951867"/>
-            </svg>
+<footer class="mt-16 border-t-hair border-ek-border bg-ek-surface-2">
+    <div class="max-w-[1180px] mx-auto px-4 tbl:px-8 py-10 flex flex-col gap-8">
+        <div class="flex flex-wrap items-end justify-between gap-6">
+            <div class="flex flex-col gap-1 max-w-md">
+                <p class="ek-eyebrow">Get in touch</p>
+                <p class="text-xl tracking-[-0.02em]">Like building things too? Let's work together.</p>
+            </div>
+            <a href="mailto:meherchaitanya18802@gmail.com" class="ek-btn-outline break-all">meherchaitanya18802@gmail.com</a>
         </div>
-        <div class="flex w-max flex-col gap-2 pr-4 ">
-            <p class="w-max px-4 py-1 border border-custom-bg rounded-lg rounded-bl-none">Hello 👋</p>
-            <p class="max-w-md px-4 py-1 border border-custom-bg rounded-lg rounded-l-none">
-                Are you also a coding enthusiast like me? <br/>
-
-                And you would like to work with me? 
-            </p>
-            <p class="px-4 py-1 border border-custom-bg rounded-lg rounded-tl-none">
-                contact me at 
-                <a href="mailto:meherchaitanya18802@gmail.com" class="overflow-x-hidden w-max break-all text-l-pr-50 hover:bg-l-pr-50 hover:text-white hover:underline transition-all">meherchaitanya18802@gmail.com</a>
-            </p>
-        </div>
-    </div>
-    <div class="flex flex-col mbl-lg:items-center mbl-lg:flex-row sm:gap-40 gap-10 mt-10">
-        <div class="flex flex-col gap-2">
-            <Logo/>
-        </div>
-        <div class="flex justify-start items-start flex-wrap gap-y-2 gap-x-20">
-            <Link link="https://github.com/smc181002/" isExternal={true}>
-                <div class="flex items-center gap-2 h-max border-b-2 border-dashed hover:border-white">
-                    GitHub <span class="material-symbols-rounded">arrow_outward</span>
-                </div>
-            </Link>
-            <Link link="https://smc181002.medium.com/" isExternal={true}>
-                <div class="flex items-center gap-2 h-max border-b-2 border-dashed hover:border-white">
-                    Medium <span class="material-symbols-rounded">arrow_outward</span>
-                </div>
-            </Link>
-            <Link link="https://x.com/smc181002" isExternal={true}>
-                <div class="flex items-center gap-2 h-max border-b-2 border-dashed hover:border-white">
-                    X (Twitter) <span class="material-symbols-rounded">arrow_outward</span>
-                </div>
-            </Link>
-            <Link link="https://www.linkedin.com/in/nsmcv18/" isExternal={true}>
-                <div class="flex items-center gap-2 h-max border-b-2 border-dashed hover:border-white">
-                    LinkedIn <span class="material-symbols-rounded">arrow_outward</span>
-                </div>
-            </Link>
+        <div class="flex flex-wrap items-center justify-between gap-4 pt-6 border-t-hair border-ek-border text-xs text-ek-text-2">
+            <span>© {new Date().getFullYear()} smc181002</span>
+            <span class="flex flex-wrap gap-x-5 gap-y-2">
+                {socials.map(item => (
+                    <a href={item.link} target="_blank" rel="noreferrer" class="flex items-center gap-1 hover:text-ek-text transition-colors">
+                        {item.name}<span class="material-symbols-rounded text-sm" aria-hidden="true">arrow_outward</span>
+                    </a>
+                ))}
+            </span>
         </div>
     </div>
 </footer>
