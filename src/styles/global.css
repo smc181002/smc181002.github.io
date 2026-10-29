@@ -2,36 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ExpenseKrafter design tokens. Light is the default theme; dark redefines the same names. */
+:root {
+    --ek-bg: #ffffff;
+    --ek-surface: #ffffff;
+    --ek-surface-2: #f6f7f6;
+    --ek-surface-3: #eef0ef;
+    --ek-hover: #fafbfa;
+    --ek-border: #dfe3e0;
+    --ek-border-strong: #c9cecb;
+    --ek-text: #171a18;
+    --ek-text-2: #686c69;
+    --ek-text-3: #8c918e;
+    --ek-primary-bg: #171a18;
+    --ek-primary-fg: #ffffff;
+    --ek-primary-hover: #2c302d;
+    --ek-accent: #007d56;
+    --ek-accent-ink: #ffffff;
+    --ek-accent-soft: rgba(0, 125, 86, 0.08);
+    --ek-hero-muted: rgba(255, 255, 255, 0.78);
+    --ek-hero-rule: rgba(255, 255, 255, 0.28);
+    --ek-pos: #007d56;
+    --ek-neg: #b42318;
+    --ek-ease: cubic-bezier(.2, .8, .2, 1);
+    color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ek-bg: #0f1110;
+        --ek-surface: #141715;
+        --ek-surface-2: #191c1a;
+        --ek-surface-3: #222624;
+        --ek-hover: #181b19;
+        --ek-border: #2a2f2c;
+        --ek-border-strong: #3b413d;
+        --ek-text: #eceeed;
+        --ek-text-2: #a3a8a5;
+        --ek-text-3: #7c827e;
+        --ek-primary-bg: #eceeed;
+        --ek-primary-fg: #0f1110;
+        --ek-primary-hover: #ffffff;
+        --ek-accent-soft: rgba(63, 191, 140, 0.12);
+        --ek-pos: #3fbf8c;
+        --ek-neg: #f07a6e;
+        color-scheme: dark;
+    }
+}
+
 @layer base {
     html {
         -webkit-tap-highlight-color: transparent;
     }
+    body {
+        @apply bg-ek-bg text-ek-text font-sans antialiased;
+        font-size: 15px;
+        line-height: 22px;
+    }
 }
 
 @layer components {
-    .smc-underline-blue-500 {
-        @apply underline decoration-blue-500 underline-offset-2;
+    .ek-eyebrow {
+        @apply text-xs font-medium tracking-[0.02em] text-ek-text-2;
     }
-
-    /* .prose-custom {
-        @apply lpt:prose-h1:text-6xl lpt-lg:prose-h1:text-7xl 
-        lpt:prose-p:text-xl lpt:prose-a:text-xl lpt:prose-ul:text-xl prose-table:w-full 
-        prose-table:border-collapse prose-table:table-auto prose-th:text-left 
-        prose-th:border prose-td:border prose-th:p-4 prose-td:p-4 
-        prose-a:underline-offset-2 hover:prose-a:decoration-2 
-        prose-a:decoration-1 prose-a:decoration-blue-500 lpt:prose-pre:text-lg
-        prose-img:rounded-3xl prose-img:border-[1px] prose-headings:font-fraunces font-roboto-flex text-clip overflow-x-hidden;
-    } */
-
+    .ek-title {
+        @apply text-[30px] leading-9 font-normal tracking-[-0.03em];
+    }
+    .ek-card {
+        @apply border-hair border-ek-border rounded bg-ek-surface;
+        transition: border-color .2s var(--ek-ease);
+    }
+    .ek-chip {
+        @apply inline-flex items-center gap-1.5 px-2 py-0.5 border-hair border-ek-border rounded-sm text-xs text-ek-text-2;
+    }
+    .ek-btn {
+        @apply inline-flex items-center gap-1.5 min-h-[44px] px-4 rounded text-sm font-medium;
+        transition: background-color .15s var(--ek-ease), border-color .15s var(--ek-ease);
+    }
+    .ek-btn-primary {
+        @apply ek-btn bg-ek-primary-bg text-ek-primary-fg hover:bg-ek-primary-hover;
+    }
+    .ek-btn-outline {
+        @apply ek-btn border-hair border-ek-border-strong text-ek-text hover:bg-ek-surface-2;
+    }
+    .ek-num {
+        font-variant-numeric: tabular-nums;
+    }
 
     .prose-custom {
         @apply
-        prose-table:border-collapse prose-table:table-auto prose-th:text-left 
-        prose-th:border prose-td:border prose-th:p-4 prose-td:p-4 
-        prose-a:underline-offset-2 hover:prose-a:decoration-2 
-        prose-a:decoration-1 prose-a:decoration-light-primary 
-        dark:prose-a:decoration-dark-primary prose-img:rounded-3xl 
-        prose-img:border-[1px] prose-headings:font-sans 
+        prose-table:border-collapse prose-table:table-auto prose-th:text-left
+        prose-th:border prose-td:border prose-th:p-4 prose-td:p-4
+        prose-a:underline-offset-2 hover:prose-a:decoration-2
+        prose-a:decoration-1 prose-a:decoration-ek-accent
+        prose-img:rounded prose-img:border-hair prose-headings:font-sans
         text-clip overflow-x-hidden prose-p:text-base;
     }
 }
@@ -42,7 +106,4 @@
     'wght' 300,
     'GRAD' 0,
     'opsz' 48
-}
-.dark {
-    color-scheme: dark;
 }

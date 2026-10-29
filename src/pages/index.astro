@@ -1,57 +1,70 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import ScrollTest from '../components/common/ScrollHero.svelte';
 import { getCollection } from 'astro:content';
-import Button from '../components/icons/Button.astro';
-import Link from '../components/common/Link.astro';
+import WorkItem from '../components/works/WorkItem.svelte';
+import MediumPosts from '../components/blog/MediumPosts.astro';
+import Experience from '../components/about/Experience.astro';
+import BrandIcon from '../components/icons/BrandIcon.astro';
+import { certifications } from '../lib/certifications';
 
 const works = await getCollection('works')
-let filteredWorks = works.slice(0,4)
-const sortedWorks = filteredWorks.sort((a,b) => {
+const sortedWorks = works.sort((a,b) => {
     let c = new Date(a.data.date)
     let d = new Date(b.data.date)
 
     return c<d ? 1 : -1;
-});
+}).slice(0,3);
+
+
 ---
 
 <BaseLayout>
-    <ScrollTest client:only="svelte"/>
-    <main class="font-sans bg-custom-black text-custom-bg tbl:mt-0">
-        <section class="h-[80vh] bg-custom-black mx-auto prose prose-2xl z-[100] text-[#f1f7ff] py-10 px-4 mbl-lg:px-10 tbl:px-10 lpt-lg:px-20">
-            <p class="text-2xl">
-                I’m a Software Engineer@<Link link="https://www.gevernova.com" isExternal={true} color="bg-[#005e60]">GEVernova</Link>
-                working on designing and deliverying enterprise solutions.
+    <main class="max-w-[1180px] mx-auto px-4 tbl:px-8 pt-7 flex flex-col gap-14">
+        <section aria-labelledby="hero-title" class="bg-ek-accent text-ek-accent-ink rounded-none px-6 tbl:px-10 pt-10 tbl:pt-12 pb-9 flex flex-col gap-7">
+            <p class="text-xs font-medium tracking-[0.02em] text-ek-hero-muted">
+                Software engineer · <a href="https://www.gevernova.com" target="_blank" rel="noreferrer" class="underline underline-offset-2 hover:text-ek-accent-ink">GE Vernova</a>
             </p>
-            <p class="text-inherit text-2xl">
-                I am a generalist exploring multiple fields of computer science and I specalize in various techs from web development, cloud computing, devops & machine learning.
+            <h1 id="hero-title" class="max-w-[920px] text-4xl lpt:text-[56px] leading-[1.06] font-normal tracking-[-0.045em]">
+                I experiment with new ideas and turn them into working software.
+            </h1>
+            <p class="max-w-[680px] text-[17px] leading-[26px] text-ek-hero-muted">
+                A software engineer who likes taking ideas from a sketch to something that ships. Lately that means working close to the wire, with a conceptual grounding in how substation networks and their protocols fit together.
             </p>
-        </section>
-        <section id="works" class="bg-custom-black pt-10 z-[10000] px-4 mbl-lg:px-10 tbl:px-10 lpt-lg:px-20 ">
-            <div class="bg-inherit">
-                <h4 class="font-bold text-2xl mb-4">Works & Projects</h4>
-                <span class="flex items-center text-lg gap-x-2 italic"><Button/> Learning from doing</span>
-            </div>
-            <div class="bg-inherit mt-10 max-w-5xl flex flex-col gap-y-8">
-                {sortedWorks.map((work, i) => (
-                    <a href={`/work/${work.slug}`} class="flex flex-col justify-center">
-                        <div class="flex items-center gap-5">
-                            <div>
-                                <h1 class="hover:underline text-4xl font-semibold mb-2">{work.data.title}</h1>
-                                <p>{work.data.description}</p>
-                            </div>
-                        </div>
+            <div class="border-t-hair border-ek-hero-rule pt-5 flex flex-wrap gap-x-12 gap-y-6">
+                {certifications.map(cert => (
+                    <a href={cert.link} target="_blank" rel="noreferrer" class="group flex items-center gap-3">
+                        <BrandIcon name={cert.icon} size={22}/>
+                        <span class="flex flex-col gap-0.5">
+                            <span class="text-xs text-ek-hero-muted">Certified · Credly</span>
+                            <span class="font-medium group-hover:underline underline-offset-2">{cert.short}</span>
+                        </span>
                     </a>
                 ))}
-            <hr>
-            </div>
-            <div class="mt-8">
-                <div class="px-6 italic">There are more!</div>
-                <a href="/works/1" class="flex items-center gap-4 font-bold text-3xl px-6 text-l-pr-50">
-                    <span class="hover:underline "> view all works </span>
-                    <span class="material-symbols-rounded">arrow_forward</span>
-                </a>
+                <div class="flex flex-col gap-0.5">
+                    <span class="text-xs text-ek-hero-muted">Currently exploring</span>
+                    <span class="font-medium">Substation network protocols</span>
+                </div>
             </div>
         </section>
+
+        <section id="works" aria-labelledby="works-title" class="flex flex-col gap-5 scroll-mt-24">
+            <div class="flex flex-wrap items-end justify-between gap-3">
+                <div class="flex flex-col gap-1">
+                    <p class="ek-eyebrow">Learning from doing</p>
+                    <h2 id="works-title" class="ek-title">Works</h2>
+                </div>
+                <a href="/works/1" class="ek-btn-outline">
+                    View all works
+                    <span class="material-symbols-rounded text-base" aria-hidden="true">arrow_forward</span>
+                </a>
+            </div>
+            <div class="ek-card">
+                {sortedWorks.map((work) => <WorkItem item={work}/>)}
+            </div>
+        </section>
+
+        <MediumPosts limit={3}/>
+
+        <Experience/>
     </main>
 </BaseLayout>

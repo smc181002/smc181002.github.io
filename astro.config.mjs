@@ -14,7 +14,7 @@ export default defineConfig( /** @type {import('astro').AstroUserConfig} */
   // site: "https://scis.uohyd.ac.in/~19mcme12/",
   // base: "~19mcme12",
   // Enable the Svelte renderer to support Svelte components.
-  integrations: [tailwind(), mdx(), sitemap(), svelte()],
+  integrations: [tailwind({ applyBaseStyles: false }), mdx(), sitemap(), svelte()],
   markdown: {
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)

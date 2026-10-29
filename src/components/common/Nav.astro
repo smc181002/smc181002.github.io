@@ -1,58 +1,25 @@
 ---
-// import {Image} from 'astro:assets';
-import Logo from '../icons/Logo.astro';
-const {color} = Astro.props;
+import { MEDIUM_PROFILE } from '../../lib/medium';
 
 const links = [
-    {name: "Blogs", link: "https://medium.com/@smc181002"},
     {name: "Works", link: "/works/1"},
+    {name: "Writing", link: "/#blog"},
     {name: "About", link: "/about"},
 ]
 ---
 
-<script>
-    var prevScrollpos = window.scrollY;
-    window.onscroll = function() {
-        var currentScrollPos = window.scrollY;
-        if(!document.getElementById("menu").checked) {
-            if (prevScrollpos > currentScrollPos) {
-                document.getElementById("navbar").style.top = "0";
-            } else {
-                document.getElementById("navbar").style.top = "-80px";
-            }
-            prevScrollpos = currentScrollPos;
-        }
-    }
-    let checkbox = document.getElementById("menu")
-    checkbox.addEventListener("click", () => {
-        if (checkbox.checked) {
-            document.body.style.overflow = "hidden"
-        } else {
-            document.body.style.overflow = "auto"
-        }
-    })
-</script>
-
-<nav id="navbar" class="z-[1000] transition-all duration-500 flex justify-between items-center sm:px-6 px-6 py-4 fixed w-screen bg-inherit">
-    <div class="flex w-screen items-center bg-inherit">
-        <div class="w-full flex items-center justify-center">
-            <a href="/" aria-label="CEOL Home" class="z-[10]">
-                <Logo/>
-            </a>
-        </div>
-        <div class="bg-inherit">
-            <label for="menu" class="bg-inherit">
-                <input type="checkbox" class="peer hidden" id="menu">
-                <span class="font-semibold cursor-pointer z-[100]">Menu</span>
-                <div class="z-[1] bg-inherit peer-checked:flex hidden fixed top-0 w-full h-full right-0 px-80 mt-16 pt-10 flex-col gap-4 gap-y-10">
-                    {links.map(item => (
-                        <a href={item.link} class="text-xl flex justify-between">
-                            <span >{item.name}</span>
-                            <span class="material-symbols-rounded">arrow_outward</span>
-                        </a>
-                    ))}
-                </div>
-            </label>
-        </div>
+<header class="sticky top-0 z-[1000] border-b-hair border-ek-border bg-ek-bg">
+    <div class="max-w-[1180px] mx-auto px-4 tbl:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
+        <a href="/" aria-label="Home" class="flex items-center min-h-[44px]">
+            <img src="/favicon.svg" width="36" height="33" alt="" />
+        </a>
+        <nav aria-label="Main" class="flex flex-wrap items-center gap-1">
+            {links.map(item => (
+                <a href={item.link} class="px-3 py-2.5 rounded text-sm text-ek-text-2 hover:text-ek-text hover:bg-ek-surface-2 transition-colors">
+                    {item.name}
+                </a>
+            ))}
+            <a href={MEDIUM_PROFILE} target="_blank" rel="noreferrer" class="ek-btn-primary ml-2 hidden tbl:inline-flex">Follow on Medium</a>
+        </nav>
     </div>
-</nav>
+</header>

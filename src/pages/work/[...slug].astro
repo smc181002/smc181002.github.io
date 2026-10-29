@@ -16,26 +16,23 @@ const work = Astro.props;
 const { Content } = await work.render();
 ---
 
-<BaseLayout>
-    <main class="font-sans min-h-screen">
-      <article class="sm:px-10 px-6 pt-20">
-        <div class="mt-20 mb-14">
-            <h1 class="mb-14 lpt-lg:text-5xl text-4xl font-semibold items-center">
-                {work.data.title}
-            </h1>
-            <div class="font-semibold text-slate-500">
-              `type: {work.data.categories[0]}`
+<BaseLayout title={work.data.title} description={work.data.description}>
+    <main class="max-w-[1180px] mx-auto px-4 tbl:px-8 pt-7">
+      <article class="flex flex-col gap-10">
+        <header class="flex flex-col gap-3 pb-8 border-b-hair border-ek-border">
+            <a href="/works/1" class="ek-eyebrow flex items-center gap-1 hover:text-ek-text w-fit">
+              <span class="material-symbols-rounded text-sm" aria-hidden="true">arrow_back</span>Works · {work.data.categories[0]}
+            </a>
+            <h1 class="text-4xl lpt:text-5xl leading-tight font-normal tracking-[-0.04em]">{work.data.title}</h1>
+            <p class="text-lg text-ek-text-2 max-w-3xl">{work.data.description}</p>
+            <div class="flex flex-wrap items-center gap-2">
+              <time class="text-xs text-ek-text-2 ek-num mr-2" datetime={work.data.date.toISOString()}>
+                {work.data.date.toLocaleDateString('en-GB', {day: 'numeric', month: 'long', year: 'numeric'})}
+              </time>
+              {work.data.tags.map(tag => <span class="ek-chip">{tag}</span>)}
             </div>
-            <div class="flex gap-x-2 mt-2 font-semibold text-l-pr-50">
-              {work.data.tags.map(tag => (
-                <div>#{tag}
-                  </div>
-
-              ))}
-              <!-- `type: {work.data.categories[0]}` -->
-            </div>
-        </div>
-        <div class="bg-inherit text-inherit prose prose-invert prose-a:break-words prose-a:overflow-x-hidden lg:ml-40 sm:prose-base prose-sm prose-headings:font-semibold prose-img:rounded-xl">
+        </header>
+        <div class="prose prose-ek prose-custom max-w-3xl prose-a:break-words sm:prose-base prose-sm prose-headings:font-medium prose-headings:tracking-[-0.02em]">
           <Content />
         </div>
       </article>

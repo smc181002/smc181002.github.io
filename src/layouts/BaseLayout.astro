@@ -1,5 +1,5 @@
 ---
-import '@fontsource/sora';
+import '../styles/global.css';
 
 import BaseHead from '../components/common/BaseHead.astro'
 import Nav from '../components/common/Nav.astro'
@@ -14,9 +14,9 @@ const { title, description, imageUrl } = Astro.props
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <BaseHead {title} {description} {imageUrl}/>
   </head>
-  <body class="bg-custom-black text-custom-bg">
+  <body class="bg-ek-bg text-ek-text">
       <Nav/>
-      <div class="">
+      <div class="min-h-[70vh]">
         <slot /> <!-- your content is injected here -->
       </div>
       <Footer/>
