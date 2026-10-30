@@ -4,8 +4,8 @@ import { getCollection } from "astro:content";
 export async function GET(context) {
   const works = await getCollection("works");
   return rss({
-    title: "smc181002 - N Sri Meher Chaitanya | Works",
-    description: "My works in the field of CS&IT",
+    title: "N Sri Meher Chaitanya · Works",
+    description: "Projects, tools and write-ups by N Sri Meher Chaitanya",
     site: context.site,
     items: works.map((work) => ({
       title: work.data.title,
