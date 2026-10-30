@@ -1,51 +1,106 @@
 ---
 import {SEO} from "astro-seo";
 import { ViewTransitions } from 'astro:transitions';
-const { 
-        title = 'N Sri Meher Chaitanya', 
-        description = 'Software engineer at GE Vernova, building software end to end, from the interface down to the network', 
-        imageUrl = "/seo/seo-main.png" 
+import { MEDIUM_PROFILE } from '../../lib/medium';
+
+const SITE_NAME = 'N Sri Meher Chaitanya';
+const DEFAULT_DESCRIPTION = 'Software engineer at GE Vernova who experiments with new ideas and turns them into working software, with a focus on networks and substation protocols.';
+
+const {
+        title,
+        description = DEFAULT_DESCRIPTION,
+        imageUrl = "/seo/seo-main.png",
+        type = "website",
+        publishedTime,
+        tags = [],
 } = Astro.props
+
+const fullTitle = title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} · Software engineer`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const image = new URL(imageUrl, Astro.site).href;
+
+// Structured data so search engines can show the site as a person's profile.
+const person = {
+    "@type": "Person",
+    "@id": new URL("/#person", Astro.site).href,
+    name: SITE_NAME,
+    alternateName: "smc181002",
+    url: Astro.site.href,
+    image,
+    jobTitle: "Software engineer",
+    worksFor: { "@type": "Organization", name: "GE Vernova", url: "https://www.gevernova.com" },
+    alumniOf: { "@type": "CollegeOrUniversity", name: "University of Hyderabad", url: "https://uohyd.ac.in" },
+    sameAs: [
+        "https://github.com/smc181002",
+        MEDIUM_PROFILE,
+        "https://x.com/smc181002",
+        "https://www.linkedin.com/in/nsmcv18/",
+    ],
+};
+const jsonLd = type === "article"
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: title,
+        description,
+        url: canonical,
+        image,
+        datePublished: publishedTime,
+        keywords: tags.join(", "),
+        author: person,
+    }
+    : {
+        "@context": "https://schema.org",
+        "@graph": [
+            person,
+            { "@type": "WebSite", name: SITE_NAME, url: Astro.site.href, author: { "@id": person["@id"] } },
+        ],
+    };
 ---
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width" />
-
-<SEO 
-  title={title}
+<SEO
+  title={fullTitle}
   description={description}
+  canonical={canonical}
   openGraph={{
     basic: {
-      title: title + "'s Website",
-      type: "website",
-      image: imageUrl,
+      title: fullTitle,
+      type,
+      image,
+      url: canonical,
     },
     optional: {
-      description: description,
+      description,
+      siteName: SITE_NAME,
+      locale: "en_IN",
     },
     image: {
-      url: imageUrl,
-      type: "image/jpeg",
-      alt: "N Sri Meher Chaitanya"
-    }
+      url: image,
+      type: "image/png",
+      alt: SITE_NAME,
+    },
+    article: type === "article" ? { publishedTime, authors: [SITE_NAME], tags } : undefined,
   }}
   twitter={{
     card: "summary_large_image",
     site: "@smc181002",
     creator: "@smc181002",
+    title: fullTitle,
+    description,
+    image,
   }}
 />
 
-<!-- <link rel="icon" type="image/x-icon" href="/assets/logo.svg" /> -->
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.gstatic.com" />
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&display=swap" />
 
 <meta name="generator" content={Astro.generator} />
-<!-- <link rel="alternate" type="application/rss+xml" title="smc181002 » Projects" href={`${Astro.site}rss.xml`}> -->
+<meta name="author" content={SITE_NAME} />
+<link rel="alternate" type="application/rss+xml" title="N Sri Meher Chaitanya · Works" href={new URL("/rss.xml", Astro.site)}>
 <link rel="sitemap" href="/sitemap-index.xml">
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
 <ViewTransitions />

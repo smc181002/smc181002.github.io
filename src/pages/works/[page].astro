@@ -17,7 +17,7 @@ export async function getStaticPaths({ paginate }) {
 const {page} = Astro.props;
 ---
 
-<BaseLayout title="Works">
+<BaseLayout title={page.currentPage > 1 ? `Works, page ${page.currentPage}` : "Works"} description="Projects, tools and write-ups by N Sri Meher Chaitanya, newest first.">
     <main class="max-w-[1180px] mx-auto px-4 tbl:px-8 pt-7">
         <section id="works" class="flex flex-col gap-5">
             <div class="flex flex-col gap-1">

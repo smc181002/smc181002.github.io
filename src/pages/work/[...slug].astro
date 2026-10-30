@@ -16,7 +16,7 @@ const work = Astro.props;
 const { Content } = await work.render();
 ---
 
-<BaseLayout title={work.data.title} description={work.data.description}>
+<BaseLayout title={work.data.title} description={work.data.description} type="article" publishedTime={work.data.date.toISOString()} tags={work.data.tags}>
     <main class="max-w-[1180px] mx-auto px-4 tbl:px-8 pt-7">
       <article class="flex flex-col gap-10">
         <header class="flex flex-col gap-3 pb-8 border-b-hair border-ek-border">
