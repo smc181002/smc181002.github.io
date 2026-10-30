@@ -20,13 +20,13 @@ import { certifications } from '../lib/certifications';
         <Experience/>
 
         <section aria-labelledby="certs-title" class="flex flex-col gap-5">
-            <h2 id="certs-title" class="ek-title">Certifications</h2>
+            <h2 id="certs-title" class="ek-title">Certifications and courses</h2>
             <div class="ek-card">
                 {certifications.map(cert => (
                     <a href={cert.link} target="_blank" rel="noreferrer" class="flex flex-wrap items-center gap-x-4 gap-y-2 px-5 py-[18px] border-b-hair border-ek-border last:border-b-0 hover:bg-ek-hover transition-colors">
                         <span class="w-9 h-9 rounded border-hair border-ek-border flex items-center justify-center text-ek-text"><BrandIcon name={cert.icon} size={20}/></span>
                         <span class="flex-[999_1_240px] font-medium">{cert.name}</span>
-                        <span class="ek-chip">{cert.code} · Credly <span class="material-symbols-rounded text-sm" aria-hidden="true">arrow_outward</span></span>
+                        <span class="ek-chip">{cert.code} · {cert.issuer} <span class="material-symbols-rounded text-sm" aria-hidden="true">arrow_outward</span></span>
                     </a>
                 ))}
             </div>
