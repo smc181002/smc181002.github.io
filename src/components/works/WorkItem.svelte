@@ -5,7 +5,7 @@
     const date = item.data.date.toLocaleDateString('en-GB', {month: 'short', year: 'numeric'});
 </script>
 
-<a href={`/work/${item.slug}`} class="group flex flex-wrap items-center gap-x-6 gap-y-3 p-5 text-ek-text border-b-hair border-ek-border last:border-b-0 hover:bg-ek-hover transition-colors">
+<a href={`/work/${item.slug}/`} class="group flex flex-wrap items-center gap-x-6 gap-y-3 p-5 text-ek-text border-b-hair border-ek-border last:border-b-0 hover:bg-ek-hover transition-colors">
     <span class="w-24 text-xs text-ek-text-2 ek-num">{date}</span>
     <span class="flex-[999_1_360px] min-w-0 flex flex-col gap-0.5">
         <span class="text-lg font-medium tracking-[-0.01em] group-hover:underline underline-offset-4 decoration-hair">{item.data.title}</span>
