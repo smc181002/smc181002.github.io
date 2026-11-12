@@ -11,6 +11,8 @@ export default defineConfig( /** @type {import('astro').AstroUserConfig} */
     host: true
   },
   site: "https://smc.kraftinglabs.com",
+  // GitHub Pages 301-redirects "/about" to "/about/", so links must use the trailing-slash form.
+  trailingSlash: "always",
   // site: "https://scis.uohyd.ac.in/~19mcme12/",
   // base: "~19mcme12",
   // Enable the Svelte renderer to support Svelte components.
